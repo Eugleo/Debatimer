@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Debate_Timer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="46p-te-LIV">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KFS-RT-c2y">
+                                        <rect key="frame" x="10" y="0.0" width="355" height="50"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZT7-Xi-mGg" customClass="ColorfulLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="173.5" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="A: 5:22"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLK-BB-ftM" customClass="ColorfulLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="181.5" y="0.0" width="173.5" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="N: 3:17"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Xkn-gQ-FcK"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="74v-bg-l7v">
+                                        <rect key="frame" x="10" y="58" width="355" height="414.5"/>
+                                        <subviews>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RhT-pX-ZUx">
+                                                <rect key="frame" x="0.0" y="0.0" width="173.5" height="414.5"/>
+                                                <connections>
+                                                    <segue destination="EzB-pC-1Z7" kind="embed" id="Oeu-qk-M6Z"/>
+                                                </connections>
+                                            </containerView>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kR9-Tm-OR3">
+                                                <rect key="frame" x="181.5" y="0.0" width="173.5" height="414.5"/>
+                                                <connections>
+                                                    <segue destination="EzB-pC-1Z7" kind="embed" id="qpM-cB-593"/>
+                                                </connections>
+                                            </containerView>
+                                        </subviews>
+                                    </stackView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jYK-Ld-lLE">
+                                        <rect key="frame" x="0.0" y="480.5" width="375" height="166.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3XC-Q1-kpE">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Mfp-th-E4u">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </view>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="74v-bg-l7v" secondAttribute="trailing" constant="10" id="2Be-fX-fEM"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="jYK-Ld-lLE" secondAttribute="trailing" id="7GG-2h-I6X"/>
+                                    <constraint firstItem="74v-bg-l7v" firstAttribute="leading" secondItem="46p-te-LIV" secondAttribute="leading" constant="10" id="Ckq-9y-beO"/>
+                                    <constraint firstItem="KFS-RT-c2y" firstAttribute="leading" secondItem="46p-te-LIV" secondAttribute="leading" constant="10" id="X6I-OQ-z0h"/>
+                                    <constraint firstAttribute="trailing" secondItem="KFS-RT-c2y" secondAttribute="trailing" constant="10" id="Zjc-m1-bir"/>
+                                    <constraint firstItem="jYK-Ld-lLE" firstAttribute="leading" secondItem="46p-te-LIV" secondAttribute="leadingMargin" id="eyh-Ih-NYh"/>
+                                    <constraint firstItem="jYK-Ld-lLE" firstAttribute="bottom" secondItem="46p-te-LIV" secondAttribute="bottomMargin" id="sPx-YS-cK3"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="46p-te-LIV" secondAttribute="bottom" id="8H7-HE-bey"/>
+                            <constraint firstItem="jYK-Ld-lLE" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.25" id="EwC-N2-zKR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="46p-te-LIV" secondAttribute="trailing" id="FZc-sQ-RyL"/>
+                            <constraint firstItem="46p-te-LIV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PBI-aO-lfS"/>
+                            <constraint firstItem="46p-te-LIV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gTy-Er-sl7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-26.399999999999999" y="-287.40629685157421"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pPg-ZS-O9L">
+            <objects>
+                <viewController storyboardIdentifier="speakerStack" id="EzB-pC-1Z7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KVN-EQ-d6e">
+                        <rect key="frame" x="0.0" y="0.0" width="173.5" height="414.5"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xhD-sA-6A6">
+                                <rect key="frame" x="0.0" y="0.0" width="173.5" height="414.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nMa-V3-DUS">
+                                        <rect key="frame" x="0.0" y="0.0" width="173.5" height="133"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gG-1c-93J" customClass="ColorfulLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="83" height="133"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="A1"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mkm-zN-9Qq" customClass="ColorfulLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="91" y="0.0" width="82.5" height="133"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="N1"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="R3z-Lf-2EY">
+                                        <rect key="frame" x="0.0" y="141" width="173.5" height="132.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBe-f2-h03" customClass="ColorfulLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="83" height="132.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="A1"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhr-Fa-4TB" customClass="ColorfulLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="91" y="0.0" width="82.5" height="132.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="N1"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bPl-c5-86K">
+                                        <rect key="frame" x="0.0" y="281.5" width="173.5" height="133"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGP-6e-QNa" customClass="ColorfulLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="83" height="133"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="A1"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZs-tw-e8k" customClass="ColorfulLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="91" y="0.0" width="82.5" height="133"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="N1"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="xhD-sA-6A6" secondAttribute="bottom" id="6kN-Ar-cGs"/>
+                            <constraint firstItem="xhD-sA-6A6" firstAttribute="leading" secondItem="KVN-EQ-d6e" secondAttribute="leading" id="O87-3i-2pJ"/>
+                            <constraint firstAttribute="trailing" secondItem="xhD-sA-6A6" secondAttribute="trailing" id="suy-8M-36P"/>
+                            <constraint firstItem="xhD-sA-6A6" firstAttribute="top" secondItem="KVN-EQ-d6e" secondAttribute="top" id="uGG-SV-dia"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bbv-nP-RkQ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hvZ-yc-NaS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-27.199999999999999" y="448.87556221889059"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Oeu-qk-M6Z"/>
+    </inferredMetricsTieBreakers>
+</document>
