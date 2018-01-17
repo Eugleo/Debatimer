@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		367F514CA3C3070773522ACD /* Pods_Debate_Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16515DE7BE8FDFDA3B4628F0 /* Pods_Debate_Timer.framework */; };
+		4C4E3A92200FB73E006A2368 /* SpeakerCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E3A91200FB73E006A2368 /* SpeakerCardsViewController.swift */; };
+		4C4E3A94200FB998006A2368 /* SpeakerCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E3A93200FB998006A2368 /* SpeakerCardCell.swift */; };
 		4C89FD81200D366B00EFF992 /* Debate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89FD80200D366B00EFF992 /* Debate.swift */; };
 		4C89FD83200D368200EFF992 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89FD82200D368200EFF992 /* Speaker.swift */; };
 		4C89FD85200D3B2E00EFF992 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89FD84200D3B2E00EFF992 /* Timer.swift */; };
@@ -47,6 +49,8 @@
 		201080D2655081BF09430C05 /* Pods_Debate_TimerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Debate_TimerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21ED9D6E9F33C9FCE216FC8B /* Pods-Debate Timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debate Timer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Debate Timer/Pods-Debate Timer.release.xcconfig"; sourceTree = "<group>"; };
 		40EA14912493C93AEF14C33F /* Pods_Debate_TimerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Debate_TimerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C4E3A91200FB73E006A2368 /* SpeakerCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCardsViewController.swift; sourceTree = "<group>"; };
+		4C4E3A93200FB998006A2368 /* SpeakerCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCardCell.swift; sourceTree = "<group>"; };
 		4C89FD80200D366B00EFF992 /* Debate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debate.swift; sourceTree = "<group>"; };
 		4C89FD82200D368200EFF992 /* Speaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
 		4C89FD84200D3B2E00EFF992 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				4CEF9E6F200D2C4500217777 /* ColorfulLabel.swift */,
+				4C4E3A93200FB998006A2368 /* SpeakerCardCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -111,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				4CF85542200D11B0002CB00B /* MainViewController.swift */,
+				4C4E3A91200FB73E006A2368 /* SpeakerCardsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -507,10 +513,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C4E3A94200FB998006A2368 /* SpeakerCardCell.swift in Sources */,
 				4C89FD81200D366B00EFF992 /* Debate.swift in Sources */,
 				4CEF9E70200D2C4500217777 /* ColorfulLabel.swift in Sources */,
 				4C89FD83200D368200EFF992 /* Speaker.swift in Sources */,
 				4CCE9F48200E3C500090E2AB /* Speech.swift in Sources */,
+				4C4E3A92200FB73E006A2368 /* SpeakerCardsViewController.swift in Sources */,
 				4C89FD85200D3B2E00EFF992 /* Timer.swift in Sources */,
 				4CF85543200D11B0002CB00B /* MainViewController.swift in Sources */,
 				4CF85541200D11B0002CB00B /* AppDelegate.swift in Sources */,
