@@ -8,10 +8,26 @@
 
 import UIKit
 
+protocol SpeakerCardDelegate: class {
+    func cardTapped(atIndex index: Int)
+}
+
 final class SpeakerCardsViewController: UICollectionViewController {
-    var speeches: [Speech] = []
-    private let itemSpacing: CGFloat = 10
+    var debate: Debate!
+    var delegate: SpeakerCardDelegate?
+
+    private let itemSpacing: CGFloat = 20
     private let reuseIdentifier = "speakerCard"
+
+    private var collectionViewHeight: CGFloat = 0.0 {
+        didSet {
+            guard let collectionView = collectionView else { return }
+            if collectionViewHeight != oldValue {
+                collectionView.collectionViewLayout.invalidateLayout()
+                collectionView.collectionViewLayout.prepare()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +35,30 @@ final class SpeakerCardsViewController: UICollectionViewController {
         guard let collectionView = collectionView else { return }
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.decelerationRate = UIScrollViewDecelerationRateFast
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 40, bottom: 10, right: 40)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: itemSpacing, bottom: 0, right: 40 + 4)
+    }
+
+    override func viewDidLayoutSubviews() {
+        guard let collectionView = collectionView else { return }
+        collectionViewHeight = collectionView.bounds.size.height
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        guard let collectionView = collectionView else { return }
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        
+        let insets = collectionView.contentInset.left + collectionView.contentInset.right
+        let availableWidth = collectionView.frame.width - insets - itemSpacing
+        let availableHeight =
+            collectionView.frame.height -
+                collectionView.contentInset.bottom -
+                collectionView.contentInset.top -
+                layout.sectionInset.bottom -
+                layout.sectionInset.top
+        
+        layout.itemSize = CGSize(width: availableWidth, height: availableHeight)
     }
 
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView,
@@ -42,6 +81,15 @@ final class SpeakerCardsViewController: UICollectionViewController {
         let tmp = collectionView.contentSize.width - insetFrame.size.width
         targetContentOffset.pointee.x = (newOffset > tmp ? tmp : newOffset) - scrollView.contentInset.left
     }
+
+    func refreshCell(atIndex index: Int) {
+        guard let collectionView = collectionView else { return }
+
+        let speech = debate.allSpeeches()[index]
+        if let cell = collectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? SpeakerCardCell {
+            cell.viewModel = SpeakerCardCellViewModel(speech: speech)
+        }
+    }
 }
 
 extension SpeakerCardsViewController {
@@ -51,7 +99,7 @@ extension SpeakerCardsViewController {
 
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        return speeches.count
+        return debate.allSpeeches().count
     }
 
     override func collectionView(_ collectionView: UICollectionView,
@@ -59,14 +107,15 @@ extension SpeakerCardsViewController {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as! SpeakerCardCell
-        let speech = speeches[indexPath.row]
-        cell.speaker1 = "\(speech.speaker1)"
-        if let speaker2 = speech.speaker2 {
-            cell.speaker2 = "\(speaker2)"
-        }
-        cell.time = speech.timeLimit
+        cell.viewModel = SpeakerCardCellViewModel(speech: debate.allSpeeches()[indexPath.row])
 
         return cell
+    }
+
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didSelectItemAt indexPath: IndexPath) {
+
+        delegate?.cardTapped(atIndex: indexPath.row)
     }
 }
 
@@ -75,12 +124,31 @@ extension SpeakerCardsViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let availableWidth = collectionView.frame.width - collectionView.contentInset.left * 2 - itemSpacing
-        return CGSize(width: availableWidth, height: collectionView.frame.height - collectionView.contentInset.bottom)
+        let insets = collectionView.contentInset.left + collectionView.contentInset.right
+        let availableWidth = collectionView.frame.width - insets - itemSpacing
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        let availableHeight =
+            collectionViewHeight -
+            collectionView.contentInset.bottom -
+            collectionView.contentInset.top -
+            layout.sectionInset.bottom -
+            layout.sectionInset.top
+        return CGSize(width: availableWidth, height: availableHeight)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 
         return itemSpacing
+    }
+}
+
+extension SpeakerCardsViewController: SpeakerCardCollectionViewControllerDelegate {
+    func showSpeaker(atIndex index: Int) {
+        guard let collectionView = collectionView else { return }
+
+        let newIndexPath = IndexPath(row: index, section: 0)
+        if collectionView.numberOfItems(inSection: 0) > index {
+            collectionView.scrollToItem(at: newIndexPath, at: .left, animated: true)
+        }
     }
 }

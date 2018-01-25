@@ -9,18 +9,38 @@
 import Foundation
 
 enum Team: String {
-    case Affirmative, Negative
+    case affirmative, negative
+
+    func timeLimit() -> TimeInterval {
+        switch self {
+            case .affirmative:
+                return 300
+            case .negative:
+                return 420
+        }
+    }
 }
 
-enum Speaker: String {
-    case A1, A2, A3, N1, N2, N3
+final class Speaker {
+    let position: Int
+    let team: Team
+    var speechTime: TimeInterval?
+    var crossQuestionsTime: TimeInterval?
 
-    func team() -> Team {
-        switch self {
-        case .A1, .A2, .A3:
-            return .Affirmative
-        case .N1, .N2, .N3:
-            return .Negative
-        }
+    init(position: Int, team: Team) {
+        self.position = position
+        self.team = team
+        self.speechTime = nil
+        self.crossQuestionsTime = nil
+    }
+}
+
+extension Speaker: Equatable {
+    static func ==(lhs: Speaker, rhs: Speaker) -> Bool {
+        return
+            lhs.position == rhs.position &&
+            lhs.team == rhs.team &&
+            lhs.speechTime == rhs.speechTime &&
+            lhs.crossQuestionsTime == rhs.crossQuestionsTime
     }
 }

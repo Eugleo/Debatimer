@@ -8,13 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		367F514CA3C3070773522ACD /* Pods_Debate_Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16515DE7BE8FDFDA3B4628F0 /* Pods_Debate_Timer.framework */; };
+		4C0E11BA2014F4250004C773 /* SpeechLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0E11B92014F4250004C773 /* SpeechLabelViewModel.swift */; };
+		4C0E11BC201509260004C773 /* SpeakerCardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0E11BB201509260004C773 /* SpeakerCardCellViewModel.swift */; };
+		4C1F20632013FFFA00D37921 /* CircledLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F20622013FFFA00D37921 /* CircledLabel.swift */; };
 		4C4E3A92200FB73E006A2368 /* SpeakerCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E3A91200FB73E006A2368 /* SpeakerCardsViewController.swift */; };
 		4C4E3A94200FB998006A2368 /* SpeakerCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E3A93200FB998006A2368 /* SpeakerCardCell.swift */; };
 		4C89FD81200D366B00EFF992 /* Debate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89FD80200D366B00EFF992 /* Debate.swift */; };
 		4C89FD83200D368200EFF992 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89FD82200D368200EFF992 /* Speaker.swift */; };
-		4C89FD85200D3B2E00EFF992 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89FD84200D3B2E00EFF992 /* Timer.swift */; };
+		4C89FD85200D3B2E00EFF992 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89FD84200D3B2E00EFF992 /* CountdownTimer.swift */; };
+		4CC0FC45201A140800C4F833 /* TeamTimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC0FC44201A140800C4F833 /* TeamTimeLabel.swift */; };
+		4CCD229E20138017007B66CC /* StyleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD229D20138017007B66CC /* StyleExtensions.swift */; };
 		4CCE9F48200E3C500090E2AB /* Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE9F47200E3C500090E2AB /* Speech.swift */; };
-		4CEF9E70200D2C4500217777 /* ColorfulLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF9E6F200D2C4500217777 /* ColorfulLabel.swift */; };
+		4CEF9E70200D2C4500217777 /* SpeechLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF9E6F200D2C4500217777 /* SpeechLabel.swift */; };
 		4CF85541200D11B0002CB00B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF85540200D11B0002CB00B /* AppDelegate.swift */; };
 		4CF85543200D11B0002CB00B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF85542200D11B0002CB00B /* MainViewController.swift */; };
 		4CF85546200D11B0002CB00B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CF85544200D11B0002CB00B /* Main.storyboard */; };
@@ -49,13 +54,18 @@
 		201080D2655081BF09430C05 /* Pods_Debate_TimerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Debate_TimerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21ED9D6E9F33C9FCE216FC8B /* Pods-Debate Timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Debate Timer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Debate Timer/Pods-Debate Timer.release.xcconfig"; sourceTree = "<group>"; };
 		40EA14912493C93AEF14C33F /* Pods_Debate_TimerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Debate_TimerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C0E11B92014F4250004C773 /* SpeechLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechLabelViewModel.swift; sourceTree = "<group>"; };
+		4C0E11BB201509260004C773 /* SpeakerCardCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCardCellViewModel.swift; sourceTree = "<group>"; };
+		4C1F20622013FFFA00D37921 /* CircledLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircledLabel.swift; sourceTree = "<group>"; };
 		4C4E3A91200FB73E006A2368 /* SpeakerCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCardsViewController.swift; sourceTree = "<group>"; };
 		4C4E3A93200FB998006A2368 /* SpeakerCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCardCell.swift; sourceTree = "<group>"; };
 		4C89FD80200D366B00EFF992 /* Debate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debate.swift; sourceTree = "<group>"; };
 		4C89FD82200D368200EFF992 /* Speaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
-		4C89FD84200D3B2E00EFF992 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		4C89FD84200D3B2E00EFF992 /* CountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
+		4CC0FC44201A140800C4F833 /* TeamTimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTimeLabel.swift; sourceTree = "<group>"; };
+		4CCD229D20138017007B66CC /* StyleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleExtensions.swift; sourceTree = "<group>"; };
 		4CCE9F47200E3C500090E2AB /* Speech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speech.swift; sourceTree = "<group>"; };
-		4CEF9E6F200D2C4500217777 /* ColorfulLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorfulLabel.swift; sourceTree = "<group>"; };
+		4CEF9E6F200D2C4500217777 /* SpeechLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechLabel.swift; sourceTree = "<group>"; };
 		4CF8553D200D11B0002CB00B /* Debate Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Debate Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF85540200D11B0002CB00B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CF85542200D11B0002CB00B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -106,8 +116,12 @@
 		4C4E3A8D200FB385006A2368 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4CEF9E6F200D2C4500217777 /* ColorfulLabel.swift */,
+				4CC0FC44201A140800C4F833 /* TeamTimeLabel.swift */,
+				4CEF9E6F200D2C4500217777 /* SpeechLabel.swift */,
+				4C0E11B92014F4250004C773 /* SpeechLabelViewModel.swift */,
 				4C4E3A93200FB998006A2368 /* SpeakerCardCell.swift */,
+				4C0E11BB201509260004C773 /* SpeakerCardCellViewModel.swift */,
+				4C1F20622013FFFA00D37921 /* CircledLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -125,7 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				4C89FD80200D366B00EFF992 /* Debate.swift */,
-				4C89FD84200D3B2E00EFF992 /* Timer.swift */,
+				4C89FD84200D3B2E00EFF992 /* CountdownTimer.swift */,
 				4C89FD82200D368200EFF992 /* Speaker.swift */,
 				4CCE9F47200E3C500090E2AB /* Speech.swift */,
 			);
@@ -171,6 +185,7 @@
 				4C4E3A8E200FB394006A2368 /* Controller */,
 				4C4E3A8D200FB385006A2368 /* View */,
 				4CF85540200D11B0002CB00B /* AppDelegate.swift */,
+				4CCD229D20138017007B66CC /* StyleExtensions.swift */,
 				4CF85547200D11B0002CB00B /* Assets.xcassets */,
 				4CF8554C200D11B0002CB00B /* Info.plist */,
 			);
@@ -514,12 +529,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C4E3A94200FB998006A2368 /* SpeakerCardCell.swift in Sources */,
+				4C0E11BA2014F4250004C773 /* SpeechLabelViewModel.swift in Sources */,
 				4C89FD81200D366B00EFF992 /* Debate.swift in Sources */,
-				4CEF9E70200D2C4500217777 /* ColorfulLabel.swift in Sources */,
+				4C1F20632013FFFA00D37921 /* CircledLabel.swift in Sources */,
+				4CEF9E70200D2C4500217777 /* SpeechLabel.swift in Sources */,
+				4CCD229E20138017007B66CC /* StyleExtensions.swift in Sources */,
 				4C89FD83200D368200EFF992 /* Speaker.swift in Sources */,
 				4CCE9F48200E3C500090E2AB /* Speech.swift in Sources */,
+				4C0E11BC201509260004C773 /* SpeakerCardCellViewModel.swift in Sources */,
 				4C4E3A92200FB73E006A2368 /* SpeakerCardsViewController.swift in Sources */,
-				4C89FD85200D3B2E00EFF992 /* Timer.swift in Sources */,
+				4CC0FC45201A140800C4F833 /* TeamTimeLabel.swift in Sources */,
+				4C89FD85200D3B2E00EFF992 /* CountdownTimer.swift in Sources */,
 				4CF85543200D11B0002CB00B /* MainViewController.swift in Sources */,
 				4CF85541200D11B0002CB00B /* AppDelegate.swift in Sources */,
 			);

@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,53 +15,103 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Debate_Timer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="46p-te-LIV">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="46p-te-LIV">
+                                <rect key="frame" x="0.0" y="30" width="320" height="518"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KFS-RT-c2y">
-                                        <rect key="frame" x="10" y="0.0" width="355" height="50"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="scM-fu-IsJ">
+                                        <rect key="frame" x="20" y="0.0" width="280" height="84"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZT7-Xi-mGg" customClass="ColorfulLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="173.5" height="50"/>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZK0-qZ-1FR" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="84"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="A: 5:22"/>
-                                                </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLK-BB-ftM" customClass="ColorfulLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="181.5" y="0.0" width="173.5" height="50"/>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lqn-iB-liq" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="150" y="0.0" width="130" height="84"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="N: 3:17"/>
-                                                </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mWn-Ic-wOK">
+                                        <rect key="frame" x="20" y="99" width="280" height="84"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M0k-0l-yAh" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="84"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sHz-0j-Op2" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="150" y="0.0" width="130" height="84"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="n7v-V8-ZlU">
+                                        <rect key="frame" x="20" y="198" width="280" height="84"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWx-a0-Poy" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="84"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4NB-js-IHP" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="150" y="0.0" width="130" height="84"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rue-q9-t3N">
+                                        <rect key="frame" x="20" y="297" width="280" height="77"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AeD-Zh-RKQ" customClass="TeamTimeLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="132.5" height="77"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7rv-qw-Dpa" customClass="TeamTimeLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="147.5" y="0.0" width="132.5" height="77"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWJ-l1-6iX" userLabel="Současný řečník">
+                                        <rect key="frame" x="20" y="389" width="280" height="20.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FLA-SR-Szf">
+                                                <rect key="frame" x="0.0" y="14.5" width="39.5" height="1"/>
+                                                <color key="backgroundColor" red="0.48229777812957764" green="0.48238468170166016" blue="0.4822922945022583" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="aDL-bH-qfl"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qqo-jT-YaV">
+                                                <rect key="frame" x="240" y="14" width="40" height="1"/>
+                                                <color key="backgroundColor" red="0.48229777810000002" green="0.48238468169999998" blue="0.4822922945" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="iDr-mx-sL6"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="SOUČASNÝ ŘEČNÍK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ao-mu-m5p" userLabel="Současný řečník">
+                                                <rect key="frame" x="59.5" y="5" width="160.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <color key="textColor" red="0.48305942361968923" green="0.48305942361968923" blue="0.48305942361968923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Xkn-gQ-FcK"/>
+                                            <constraint firstItem="FLA-SR-Szf" firstAttribute="leading" secondItem="FWJ-l1-6iX" secondAttribute="leading" id="2j1-0I-hvO"/>
+                                            <constraint firstItem="Qqo-jT-YaV" firstAttribute="leading" secondItem="9ao-mu-m5p" secondAttribute="trailing" constant="20" id="59i-gx-h4q"/>
+                                            <constraint firstItem="Qqo-jT-YaV" firstAttribute="centerY" secondItem="FWJ-l1-6iX" secondAttribute="centerY" id="DCZ-S0-18J"/>
+                                            <constraint firstItem="9ao-mu-m5p" firstAttribute="centerY" secondItem="FWJ-l1-6iX" secondAttribute="centerY" id="HcI-iz-d0N"/>
+                                            <constraint firstAttribute="height" secondItem="9ao-mu-m5p" secondAttribute="height" id="LSR-bl-LkV"/>
+                                            <constraint firstItem="9ao-mu-m5p" firstAttribute="centerX" secondItem="FWJ-l1-6iX" secondAttribute="centerX" id="Mbj-uZ-GxQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="Qqo-jT-YaV" secondAttribute="trailing" id="Opy-jC-Hdo"/>
+                                            <constraint firstItem="FLA-SR-Szf" firstAttribute="centerY" secondItem="FWJ-l1-6iX" secondAttribute="centerY" id="hqH-Tk-jSN"/>
+                                            <constraint firstItem="9ao-mu-m5p" firstAttribute="leading" secondItem="FLA-SR-Szf" secondAttribute="trailing" constant="20" id="u7l-q9-7zr"/>
                                         </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="74v-bg-l7v">
-                                        <rect key="frame" x="10" y="58" width="355" height="387"/>
-                                        <subviews>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RhT-pX-ZUx">
-                                                <rect key="frame" x="0.0" y="0.0" width="173.5" height="387"/>
-                                                <connections>
-                                                    <segue destination="EzB-pC-1Z7" kind="embed" id="Oeu-qk-M6Z"/>
-                                                </connections>
-                                            </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kR9-Tm-OR3">
-                                                <rect key="frame" x="181.5" y="0.0" width="173.5" height="387"/>
-                                                <connections>
-                                                    <segue destination="EzB-pC-1Z7" kind="embed" id="qpM-cB-593"/>
-                                                </connections>
-                                            </containerView>
-                                        </subviews>
-                                    </stackView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TAA-5W-gWO">
-                                        <rect key="frame" x="0.0" y="453" width="375" height="194"/>
+                                    </view>
+                                    <containerView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TAA-5W-gWO">
+                                        <rect key="frame" x="0.0" y="424.5" width="320" height="93.5"/>
                                         <connections>
                                             <segue destination="1dK-Il-Inl" kind="embed" identifier="embedCardsCVSegue" id="Yc6-qy-SWs"/>
                                         </connections>
@@ -71,122 +119,53 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="TAA-5W-gWO" firstAttribute="width" secondItem="46p-te-LIV" secondAttribute="width" id="0c0-hj-HfD"/>
-                                    <constraint firstAttribute="trailing" secondItem="74v-bg-l7v" secondAttribute="trailing" constant="10" id="2Be-fX-fEM"/>
-                                    <constraint firstItem="74v-bg-l7v" firstAttribute="leading" secondItem="46p-te-LIV" secondAttribute="leading" constant="10" id="Ckq-9y-beO"/>
-                                    <constraint firstItem="KFS-RT-c2y" firstAttribute="leading" secondItem="46p-te-LIV" secondAttribute="leading" constant="10" id="X6I-OQ-z0h"/>
-                                    <constraint firstAttribute="trailing" secondItem="KFS-RT-c2y" secondAttribute="trailing" constant="10" id="Zjc-m1-bir"/>
-                                    <constraint firstItem="TAA-5W-gWO" firstAttribute="height" secondItem="46p-te-LIV" secondAttribute="height" multiplier="0.3" id="rgm-oF-5GT"/>
+                                    <constraint firstItem="mWn-Ic-wOK" firstAttribute="trailing" secondItem="scM-fu-IsJ" secondAttribute="trailing" id="38D-os-Erg"/>
+                                    <constraint firstAttribute="trailing" secondItem="FWJ-l1-6iX" secondAttribute="trailing" constant="20" id="4Wl-v0-TqN"/>
+                                    <constraint firstItem="rue-q9-t3N" firstAttribute="trailing" secondItem="scM-fu-IsJ" secondAttribute="trailing" id="7Yq-Kg-pbR"/>
+                                    <constraint firstItem="rue-q9-t3N" firstAttribute="leading" secondItem="scM-fu-IsJ" secondAttribute="leading" id="9X7-S2-z59"/>
+                                    <constraint firstItem="scM-fu-IsJ" firstAttribute="leading" secondItem="46p-te-LIV" secondAttribute="leading" constant="20" id="EvF-hB-QdO"/>
+                                    <constraint firstItem="n7v-V8-ZlU" firstAttribute="leading" secondItem="scM-fu-IsJ" secondAttribute="leading" id="OX4-YC-k9f"/>
+                                    <constraint firstItem="FWJ-l1-6iX" firstAttribute="leading" secondItem="46p-te-LIV" secondAttribute="leading" constant="20" id="Teb-re-uSm"/>
+                                    <constraint firstItem="mWn-Ic-wOK" firstAttribute="leading" secondItem="scM-fu-IsJ" secondAttribute="leading" id="TxH-Jo-QEf"/>
+                                    <constraint firstAttribute="trailing" secondItem="scM-fu-IsJ" secondAttribute="trailing" constant="20" id="hKr-te-4Mh"/>
+                                    <constraint firstItem="mWn-Ic-wOK" firstAttribute="height" secondItem="n7v-V8-ZlU" secondAttribute="height" id="lbL-rw-K5p"/>
+                                    <constraint firstItem="n7v-V8-ZlU" firstAttribute="trailing" secondItem="scM-fu-IsJ" secondAttribute="trailing" id="x47-LU-K4o"/>
+                                    <constraint firstItem="scM-fu-IsJ" firstAttribute="height" secondItem="mWn-Ic-wOK" secondAttribute="height" id="z4U-QR-xkU"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="46p-te-LIV" secondAttribute="bottom" id="8H7-HE-bey"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="46p-te-LIV" secondAttribute="bottom" constant="20" id="8H7-HE-bey"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="46p-te-LIV" secondAttribute="trailing" id="FZc-sQ-RyL"/>
                             <constraint firstItem="46p-te-LIV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PBI-aO-lfS"/>
-                            <constraint firstItem="46p-te-LIV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gTy-Er-sl7"/>
+                            <constraint firstItem="46p-te-LIV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="gTy-Er-sl7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="teamAffirmativeLabel" destination="AeD-Zh-RKQ" id="vRh-zj-Cq6"/>
+                        <outlet property="teamNegativeLabel" destination="7rv-qw-Dpa" id="tlH-te-Hez"/>
+                        <outletCollection property="speakerLabels" destination="ZK0-qZ-1FR" collectionClass="NSMutableArray" id="1ut-PF-J53"/>
+                        <outletCollection property="speakerLabels" destination="lqn-iB-liq" collectionClass="NSMutableArray" id="7OP-0q-S5E"/>
+                        <outletCollection property="speakerLabels" destination="M0k-0l-yAh" collectionClass="NSMutableArray" id="rSc-8L-tUx"/>
+                        <outletCollection property="speakerLabels" destination="sHz-0j-Op2" collectionClass="NSMutableArray" id="89y-gl-9kz"/>
+                        <outletCollection property="speakerLabels" destination="eWx-a0-Poy" collectionClass="NSMutableArray" id="kgE-8l-9a9"/>
+                        <outletCollection property="speakerLabels" destination="4NB-js-IHP" collectionClass="NSMutableArray" id="hAU-eu-wi1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-26.399999999999999" y="-287.40629685157421"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="pPg-ZS-O9L">
-            <objects>
-                <viewController storyboardIdentifier="speakerStack" id="EzB-pC-1Z7" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="KVN-EQ-d6e">
-                        <rect key="frame" x="0.0" y="0.0" width="173.5" height="387"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xhD-sA-6A6">
-                                <rect key="frame" x="0.0" y="0.0" width="173.5" height="387"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nMa-V3-DUS">
-                                        <rect key="frame" x="0.0" y="0.0" width="173.5" height="123.5"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gG-1c-93J" customClass="ColorfulLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="83" height="123.5"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="A1"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mkm-zN-9Qq" customClass="ColorfulLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="91" y="0.0" width="82.5" height="123.5"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="N1"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="R3z-Lf-2EY">
-                                        <rect key="frame" x="0.0" y="131.5" width="173.5" height="124"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBe-f2-h03" customClass="ColorfulLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="83" height="124"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="A1"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhr-Fa-4TB" customClass="ColorfulLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="91" y="0.0" width="82.5" height="124"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="N1"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bPl-c5-86K">
-                                        <rect key="frame" x="0.0" y="263.5" width="173.5" height="123.5"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGP-6e-QNa" customClass="ColorfulLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="83" height="123.5"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="A1"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZs-tw-e8k" customClass="ColorfulLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="91" y="0.0" width="82.5" height="123.5"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="text" value="N1"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="xhD-sA-6A6" secondAttribute="bottom" id="6kN-Ar-cGs"/>
-                            <constraint firstItem="xhD-sA-6A6" firstAttribute="leading" secondItem="KVN-EQ-d6e" secondAttribute="leading" id="O87-3i-2pJ"/>
-                            <constraint firstAttribute="trailing" secondItem="xhD-sA-6A6" secondAttribute="trailing" id="suy-8M-36P"/>
-                            <constraint firstItem="xhD-sA-6A6" firstAttribute="top" secondItem="KVN-EQ-d6e" secondAttribute="top" id="uGG-SV-dia"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="bbv-nP-RkQ"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hvZ-yc-NaS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="658" y="-287"/>
-        </scene>
         <!--Speaker Cards View Controller-->
         <scene sceneID="SYD-RU-S1i">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="A6R-zb-GB9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewController id="1dK-Il-Inl" customClass="SpeakerCardsViewController" customModule="Debate_Timer" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="CWY-HP-rMn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="194"/>
+                    <collectionView key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="CWY-HP-rMn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="93.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4xG-Mf-mxn">
                             <size key="itemSize" width="303" height="160"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -195,7 +174,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="speakerCard" id="RqK-lj-2yi" customClass="SpeakerCardCell" customModule="Debate_Timer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="17" width="303" height="160"/>
+                                <rect key="frame" x="0.0" y="-33.5" width="303" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="303" height="160"/>
@@ -209,11 +188,9 @@
                         </connections>
                     </collectionView>
                 </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A6R-zb-GB9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-26.399999999999999" y="221.28935532233885"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="qpM-cB-593"/>
-    </inferredMetricsTieBreakers>
 </document>

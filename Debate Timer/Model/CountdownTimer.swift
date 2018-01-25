@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Timer {
+struct CountdownTimer {
     private var startTime: Date?
     private var interval: TimeInterval = 0
     private var accTime: TimeInterval = 0
@@ -44,4 +44,3 @@ struct Timer {
         startTime = Date()
     }
 }
-
