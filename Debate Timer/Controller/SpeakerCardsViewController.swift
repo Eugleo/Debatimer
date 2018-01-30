@@ -36,6 +36,109 @@ final class SpeakerCardsViewController: UICollectionViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.decelerationRate = UIScrollViewDecelerationRateFast
         collectionView.contentInset = UIEdgeInsets(top: 0, left: itemSpacing, bottom: 0, right: 40 + 4)
+
+        configureGestureRecognizers()
+    }
+
+    func configureGestureRecognizers() {
+        // Long Press Gesture Recognizer
+        let longPressGestureRecognizer =
+            UILongPressGestureRecognizer(target: self,
+                                         action: #selector(handleLongPressGesture(gestureRecognizer:)))
+        longPressGestureRecognizer.minimumPressDuration = 0.0001
+        longPressGestureRecognizer.delegate = self
+        view.addGestureRecognizer(longPressGestureRecognizer)
+    }
+
+    var isPressed = false
+
+    var lastP: CGPoint!
+
+    @objc internal func handleLongPressGesture(gestureRecognizer: UILongPressGestureRecognizer) {
+        guard let collectionView = collectionView else { return }
+
+        let p = gestureRecognizer.location(in: self.collectionView)
+
+        let safeRange: CGFloat = 5
+
+        if let indexPath = collectionView.indexPathForItem(at: p) {
+            // get the cell at indexPath (the one you long pressed)
+            let selectedCell = collectionView.cellForItem(at: indexPath) as! SpeakerCardCell
+            // do stuff with the cell
+
+            switch gestureRecognizer.state {
+            case .began:
+                handleLongPressBegan(onCell: selectedCell)
+                lastP = p
+            case .ended:
+                if abs(p.x - lastP.x) <= safeRange
+                    && p.y > collectionView.contentInset.top + 5
+                    && p.y < collectionView.frame.height - collectionView.contentInset.bottom - 5 {
+                    handleLongPressEndedInside(onCell: selectedCell)
+                    delegate?.cardTapped(atIndex: indexPath.row)
+                } else {
+                    handleLongPressEndedOutside(onCell: selectedCell)
+                }
+            case .changed:
+                if abs(p.x - lastP.x) > safeRange
+                    || p.y <= collectionView.contentInset.top + 5
+                    || p.y > collectionView.frame.height - collectionView.contentInset.bottom - 5 {
+                    handleLongPressEndedOutside(onCell: selectedCell)
+                }
+
+            default:
+                break
+            }
+        }
+    }
+
+    private struct Transformations {
+        static let bottom = CGAffineTransform(scaleX: 0.97, y: 0.97)
+        static let middle = CGAffineTransform(scaleX: 0.985, y: 0.985)
+        private init() { }
+    }
+
+    private struct Shadows {
+        static let big: CGFloat = 3
+        static let small: CGFloat = 1
+        private init() { }
+    }
+
+    func animateButtonPress(transformation: CGAffineTransform,
+                            shadowHeight height: CGFloat,
+                            duration: TimeInterval,
+                            ofCell cell: SpeakerCardCell) {
+
+        UIView.animate(withDuration: duration,
+                       delay: 0.0,
+                       usingSpringWithDamping: 0.8,
+                       initialSpringVelocity: 0.6,
+                       options: [.beginFromCurrentState, .allowUserInteraction],
+                       animations: {
+                        cell.transform = transformation
+        },
+                       completion: nil)
+    }
+
+    private func handleLongPressBegan(onCell cell: SpeakerCardCell) {
+        animateButtonPress(transformation: Transformations.bottom,
+                           shadowHeight: Shadows.small,
+                           duration: isPressed ? 0.3 : 0.4,
+                           ofCell: cell)
+    }
+
+    private func handleLongPressEndedInside(onCell cell: SpeakerCardCell) {
+        animateButtonPress(transformation: .identity,
+                           shadowHeight: Shadows.small,
+                           duration: isPressed ? 0.3 : 0.5,
+                           ofCell: cell)
+    }
+
+    private func handleLongPressEndedOutside(onCell cell: SpeakerCardCell) {
+        animateButtonPress(transformation: .identity,
+                           shadowHeight: isPressed ? Shadows.small : Shadows.big,
+                           duration: isPressed ? 0.3 : 0.5,
+                           ofCell: cell)
     }
 
     override func viewDidLayoutSubviews() {
@@ -92,6 +195,13 @@ final class SpeakerCardsViewController: UICollectionViewController {
     }
 }
 
+extension SpeakerCardsViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                           shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+}
+
 extension SpeakerCardsViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -110,12 +220,6 @@ extension SpeakerCardsViewController {
         cell.viewModel = SpeakerCardCellViewModel(speech: debate.allSpeeches()[indexPath.row])
 
         return cell
-    }
-
-    override func collectionView(_ collectionView: UICollectionView,
-                                 didSelectItemAt indexPath: IndexPath) {
-
-        delegate?.cardTapped(atIndex: indexPath.row)
     }
 }
 
@@ -136,7 +240,9 @@ extension SpeakerCardsViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: availableWidth, height: availableHeight)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 
         return itemSpacing
     }

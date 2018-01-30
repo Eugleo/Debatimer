@@ -200,7 +200,7 @@ final class SpeechLabel: UIView {
     }
 
     private struct Transformations {
-        static let bottom = CGAffineTransform(scaleX: 0.975, y: 0.975)
+        static let bottom = CGAffineTransform(scaleX: 0.97, y: 0.97)
         private init() { }
     }
 
@@ -216,7 +216,7 @@ final class SpeechLabel: UIView {
         sv.layer.shadowRadius = 7
         sv.layer.shadowColor = UIColor.black.cgColor
         sv.layer.shadowOffset = .zero
-        sv.layer.shadowOpacity = 0.07
+        sv.layer.shadowOpacity = 0.09
     }
 
     let backgroundView = UIView { v in

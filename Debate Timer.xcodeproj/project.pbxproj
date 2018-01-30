@@ -13,6 +13,7 @@
 		4C1F20632013FFFA00D37921 /* CircledLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F20622013FFFA00D37921 /* CircledLabel.swift */; };
 		4C4E3A92200FB73E006A2368 /* SpeakerCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E3A91200FB73E006A2368 /* SpeakerCardsViewController.swift */; };
 		4C4E3A94200FB998006A2368 /* SpeakerCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E3A93200FB998006A2368 /* SpeakerCardCell.swift */; };
+		4C883F4D2020E00E0083F801 /* ShadowTappableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C883F4C2020E00E0083F801 /* ShadowTappableLabel.swift */; };
 		4C89FD81200D366B00EFF992 /* Debate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89FD80200D366B00EFF992 /* Debate.swift */; };
 		4C89FD83200D368200EFF992 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89FD82200D368200EFF992 /* Speaker.swift */; };
 		4C89FD85200D3B2E00EFF992 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89FD84200D3B2E00EFF992 /* CountdownTimer.swift */; };
@@ -59,6 +60,7 @@
 		4C1F20622013FFFA00D37921 /* CircledLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircledLabel.swift; sourceTree = "<group>"; };
 		4C4E3A91200FB73E006A2368 /* SpeakerCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCardsViewController.swift; sourceTree = "<group>"; };
 		4C4E3A93200FB998006A2368 /* SpeakerCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCardCell.swift; sourceTree = "<group>"; };
+		4C883F4C2020E00E0083F801 /* ShadowTappableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowTappableLabel.swift; sourceTree = "<group>"; };
 		4C89FD80200D366B00EFF992 /* Debate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debate.swift; sourceTree = "<group>"; };
 		4C89FD82200D368200EFF992 /* Speaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
 		4C89FD84200D3B2E00EFF992 /* CountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				4CC0FC44201A140800C4F833 /* TeamTimeLabel.swift */,
+				4C883F4C2020E00E0083F801 /* ShadowTappableLabel.swift */,
 				4CEF9E6F200D2C4500217777 /* SpeechLabel.swift */,
 				4C0E11B92014F4250004C773 /* SpeechLabelViewModel.swift */,
 				4C4E3A93200FB998006A2368 /* SpeakerCardCell.swift */,
@@ -540,6 +543,7 @@
 				4C4E3A92200FB73E006A2368 /* SpeakerCardsViewController.swift in Sources */,
 				4CC0FC45201A140800C4F833 /* TeamTimeLabel.swift in Sources */,
 				4C89FD85200D3B2E00EFF992 /* CountdownTimer.swift in Sources */,
+				4C883F4D2020E00E0083F801 /* ShadowTappableLabel.swift in Sources */,
 				4CF85543200D11B0002CB00B /* MainViewController.swift in Sources */,
 				4CF85541200D11B0002CB00B /* AppDelegate.swift in Sources */,
 			);
