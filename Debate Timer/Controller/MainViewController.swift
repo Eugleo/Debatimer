@@ -35,7 +35,9 @@ final class MainViewController: UIViewController {
             label.delegate = self
         }
         teamNegativeLabel.team = .negative
+        teamNegativeLabel.delegate = self
         teamAffirmativeLabel.team = .affirmative
+        teamAffirmativeLabel.delegate = self
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,9 +51,6 @@ final class MainViewController: UIViewController {
 
     @objc private func refreshUserInterface() {
         if let index = debate.currentSpeakerIndex() {
-            for (speaker, label) in zip(debate.allSpeakers(), speakerLabels) {
-                label.viewModel = SpeechLabelViewModel(speaker: speaker)
-            }
             delegate?.refreshCell(atIndex: index)
         } else {
             teamAffirmativeLabel.timeLeft = debate.teamTimeLeft().affirmative
@@ -67,6 +66,9 @@ extension MainViewController: SpeakerCardDelegate {
 
     func cardTapped(atIndex index: Int) {
         if debate.currentSpeaker() != nil {
+            for (speaker, label) in zip(debate.allSpeakers(), speakerLabels) {
+                label.viewModel = SpeechLabelViewModel(speaker: speaker)
+            }
             debate.stopSpeech()
             delegate?.showSpeaker(atIndex: index + 1)
         } else {
@@ -77,7 +79,21 @@ extension MainViewController: SpeakerCardDelegate {
 
 extension MainViewController: SpeechLabelDelegate {
     func tapped(sender: SpeechLabel) {
-        let index = speakerLabels.index(of: sender)!
-        delegate?.showSpeaker(atIndex: index)
+        let index = debate.allSpeeches().index { $0.speaker1 == sender.viewModel!.speaker && $0.speaker2 == nil}
+        delegate?.showSpeaker(atIndex: index!)
+    }
+}
+
+extension MainViewController: TeamTimeLabelDelegate {
+    func tapped(sender: TeamTimeLabel) {
+        guard let team = sender.team else { return }
+
+        if let currentTeam = debate.timeRunsForTeam() {
+            if team == currentTeam {
+                debate.pauseTimer(for: team)
+            }
+        } else {
+            debate.unpauseTimer(forTeam: team)
+        }
     }
 }

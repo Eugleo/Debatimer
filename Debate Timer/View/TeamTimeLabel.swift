@@ -8,7 +8,12 @@
 
 import UIKit
 
+protocol TeamTimeLabelDelegate {
+    func tapped(sender: TeamTimeLabel)
+}
+
 final class TeamTimeLabel: UIView {
+    var delegate: TeamTimeLabelDelegate?
 
     var timeLeft: TimeInterval? {
         didSet {
@@ -63,6 +68,12 @@ final class TeamTimeLabel: UIView {
             l.trailing.pinToSuperviewMargin()
             l.leading.align(with: teamLabel.al.trailing.offsetting(by: 7))
         }
+
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapped)))
+    }
+
+    @objc private func tapped() {
+        delegate?.tapped(sender: self)
     }
 
     private func formatTimeInterval(_ interval: TimeInterval) -> String {

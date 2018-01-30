@@ -23,7 +23,8 @@ struct SpeechLabelViewModel {
     public var name: String {
         return "\(speaker.team.rawValue.uppercased().first!)\(speaker.position)"
     }
-    private let speaker: Speaker
+    
+    public let speaker: Speaker
 
     init(speaker: Speaker) {
         self.speaker = speaker

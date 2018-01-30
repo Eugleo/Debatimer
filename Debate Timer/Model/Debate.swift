@@ -90,6 +90,11 @@ final class Debate {
         refreshCurrentSpeaker()
         currentSpeechIndex += 1
         speechTimer.stop()
+
+        if currentSpeechIndex >= speeches.count {
+            affirmativeTimer.pause()
+            negativeTimer.pause()
+        }
     }
 
     func currentSpeechTimeLeft() -> TimeInterval? {
@@ -130,6 +135,16 @@ final class Debate {
 
         refreshCurrentSpeaker()
         return currentSpeechIndex
+    }
+
+    func timeRunsForTeam() -> Team? {
+        if affirmativeTimer.isRunning() {
+            return .affirmative
+        } else if negativeTimer.isRunning() {
+            return .negative
+        } else {
+            return nil
+        }
     }
 
     func unpauseTimer(forTeam team: Team) {
