@@ -17,7 +17,6 @@ final class SpeakerCardsViewController: UICollectionViewController {
     var delegate: SpeakerCardDelegate?
 
     private let itemSpacing: CGFloat = 20
-    private let reuseIdentifier = "speakerCard"
 
     private var collectionViewHeight: CGFloat = 0.0 {
         didSet {
@@ -63,7 +62,7 @@ final class SpeakerCardsViewController: UICollectionViewController {
 
         if let indexPath = collectionView.indexPathForItem(at: p) {
             // get the cell at indexPath (the one you long pressed)
-            let selectedCell = collectionView.cellForItem(at: indexPath) as! SpeakerCardCell
+            let selectedCell = collectionView.cellForItem(at: indexPath)!
             // do stuff with the cell
 
             switch gestureRecognizer.state {
@@ -85,7 +84,6 @@ final class SpeakerCardsViewController: UICollectionViewController {
                     || p.y > collectionView.frame.height - collectionView.contentInset.bottom - 5 {
                     handleLongPressEndedOutside(onCell: selectedCell)
                 }
-
             default:
                 break
             }
@@ -107,7 +105,7 @@ final class SpeakerCardsViewController: UICollectionViewController {
     func animateButtonPress(transformation: CGAffineTransform,
                             shadowHeight height: CGFloat,
                             duration: TimeInterval,
-                            ofCell cell: SpeakerCardCell) {
+                            ofCell cell: UICollectionViewCell) {
 
         UIView.animate(withDuration: duration,
                        delay: 0.0,
@@ -120,21 +118,21 @@ final class SpeakerCardsViewController: UICollectionViewController {
                        completion: nil)
     }
 
-    private func handleLongPressBegan(onCell cell: SpeakerCardCell) {
+    private func handleLongPressBegan(onCell cell: UICollectionViewCell) {
         animateButtonPress(transformation: Transformations.bottom,
                            shadowHeight: Shadows.small,
                            duration: isPressed ? 0.3 : 0.4,
                            ofCell: cell)
     }
 
-    private func handleLongPressEndedInside(onCell cell: SpeakerCardCell) {
+    private func handleLongPressEndedInside(onCell cell: UICollectionViewCell) {
         animateButtonPress(transformation: .identity,
                            shadowHeight: Shadows.small,
                            duration: isPressed ? 0.3 : 0.5,
                            ofCell: cell)
     }
 
-    private func handleLongPressEndedOutside(onCell cell: SpeakerCardCell) {
+    private func handleLongPressEndedOutside(onCell cell: UICollectionViewCell) {
         animateButtonPress(transformation: .identity,
                            shadowHeight: isPressed ? Shadows.small : Shadows.big,
                            duration: isPressed ? 0.3 : 0.5,
@@ -209,17 +207,22 @@ extension SpeakerCardsViewController {
 
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        return debate.allSpeeches().count
+        return debate.allSpeeches().count + 1
     }
 
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
-                                                      for: indexPath) as! SpeakerCardCell
-        cell.viewModel = SpeakerCardCellViewModel(speech: debate.allSpeeches()[indexPath.row])
-
-        return cell
+        if indexPath.row < debate.allSpeeches().count {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SpeakerCardCell.reuseID,
+                                                          for: indexPath) as! SpeakerCardCell
+            cell.viewModel = SpeakerCardCellViewModel(speech: debate.allSpeeches()[indexPath.row])
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RoundedCollectionViewCell.reuseID,
+                                                          for: indexPath) as! RoundedCollectionViewCell
+            return cell
+        }
     }
 }
 

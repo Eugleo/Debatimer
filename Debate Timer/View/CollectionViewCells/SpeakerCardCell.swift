@@ -10,6 +10,8 @@ import UIKit
 import Yalta
 
 class SpeakerCardCell: UICollectionViewCell {
+    static let reuseID = "SpeakerCollectionViewCell"
+
     var viewModel: SpeakerCardCellViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }
@@ -45,8 +47,8 @@ class SpeakerCardCell: UICollectionViewCell {
         layer.cornerRadius = 15
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = .zero
-        layer.shadowRadius = 10
-        layer.shadowOpacity = 0.2
+        layer.shadowRadius = 8
+        layer.shadowOpacity = 0.3
         layer.masksToBounds = false
         layer.backgroundColor = UIColor(named: "Affirmative")!.cgColor
         

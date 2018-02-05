@@ -8,13 +8,7 @@
 
 import UIKit
 
-protocol TeamTimeLabelDelegate {
-    func tapped(sender: TeamTimeLabel)
-}
-
-final class TeamTimeLabel: UIView {
-    var delegate: TeamTimeLabelDelegate?
-
+final class TeamTimeLabel: ShadowTappableLabel {
     var timeLeft: TimeInterval? {
         didSet {
             guard let timeLeft = timeLeft else { return }
@@ -23,57 +17,60 @@ final class TeamTimeLabel: UIView {
         }
     }
 
+    public func togglePaused(to state: Bool? = nil) {
+        if let state = state {
+            playPauseView.isPaused = state
+        } else {
+            playPauseView.isPaused = !playPauseView.isPaused!
+        }
+    }
+
     var team: Team? {
         didSet {
             guard let team = team else { return }
 
             if team == .affirmative {
-                teamLabel.text = "A"
                 teamLabel.backgroundColor = UIColor(named: "Affirmative")
             } else {
-                teamLabel.text = "N"
                 teamLabel.backgroundColor = UIColor(named: "Negative")
             }
         }
     }
 
-    private let timeLeftLabel = UILabel {
-        $0.textColor = .lightGray
-        $0.textAlignment = .center
-        $0.font = UIFont.boldSystemFont(ofSize: 26)
+    private let timeLeftLabel = UILabel { l in
+        l.textColor = .lightGray
+        l.textAlignment = .center
+        l.font = UIFont.boldSystemFont(ofSize: 26)
     }
 
     private let teamLabel = CircledLabel()
+    private let playPauseView = PlayPauseView()
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = .zero
-        layer.shadowRadius = 6
-        layer.shadowOpacity = 0.03
-        layer.cornerRadius = 15
+        backgroundColor = .white
 
         addSubview(teamLabel) { l in
-            l.leading.pinToSuperviewMargin()
+            l.leading.pinToSuperviewMargin(inset: 5, relation: .equal)
             l.top.pinToSuperviewMargin()
             l.bottom.pinToSuperviewMargin()
             l.height.match(l.width)
             l.height.set(30)
         }
 
+        teamLabel.addSubview(playPauseView) { v in
+            v.edges.pinToSuperviewMargins()
+        }
+
         addSubview(timeLeftLabel) { l in
             l.top.pinToSuperviewMargin()
             l.bottom.pinToSuperviewMargin()
             l.trailing.pinToSuperviewMargin()
-            l.leading.align(with: teamLabel.al.trailing.offsetting(by: 7))
+            l.leading.align(with: teamLabel.al.trailing)
         }
 
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapped)))
-    }
-
-    @objc private func tapped() {
-        delegate?.tapped(sender: self)
+        playPauseView.isPaused = true
     }
 
     private func formatTimeInterval(_ interval: TimeInterval) -> String {

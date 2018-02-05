@@ -21,63 +21,60 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="46p-te-LIV">
                                 <rect key="frame" x="0.0" y="30" width="320" height="518"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="scM-fu-IsJ">
-                                        <rect key="frame" x="20" y="0.0" width="280" height="90"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="scM-fu-IsJ">
+                                        <rect key="frame" x="20" y="0.0" width="280" height="93.5"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZK0-qZ-1FR" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="130" height="90"/>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZK0-qZ-1FR" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="93.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqn-iB-liq" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="150" y="0.0" width="130" height="90"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="90" id="2kP-aJ-iLn"/>
-                                        </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mWn-Ic-wOK">
-                                        <rect key="frame" x="20" y="105" width="280" height="90"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M0k-0l-yAh" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="130" height="90"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sHz-0j-Op2" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="150" y="0.0" width="130" height="90"/>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lqn-iB-liq" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="150" y="0.0" width="130" height="93.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="n7v-V8-ZlU">
-                                        <rect key="frame" x="20" y="210" width="280" height="90"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mWn-Ic-wOK">
+                                        <rect key="frame" x="20" y="108.5" width="280" height="93.5"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eWx-a0-Poy" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="130" height="90"/>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M0k-0l-yAh" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="93.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4NB-js-IHP" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="150" y="0.0" width="130" height="90"/>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sHz-0j-Op2" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="150" y="0.0" width="130" height="93.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="n7v-V8-ZlU">
+                                        <rect key="frame" x="20" y="217" width="280" height="93.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWx-a0-Poy" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="93.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4NB-js-IHP" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="150" y="0.0" width="130" height="93.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rue-q9-t3N">
-                                        <rect key="frame" x="20" y="315" width="280" height="77"/>
+                                        <rect key="frame" x="20" y="325.5" width="280" height="69"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AeD-Zh-RKQ" customClass="TeamTimeLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="132.5" height="77"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="132.5" height="69"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7rv-qw-Dpa" customClass="TeamTimeLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="147.5" y="0.0" width="132.5" height="77"/>
+                                                <rect key="frame" x="147.5" y="0.0" width="132.5" height="69"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWJ-l1-6iX" userLabel="Současný řečník">
-                                        <rect key="frame" x="20" y="407" width="280" height="2.5"/>
+                                        <rect key="frame" x="20" y="409.5" width="280" height="0.0"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FLA-SR-Szf">
                                                 <rect key="frame" x="0.0" y="14.5" width="39.5" height="1"/>
@@ -130,6 +127,7 @@
                                     <constraint firstItem="n7v-V8-ZlU" firstAttribute="leading" secondItem="scM-fu-IsJ" secondAttribute="leading" id="OX4-YC-k9f"/>
                                     <constraint firstItem="FWJ-l1-6iX" firstAttribute="leading" secondItem="46p-te-LIV" secondAttribute="leading" constant="20" id="Teb-re-uSm"/>
                                     <constraint firstItem="mWn-Ic-wOK" firstAttribute="leading" secondItem="scM-fu-IsJ" secondAttribute="leading" id="TxH-Jo-QEf"/>
+                                    <constraint firstItem="scM-fu-IsJ" firstAttribute="height" secondItem="TAA-5W-gWO" secondAttribute="height" id="fVk-rk-kpE"/>
                                     <constraint firstAttribute="trailing" secondItem="scM-fu-IsJ" secondAttribute="trailing" constant="20" id="hKr-te-4Mh"/>
                                     <constraint firstItem="mWn-Ic-wOK" firstAttribute="height" secondItem="n7v-V8-ZlU" secondAttribute="height" id="lbL-rw-K5p"/>
                                     <constraint firstItem="n7v-V8-ZlU" firstAttribute="trailing" secondItem="scM-fu-IsJ" secondAttribute="trailing" id="x47-LU-K4o"/>
@@ -176,8 +174,16 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="speakerCard" id="RqK-lj-2yi" customClass="SpeakerCardCell" customModule="Debate_Timer" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="StartOverCollectionViewCell" id="RqK-lj-2yi" customClass="RoundedCollectionViewCell" customModule="Debate_Timer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="-33.5" width="303" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="303" height="160"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="SpeakerCollectionViewCell" id="89E-lM-XAX" customClass="SpeakerCardCell" customModule="Debate_Timer" customModuleProvider="target">
+                                <rect key="frame" x="313" y="-33.5" width="303" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="303" height="160"/>

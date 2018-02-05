@@ -9,11 +9,7 @@
 import UIKit
 import Yalta
 
-protocol SpeechLabelDelegate {
-    func tapped(sender: SpeechLabel)
-}
-
-final class SpeechLabel: UIView {
+final class SpeechLabel: ShadowTappableLabel {
     enum State {
         case empty, hasSpeech, hasCrossQuestions, hasSpeechAndCrossQuestions
     }
@@ -41,6 +37,30 @@ final class SpeechLabel: UIView {
         }
     }
 
+    private var activated = false
+    
+    func activate() {
+        if !activated {
+            UIView.animate(withDuration: 1,
+                           delay: 0.2,
+                           usingSpringWithDamping: 1,
+                           initialSpringVelocity: 0,
+                           options: [.repeat, .autoreverse, .curveEaseInOut],
+                           animations: {
+                            self.speakerLabel.backgroundColor = UIColor(named: "NeutralGray")
+                            self.speakerLabel.backgroundColor = self.bcg!
+            },
+                           completion: nil)
+            activated = true
+        }
+    }
+
+    func deactivate() {
+        if activated {
+            activated = false
+        }
+    }
+
     func animateSpeechLabel() {
         speechTimeLabel.alpha = 0
         UIView.animate(withDuration: 0.8,
@@ -55,7 +75,7 @@ final class SpeechLabel: UIView {
                         self.layoutIfNeeded()
                         self.speechTimeLabel.alpha = 1
         },
-                       completion: nil)
+                       completion: {_ in self.speakerLabel.layer.removeAllAnimations()})
     }
 
     func animateCrossQuetionsLabel() {
@@ -74,10 +94,11 @@ final class SpeechLabel: UIView {
                         self.layoutIfNeeded()
                         self.crossQuestionsStackView.alpha = 1
                         },
-                       completion: nil)
+                       completion: {_ in self.speakerLabel.layer.removeAllAnimations()})
     }
 
-    public var delegate: SpeechLabelDelegate?
+    private var bcg: UIColor?
+
     public var viewModel: SpeechLabelViewModel? {
         didSet {
             guard let viewModel = viewModel else {
@@ -106,6 +127,7 @@ final class SpeechLabel: UIView {
                 viewModel.team == .affirmative ?
                     UIColor(named: "Affirmative") :
                     UIColor(named: "Negative")
+            bcg = speakerLabel.backgroundColor
         }
     }
 
@@ -135,8 +157,9 @@ final class SpeechLabel: UIView {
 
     private let superStackView = UIStackView {
         $0.alignment = .fill
-        $0.distribution = .fillEqually
+        $0.distribution = .equalSpacing
         $0.axis = .vertical
+        $0.spacing = 7
         $0.isUserInteractionEnabled = false
     }
 
@@ -152,19 +175,9 @@ final class SpeechLabel: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        self.backgroundColor = .clear
-
-        insertSubview(shadowView, at: 0)
-        Constraints.init(for: shadowView) { (v) in
-            v.edges.pinToSuperview()
-        }
-
-        addSubview(backgroundView) {
-            $0.edges.pinToSuperview()
-        }
-
+        let insets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         addSubview(superStackView) {
-            $0.edges.pinToSuperviewMargins()
+            $0.edges.pinToSuperviewMargins(insets: insets, relation: .equal)
         }
         superStackView.addArrangedSubview(speakerStackView)
 
@@ -180,106 +193,21 @@ final class SpeechLabel: UIView {
         Constraints(for: spacingView1, spacingView2) { (sv1, sv2) in
             sv1.width.match(sv2.width)
             sv1.height.match(sv2.height)
-            sv1.height.set(1)
+            sv1.height.set(90)
         }
 
         Constraints(for: self.speakerLabel) { l in
             l.height.set(30)
             l.width.set(30)
         }
+        speakerLabel.text = "A"
 
-        configureGestureRecognizers()
+        clipsToBounds = false
+        backgroundColor = .white
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-
         speakerLabel.layer.cornerRadius = speakerLabel.frame.height / 2
-        let shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: 15)
-        shadowView.layer.shadowPath = shadowPath.cgPath
-    }
-
-    private struct Transformations {
-        static let bottom = CGAffineTransform(scaleX: 0.97, y: 0.97)
-        private init() { }
-    }
-
-    private struct Shadows {
-        static let big: CGFloat = 3
-        static let small: CGFloat = 1
-        private init() { }
-    }
-
-    private let shadowView = UIView { sv in
-        sv.frame = .zero
-        sv.layer.masksToBounds = false
-        sv.layer.shadowRadius = 7
-        sv.layer.shadowColor = UIColor.black.cgColor
-        sv.layer.shadowOffset = .zero
-        sv.layer.shadowOpacity = 0.09
-    }
-
-    let backgroundView = UIView { v in
-        v.layer.cornerRadius = 15
-        v.backgroundColor = .white
-        v.clipsToBounds = true
-    }
-
-    // MARK: - Gesture Recognizer
-
-    private func configureGestureRecognizers() {
-        isUserInteractionEnabled = true
-
-        let longPressGestureRecognizer =
-            UILongPressGestureRecognizer(target: self,
-                                         action: #selector(handleLongPressGesture(gestureRecognizer:)))
-        longPressGestureRecognizer.minimumPressDuration = 0.000001
-        addGestureRecognizer(longPressGestureRecognizer)
-    }
-
-    @objc internal func handleLongPressGesture(gestureRecognizer: UILongPressGestureRecognizer) {
-        switch gestureRecognizer.state {
-        case .began:
-            handleLongPressBegan()
-        case .ended, .cancelled:
-            if bounds.contains(gestureRecognizer.location(in: self)) {
-                handleLongPressEndedInside()
-            }
-        case .changed:
-            if !bounds.contains(gestureRecognizer.location(in: self)) {
-                handleLongPressEndedOutside()
-            } else {
-                handleLongPressBegan()
-            }
-        default:
-            break
-        }
-    }
-
-    func animateButtonPress(transformation: CGAffineTransform,
-                            duration: TimeInterval) {
-
-        UIView.animate(withDuration: duration,
-                       delay: 0.0,
-                       usingSpringWithDamping: 0.9,
-                       initialSpringVelocity: 0,
-                       options: [.beginFromCurrentState, .allowUserInteraction],
-                       animations: {
-                        self.transform = transformation
-        },
-                       completion: nil)
-    }
-
-    private func handleLongPressBegan() {
-        animateButtonPress(transformation: Transformations.bottom, duration: 0.25)
-    }
-
-    private func handleLongPressEndedInside() {
-        animateButtonPress(transformation: .identity, duration: 0.25)
-        delegate?.tapped(sender: self)
-    }
-
-    private func handleLongPressEndedOutside() {
-        animateButtonPress(transformation: .identity, duration: 0.25)
     }
 }

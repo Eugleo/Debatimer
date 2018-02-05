@@ -18,11 +18,11 @@ class ShadowTappableLabel: UIView {
 
     private let shadowView = UIView { v in
         v.frame = .zero
-        v.layer.masksToBounds = false
-        v.layer.shadowRadius = 7
+        v.layer.shadowRadius = 8
         v.layer.shadowColor = UIColor.black.cgColor
         v.layer.shadowOffset = .zero
-        v.layer.shadowOpacity = 0.09
+        v.layer.shadowOpacity = 0.05
+        v.clipsToBounds = false
     }
 
     private let backgroundView = UIView { v in
@@ -32,7 +32,10 @@ class ShadowTappableLabel: UIView {
     }
 
     override var backgroundColor: UIColor? {
-        willSet {
+        get {
+            return backgroundView.backgroundColor
+        }
+        set {
             backgroundView.backgroundColor = newValue
         }
     }
@@ -46,6 +49,8 @@ class ShadowTappableLabel: UIView {
 
     private struct Transformations {
         static let bottom = CGAffineTransform(scaleX: 0.97, y: 0.97)
+        static let middle = CGAffineTransform(scaleX: 1, y: 1)
+        static let top = CGAffineTransform(scaleX: 0.93, y: 0.93)
         private init() { }
     }
 
@@ -53,12 +58,13 @@ class ShadowTappableLabel: UIView {
         super.init(coder: aDecoder)
 
         backgroundColor = .clear
+
         insertSubview(shadowView, at: 0)
         Constraints.init(for: shadowView) { v in
             v.edges.pinToSuperview()
         }
-
-        addSubview(backgroundView) { v in
+        insertSubview(backgroundView, at: 1)
+        Constraints.init(for: backgroundView) { v in
             v.edges.pinToSuperview()
         }
 
@@ -83,6 +89,7 @@ class ShadowTappableLabel: UIView {
             if bounds.contains(gestureRecognizer.location(in: self)) {
                 handleLongPressEnded()
                 delegate?.handleTapGesture(sender: self)
+                didTap(sender: self)
             }
         case .changed:
             if !bounds.contains(gestureRecognizer.location(in: self)) {
@@ -93,6 +100,10 @@ class ShadowTappableLabel: UIView {
         default:
             break
         }
+    }
+
+    func didTap(sender: ShadowTappableLabel) {
+
     }
 
     private func animateButtonPress(transformation: CGAffineTransform,

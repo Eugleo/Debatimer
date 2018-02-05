@@ -49,12 +49,31 @@ final class MainViewController: UIViewController {
         }
     }
 
+    private var currentLabel: SpeechLabel?
     @objc private func refreshUserInterface() {
         if let index = debate.currentSpeakerIndex() {
             delegate?.refreshCell(atIndex: index)
+            teamAffirmativeLabel.togglePaused(to: true)
+            teamNegativeLabel.togglePaused(to: true)
+
+            let currentSpeaker = debate.currentSpeech()!.speaker1
+            currentLabel = speakerLabels.first { $0.viewModel!.speaker == currentSpeaker }
+            currentLabel!.activate()
         } else {
             teamAffirmativeLabel.timeLeft = debate.teamTimeLeft().affirmative
             teamNegativeLabel.timeLeft = debate.teamTimeLeft().negative
+            if let teamOnWait = debate.timeRunsForTeam() {
+                if teamOnWait == .affirmative {
+                    teamAffirmativeLabel.togglePaused(to: false)
+                    teamNegativeLabel.togglePaused(to: true)
+                } else {
+                    teamNegativeLabel.togglePaused(to: false)
+                    teamAffirmativeLabel.togglePaused(to: true)
+                }
+            }
+            if let currentLabel = currentLabel {
+                currentLabel.deactivate()
+            }
         }
     }
 }
@@ -65,35 +84,50 @@ extension MainViewController: SpeakerCardDelegate {
     }
 
     func cardTapped(atIndex index: Int) {
-        if debate.currentSpeaker() != nil {
-            for (speaker, label) in zip(debate.allSpeakers(), speakerLabels) {
-                label.viewModel = SpeechLabelViewModel(speaker: speaker)
+        if index <= debate.allSpeeches().count {
+            if let currentSpeakerIndex = debate.currentSpeakerIndex() {
+                if currentSpeakerIndex == index {
+                    let currentSpeaker = debate.currentSpeech()!.speaker1
+                    currentLabel = speakerLabels.first { $0.viewModel!.speaker == currentSpeaker }
+                    currentLabel?.viewModel = SpeechLabelViewModel(speaker: currentSpeaker)
+                    debate.stopSpeech()
+
+                    if currentSpeakerIndex < debate.allSpeeches().count - 1 {
+                        delegate?.showSpeaker(atIndex: index + 1)
+                    }
+                } else {
+                    delegate?.showSpeaker(atIndex: currentSpeakerIndex)
+                }
+            } else {
+                debate.startSpeech(atIndex: index)
             }
-            debate.stopSpeech()
-            delegate?.showSpeaker(atIndex: index + 1)
         } else {
-            debate.startSpeech(atIndex: index)
+            reset()
         }
     }
-}
 
-extension MainViewController: SpeechLabelDelegate {
-    func tapped(sender: SpeechLabel) {
-        let index = debate.allSpeeches().index { $0.speaker1 == sender.viewModel!.speaker && $0.speaker2 == nil}
-        delegate?.showSpeaker(atIndex: index!)
+    private func reset() {
+        debate = Debate()
     }
 }
 
-extension MainViewController: TeamTimeLabelDelegate {
-    func tapped(sender: TeamTimeLabel) {
-        guard let team = sender.team else { return }
+extension MainViewController: ShadowTappableLabelDelegate {
+    func handleTapGesture(sender: ShadowTappableLabel) {
+        if let sender = sender as? SpeechLabel {
+            let index = debate.allSpeeches().index { $0.speaker1 == sender.viewModel!.speaker && $0.speaker2 == nil}
+            delegate?.showSpeaker(atIndex: index!)
+        } else if let sender = sender as? TeamTimeLabel {
+            guard let team = sender.team else { return }
 
-        if let currentTeam = debate.timeRunsForTeam() {
-            if team == currentTeam {
-                debate.pauseTimer(for: team)
+            if let currentTeam = debate.timeRunsForTeam() {
+                if team == currentTeam {
+                    debate.pauseTimer(for: team)
+                    sender.togglePaused()
+                }
+            } else {
+                debate.unpauseTimer(forTeam: team)
+                sender.togglePaused()
             }
-        } else {
-            debate.unpauseTimer(forTeam: team)
         }
     }
 }
