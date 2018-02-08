@@ -49,7 +49,7 @@ final class TeamTimeLabel: ShadowTappableLabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        backgroundColor = .white
+        backgroundColor = UIColor(named: "CreamWhite")
 
         addSubview(teamLabel) { l in
             l.leading.pinToSuperviewMargin(inset: 5, relation: .equal)

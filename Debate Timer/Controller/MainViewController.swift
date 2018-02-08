@@ -17,6 +17,7 @@ final class MainViewController: UIViewController {
     private var debate = Debate()
     private var uiTimer: Timer!
     private var delegate: SpeakerCardCollectionViewControllerDelegate?
+    private var collectionViewController: SpeakerCardsViewController!
 
     @IBOutlet var speakerLabels: [SpeechLabel]!
     @IBOutlet weak var teamAffirmativeLabel: TeamTimeLabel!
@@ -44,6 +45,7 @@ final class MainViewController: UIViewController {
         if segue.identifier == "embedCardsCVSegue" {
             let childVC = segue.destination as! SpeakerCardsViewController
             delegate = childVC
+            collectionViewController = childVC
             childVC.debate = debate
             childVC.delegate = self
         }
@@ -84,7 +86,7 @@ extension MainViewController: SpeakerCardDelegate {
     }
 
     func cardTapped(atIndex index: Int) {
-        if index <= debate.allSpeeches().count {
+        if index < debate.allSpeeches().count {
             if let currentSpeakerIndex = debate.currentSpeakerIndex() {
                 if currentSpeakerIndex == index {
                     let currentSpeaker = debate.currentSpeech()!.speaker1
@@ -107,7 +109,25 @@ extension MainViewController: SpeakerCardDelegate {
     }
 
     private func reset() {
+        let alert = UIAlertController(title: "Smazání debaty",
+                                      message: "Přejete si opravdu současný průběh debaty smazat a začít debatu novou?",
+                                      preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Ano",
+                                      style: .destructive,
+                                      handler: { _ in self.resetConfirmed()}))
+        alert.addAction(UIAlertAction(title: "Zrušit",
+                                      style: .cancel,
+                                      handler: nil))
+        self.show(alert, sender: nil)
+    }
+
+    @objc private func resetConfirmed() {
         debate = Debate()
+        for (speaker, label) in zip(debate.allSpeakers(), speakerLabels) {
+            label.viewModel = SpeechLabelViewModel(speaker: speaker)
+            label.delegate = self
+        }
+        collectionViewController.reset(withNewDebate: debate)
     }
 }
 

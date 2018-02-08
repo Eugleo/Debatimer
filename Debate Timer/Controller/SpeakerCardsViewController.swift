@@ -53,6 +53,67 @@ final class SpeakerCardsViewController: UICollectionViewController {
 
     var lastP: CGPoint!
 
+    override func viewDidLayoutSubviews() {
+        guard let collectionView = collectionView else { return }
+        collectionViewHeight = collectionView.bounds.size.height
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        guard let collectionView = collectionView else { return }
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        
+        let insets = collectionView.contentInset.left + collectionView.contentInset.right
+        let availableWidth = collectionView.frame.width - insets - itemSpacing
+        let availableHeight =
+            collectionView.frame.height -
+                collectionView.contentInset.bottom -
+                collectionView.contentInset.top -
+                layout.sectionInset.bottom -
+                layout.sectionInset.top
+        
+        layout.itemSize = CGSize(width: availableWidth, height: availableHeight)
+    }
+
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView,
+                                            withVelocity velocity: CGPoint,
+                                            targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+
+        guard let collectionView = collectionView else { return }
+        let insetFrame = UIEdgeInsetsInsetRect(scrollView.frame, scrollView.contentInset)
+        var index = collectionView.contentOffset.x / insetFrame.size.width
+
+        switch velocity.x {
+        case let x where x < 0:
+            index = floor(index)
+        case 0:
+            index = round(index)
+        default:
+            index = ceil(index)
+        }
+        let newOffset = insetFrame.size.width * index
+        let tmp = collectionView.contentSize.width - insetFrame.size.width
+        targetContentOffset.pointee.x = (newOffset > tmp ? tmp : newOffset) - scrollView.contentInset.left
+    }
+
+    func refreshCell(atIndex index: Int) {
+        guard let collectionView = collectionView else { return }
+
+        let speech = debate.allSpeeches()[index]
+        if let cell = collectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? SpeakerCardCell {
+            cell.viewModel = SpeakerCardCellViewModel(speech: speech)
+        }
+    }
+
+    func reset(withNewDebate newDebate: Debate) {
+        debate = newDebate
+        collectionView?.reloadData()
+        self.showSpeaker(atIndex: 0)
+    }
+}
+
+extension SpeakerCardsViewController {
     @objc internal func handleLongPressGesture(gestureRecognizer: UILongPressGestureRecognizer) {
         guard let collectionView = collectionView else { return }
 
@@ -137,59 +198,6 @@ final class SpeakerCardsViewController: UICollectionViewController {
                            shadowHeight: isPressed ? Shadows.small : Shadows.big,
                            duration: isPressed ? 0.3 : 0.5,
                            ofCell: cell)
-    }
-
-    override func viewDidLayoutSubviews() {
-        guard let collectionView = collectionView else { return }
-        collectionViewHeight = collectionView.bounds.size.height
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        guard let collectionView = collectionView else { return }
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        
-        let insets = collectionView.contentInset.left + collectionView.contentInset.right
-        let availableWidth = collectionView.frame.width - insets - itemSpacing
-        let availableHeight =
-            collectionView.frame.height -
-                collectionView.contentInset.bottom -
-                collectionView.contentInset.top -
-                layout.sectionInset.bottom -
-                layout.sectionInset.top
-        
-        layout.itemSize = CGSize(width: availableWidth, height: availableHeight)
-    }
-
-    override func scrollViewWillEndDragging(_ scrollView: UIScrollView,
-                                            withVelocity velocity: CGPoint,
-                                            targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-
-        guard let collectionView = collectionView else { return }
-        let insetFrame = UIEdgeInsetsInsetRect(scrollView.frame, scrollView.contentInset)
-        var index = collectionView.contentOffset.x / insetFrame.size.width
-
-        switch velocity.x {
-        case let x where x < 0:
-            index = floor(index)
-        case 0:
-            index = round(index)
-        default:
-            index = ceil(index)
-        }
-        let newOffset = insetFrame.size.width * index
-        let tmp = collectionView.contentSize.width - insetFrame.size.width
-        targetContentOffset.pointee.x = (newOffset > tmp ? tmp : newOffset) - scrollView.contentInset.left
-    }
-
-    func refreshCell(atIndex index: Int) {
-        guard let collectionView = collectionView else { return }
-
-        let speech = debate.allSpeeches()[index]
-        if let cell = collectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? SpeakerCardCell {
-            cell.viewModel = SpeakerCardCellViewModel(speech: speech)
-        }
     }
 }
 

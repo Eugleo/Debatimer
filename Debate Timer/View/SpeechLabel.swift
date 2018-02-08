@@ -34,6 +34,10 @@ final class SpeechLabel: ShadowTappableLabel {
                     animateCrossQuetionsLabel()
                 }
             }
+
+            if state == .empty && oldValue != .empty {
+                animateResetting()
+            }
         }
     }
 
@@ -61,7 +65,34 @@ final class SpeechLabel: ShadowTappableLabel {
         }
     }
 
-    func animateSpeechLabel() {
+    private func animateResetting() {
+
+        UIView.animate(withDuration: 0.8,
+                       delay: 0,
+                       usingSpringWithDamping: 0.8,
+                       initialSpringVelocity: 0,
+                       options: .curveEaseIn,
+                       animations: {
+                        self.speakerStackView.removeArrangedSubview(self.speechTimeLabel)
+                        self.speechTimeLabel.removeFromSuperview()
+                        self.superStackView.removeArrangedSubview(self.crossQuestionsStackView)
+                        self.crossQuestionsStackView.removeFromSuperview()
+
+                        self.speakerStackView.insertArrangedSubview(self.spacingView1, at: 0)
+                        self.speakerStackView.insertArrangedSubview(self.spacingView2, at: 2)
+
+                        Constraints(for: self.spacingView1, self.spacingView2) { (sv1, sv2) in
+                            sv1.width.match(sv2.width)
+                            sv1.height.match(sv2.height)
+                            sv1.height.set(2)
+                        }
+
+                        self.layoutIfNeeded()
+        },
+                       completion: nil)
+    }
+
+    private func animateSpeechLabel() {
         speechTimeLabel.alpha = 0
         UIView.animate(withDuration: 0.8,
                        delay: 0,
@@ -78,7 +109,7 @@ final class SpeechLabel: ShadowTappableLabel {
                        completion: {_ in self.speakerLabel.layer.removeAllAnimations()})
     }
 
-    func animateCrossQuetionsLabel() {
+    private func animateCrossQuetionsLabel() {
         crossQuestionsStackView.alpha = 0
         UIView.animate(withDuration: 0.8,
                        delay: 0,
@@ -159,7 +190,7 @@ final class SpeechLabel: ShadowTappableLabel {
         $0.alignment = .fill
         $0.distribution = .equalSpacing
         $0.axis = .vertical
-        $0.spacing = 7
+        //$0.spacing = 7
         $0.isUserInteractionEnabled = false
     }
 
@@ -193,7 +224,7 @@ final class SpeechLabel: ShadowTappableLabel {
         Constraints(for: spacingView1, spacingView2) { (sv1, sv2) in
             sv1.width.match(sv2.width)
             sv1.height.match(sv2.height)
-            sv1.height.set(90)
+            sv1.height.set(2)
         }
 
         Constraints(for: self.speakerLabel) { l in
@@ -203,7 +234,7 @@ final class SpeechLabel: ShadowTappableLabel {
         speakerLabel.text = "A"
 
         clipsToBounds = false
-        backgroundColor = .white
+        backgroundColor = .clear
     }
 
     override func layoutSubviews() {
