@@ -48,9 +48,9 @@ class ShadowTappableLabel: UIView {
     }
 
     private struct Transformations {
-        static let bottom = CGAffineTransform(scaleX: 0.97, y: 0.97)
+        static let bottom = CGAffineTransform(scaleX: 1, y: 1)
         static let middle = CGAffineTransform(scaleX: 1, y: 1)
-        static let top = CGAffineTransform(scaleX: 0.93, y: 0.93)
+        static let top = CGAffineTransform(scaleX: 1, y: 1)
         private init() { }
     }
 

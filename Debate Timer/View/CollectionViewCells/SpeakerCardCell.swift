@@ -47,8 +47,8 @@ class SpeakerCardCell: UICollectionViewCell {
         layer.cornerRadius = 15
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = .zero
-        layer.shadowRadius = 8
-        layer.shadowOpacity = 0.3
+        layer.shadowRadius = 10
+        layer.shadowOpacity = 0.25
         layer.masksToBounds = false
         layer.backgroundColor = UIColor(named: "Affirmative")!.cgColor
         
@@ -64,11 +64,14 @@ class SpeakerCardCell: UICollectionViewCell {
         }
         addSubview(speaker2Label) {
             $0.leading.pinToSuperviewMargin()
-            $0.top.align(with: speaker1Label.al.bottom.offsetting(by: 5))
+            $0.top.align(with: speaker1Label.al.bottom.offsetting(by: 10))
             $0.height.set(30)
             $0.width.set(30)
         }
         speaker2Label.isHidden = true
+
+        speaker1Label.backgroundColor = UIColor(white: 1, alpha: 0.3)
+        speaker2Label.backgroundColor = UIColor(white: 1, alpha: 0.3)
     }
 
     override func layoutSubviews() {

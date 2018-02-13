@@ -27,7 +27,7 @@ class RoundedCollectionViewCell: UICollectionViewCell {
         layer.shadowRadius = 8
         layer.shadowOpacity = 0.3
         layer.masksToBounds = false
-        layer.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        layer.backgroundColor = UIColor(named: "NeutralGray")?.cgColor
 
         addSubview(timeLabel) {
             $0.center.alignWithSuperview()

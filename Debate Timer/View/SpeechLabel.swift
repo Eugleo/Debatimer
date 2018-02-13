@@ -66,7 +66,6 @@ final class SpeechLabel: ShadowTappableLabel {
     }
 
     private func animateResetting() {
-
         UIView.animate(withDuration: 0.8,
                        delay: 0,
                        usingSpringWithDamping: 0.8,
@@ -94,6 +93,7 @@ final class SpeechLabel: ShadowTappableLabel {
 
     private func animateSpeechLabel() {
         speechTimeLabel.alpha = 0
+        self.speakerLabel.layer.removeAllAnimations()
         UIView.animate(withDuration: 0.8,
                        delay: 0,
                        usingSpringWithDamping: 0.8,
@@ -106,7 +106,7 @@ final class SpeechLabel: ShadowTappableLabel {
                         self.layoutIfNeeded()
                         self.speechTimeLabel.alpha = 1
         },
-                       completion: {_ in self.speakerLabel.layer.removeAllAnimations()})
+                       completion: nil)
     }
 
     private func animateCrossQuetionsLabel() {
@@ -158,6 +158,8 @@ final class SpeechLabel: ShadowTappableLabel {
                 viewModel.team == .affirmative ?
                     UIColor(named: "Affirmative") :
                     UIColor(named: "Negative")
+            
+
             bcg = speakerLabel.backgroundColor
         }
     }
@@ -203,6 +205,26 @@ final class SpeechLabel: ShadowTappableLabel {
     private let spacingViewA = UIView()
     private let spacingViewB = UIView()
 
+    // Mockup views, so that the cell has the correct height even if empty
+
+    private let mockupSuperStackView = UIStackView {
+        $0.alignment = .fill
+        $0.distribution = .fillEqually
+        $0.axis = .vertical
+        $0.spacing = 7
+        $0.isUserInteractionEnabled = false
+    }
+
+    private let mockupLabel1 = UILabel { l in
+        l.text = " "
+        l.font = UIFont.boldSystemFont(ofSize: 26)
+    }
+
+    private let mockupLabel2 = UILabel { l in
+        l.text = " "
+        l.font = UIFont.boldSystemFont(ofSize: 26)
+    }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
@@ -235,6 +257,13 @@ final class SpeechLabel: ShadowTappableLabel {
 
         clipsToBounds = false
         backgroundColor = .clear
+
+        // Add the mockup views to the view
+        addSubview(mockupSuperStackView) {
+            $0.edges.pinToSuperviewMargins(insets: insets, relation: .equal)
+        }
+        mockupSuperStackView.addArrangedSubview(mockupLabel1)
+        mockupSuperStackView.addArrangedSubview(mockupLabel2)
     }
 
     override func layoutSubviews() {

@@ -19,7 +19,6 @@ class CircledLabel: UIView {
         $0.textColor = .white
         $0.font = UIFont.boldSystemFont(ofSize: 15)
         $0.textAlignment = .center
-        $0.backgroundColor = UIColor(white: 1.0, alpha: 0.4)
         $0.layer.masksToBounds = true
     }
 

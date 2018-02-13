@@ -22,6 +22,7 @@
 		4CC0FC45201A140800C4F833 /* TeamTimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC0FC44201A140800C4F833 /* TeamTimeLabel.swift */; };
 		4CCD229E20138017007B66CC /* StyleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD229D20138017007B66CC /* StyleExtensions.swift */; };
 		4CCE9F48200E3C500090E2AB /* Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE9F47200E3C500090E2AB /* Speech.swift */; };
+		4CE6597A2031B3480085D5BF /* PauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE659792031B3480085D5BF /* PauseButton.swift */; };
 		4CEF9E70200D2C4500217777 /* SpeechLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF9E6F200D2C4500217777 /* SpeechLabel.swift */; };
 		4CF85541200D11B0002CB00B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF85540200D11B0002CB00B /* AppDelegate.swift */; };
 		4CF85543200D11B0002CB00B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF85542200D11B0002CB00B /* MainViewController.swift */; };
@@ -71,6 +72,7 @@
 		4CC0FC44201A140800C4F833 /* TeamTimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTimeLabel.swift; sourceTree = "<group>"; };
 		4CCD229D20138017007B66CC /* StyleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleExtensions.swift; sourceTree = "<group>"; };
 		4CCE9F47200E3C500090E2AB /* Speech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speech.swift; sourceTree = "<group>"; };
+		4CE659792031B3480085D5BF /* PauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseButton.swift; sourceTree = "<group>"; };
 		4CEF9E6F200D2C4500217777 /* SpeechLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechLabel.swift; sourceTree = "<group>"; };
 		4CF8553D200D11B0002CB00B /* Debate Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Debate Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF85540200D11B0002CB00B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				4C0E11B92014F4250004C773 /* SpeechLabelViewModel.swift */,
 				4C1F20622013FFFA00D37921 /* CircledLabel.swift */,
 				4C883F4E2020EBFB0083F801 /* PlayPauseView.swift */,
+				4CE659792031B3480085D5BF /* PauseButton.swift */,
 				4C8719C92028BC1900081D68 /* CollectionViewCells */,
 			);
 			path = View;
@@ -545,6 +548,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CE6597A2031B3480085D5BF /* PauseButton.swift in Sources */,
 				4C4E3A94200FB998006A2368 /* SpeakerCardCell.swift in Sources */,
 				4C0E11BA2014F4250004C773 /* SpeechLabelViewModel.swift in Sources */,
 				4C89FD81200D366B00EFF992 /* Debate.swift in Sources */,
