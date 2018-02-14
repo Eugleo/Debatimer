@@ -174,7 +174,7 @@ final class SpeechLabel: ShadowTappableLabel {
     }
 
     private let speechTimeLabel = UILabel {
-        $0.textColor = .black
+        $0.textColor = .darkGray
         $0.textAlignment = .center
         $0.font = UIFont.boldSystemFont(ofSize: 26)
     }
@@ -241,7 +241,7 @@ final class SpeechLabel: ShadowTappableLabel {
         crossQuestionsStackView.insertArrangedSubview(crossQuestionsLabel, at: 0)
         crossQuestionsStackView.insertArrangedSubview(crossQuestionsTimeLabel, at: 1)
         crossQuestionsLabel.backgroundColor = UIColor(named: "NeutralGray")
-        crossQuestionsLabel.text = "?"
+        crossQuestionsLabel.text = "⨯"
 
         Constraints(for: spacingView1, spacingView2) { (sv1, sv2) in
             sv1.width.match(sv2.width)

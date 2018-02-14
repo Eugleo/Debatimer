@@ -121,6 +121,14 @@ extension SpeakerCardsViewController {
 
         let safeRange: CGFloat = 5
 
+        switch gestureRecognizer.state {
+        case .began:
+            lastP = p
+        default:
+            break
+        }
+
+
         if let indexPath = collectionView.indexPathForItem(at: p) {
             // get the cell at indexPath (the one you long pressed)
             let selectedCell = collectionView.cellForItem(at: indexPath)!
@@ -129,7 +137,6 @@ extension SpeakerCardsViewController {
             switch gestureRecognizer.state {
             case .began:
                 handleLongPressBegan(onCell: selectedCell)
-                lastP = p
             case .ended:
                 if abs(p.x - lastP.x) <= safeRange
                     && p.y > collectionView.contentInset.top + 5
@@ -141,8 +148,8 @@ extension SpeakerCardsViewController {
                 }
             case .changed:
                 if abs(p.x - lastP.x) > safeRange
-                    || p.y <= collectionView.contentInset.top + 5
-                    || p.y > collectionView.frame.height - collectionView.contentInset.bottom - 5 {
+                    || p.y <= collectionView.contentInset.top + safeRange
+                    || p.y > collectionView.frame.height - collectionView.contentInset.bottom - safeRange {
                     handleLongPressEndedOutside(onCell: selectedCell)
                 }
             default:

@@ -1,27 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="lx4-59-291">
+            <objects>
+                <viewController storyboardIdentifier="OnboardingOne" id="XlA-fy-GjQ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IQp-2w-93z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F0S-Z4-dLj">
+                                <rect key="frame" x="35" y="343.5" width="305" height="86.5"/>
+                                <string key="text">Vítejte v aplikaci Debatimer, která vám pomůže s měřením času u debat formátu Karl Popper. Následuje krátké seznámení s aplikací.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vítejte" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJB-Pe-Qfs">
+                                <rect key="frame" x="35" y="299.5" width="305" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
+                                <color key="textColor" name="Affirmative"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="CreamWhite"/>
+                        <constraints>
+                            <constraint firstItem="F0S-Z4-dLj" firstAttribute="top" secondItem="vJB-Pe-Qfs" secondAttribute="bottom" constant="15" id="7YP-2u-vda"/>
+                            <constraint firstItem="vJB-Pe-Qfs" firstAttribute="leading" secondItem="PRN-2q-w8G" secondAttribute="leading" constant="35" id="8We-sP-RCW"/>
+                            <constraint firstItem="PRN-2q-w8G" firstAttribute="trailing" secondItem="vJB-Pe-Qfs" secondAttribute="trailing" constant="35" id="B0Y-Nj-mJs"/>
+                            <constraint firstItem="F0S-Z4-dLj" firstAttribute="top" secondItem="PRN-2q-w8G" secondAttribute="centerY" id="LZU-ad-jl3"/>
+                            <constraint firstItem="F0S-Z4-dLj" firstAttribute="leading" secondItem="PRN-2q-w8G" secondAttribute="leading" constant="35" id="cDY-m6-Ams"/>
+                            <constraint firstItem="PRN-2q-w8G" firstAttribute="trailing" secondItem="F0S-Z4-dLj" secondAttribute="trailing" constant="35" id="lIk-n3-pCk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PRN-2q-w8G"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F1d-d7-ciO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-776.25" y="-1160.9154929577464"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Debate_Timer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKa-r6-cTF">
-                                <rect key="frame" x="170" y="220" width="130" height="128"/>
-                                <color key="backgroundColor" red="1" green="0.63637043476076571" blue="0.6497951630198624" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="197.5" y="220" width="157.5" height="128"/>
+                                <color key="backgroundColor" red="1" green="0.63637043476076571" blue="0.6497951630198624" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
@@ -32,8 +73,8 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EEO-qB-jjK">
-                                <rect key="frame" x="20" y="220" width="130" height="128"/>
-                                <color key="backgroundColor" red="0.58657526969909668" green="0.84501093626022339" blue="0.99531704187393188" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="220" width="157.5" height="128"/>
+                                <color key="backgroundColor" red="0.58657526969909668" green="0.84501093626022339" blue="0.99531704187393188" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
@@ -44,109 +85,70 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="46p-te-LIV">
-                                <rect key="frame" x="0.0" y="30" width="320" height="518"/>
+                                <rect key="frame" x="0.0" y="30" width="375" height="617"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="77Z-db-ugi">
-                                        <rect key="frame" x="20" y="0.0" width="280" height="261.5"/>
+                                        <rect key="frame" x="20" y="0.0" width="335" height="133"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="scM-fu-IsJ" userLabel="First Speakers">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="77"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="34.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lqn-iB-liq" userLabel="N1 Label" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="77"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="157.5" height="34.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZK0-qZ-1FR" userLabel="A1 Label" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                        <rect key="frame" x="150" y="0.0" width="130" height="77"/>
+                                                        <rect key="frame" x="177.5" y="0.0" width="157.5" height="34.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mWn-Ic-wOK" userLabel="Second Speakers">
-                                                <rect key="frame" x="0.0" y="92" width="280" height="77.5"/>
+                                                <rect key="frame" x="0.0" y="49.5" width="335" height="34"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sHz-0j-Op2" userLabel="N2 Label" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="77.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="157.5" height="34"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M0k-0l-yAh" userLabel="A2 Label" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                        <rect key="frame" x="150" y="0.0" width="130" height="77.5"/>
+                                                        <rect key="frame" x="177.5" y="0.0" width="157.5" height="34"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="n7v-V8-ZlU" userLabel="Third Speakers">
-                                                <rect key="frame" x="0.0" y="184.5" width="280" height="77"/>
+                                                <rect key="frame" x="0.0" y="98.5" width="335" height="34.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWx-a0-Poy" userLabel="A3 Label" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="77"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="157.5" height="34.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4NB-js-IHP" userLabel="N3 Label" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                        <rect key="frame" x="150" y="0.0" width="130" height="77"/>
+                                                        <rect key="frame" x="177.5" y="0.0" width="157.5" height="34.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="50" verticalCompressionResistancePriority="50" ambiguous="YES" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rue-q9-t3N" userLabel="Team Time">
-                                        <rect key="frame" x="20" y="276.5" width="280" height="40"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="50" verticalCompressionResistancePriority="50" ambiguous="YES" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rue-q9-t3N" userLabel="Team Time">
+                                        <rect key="frame" x="20" y="148" width="335" height="40"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AeD-Zh-RKQ" customClass="TeamTimeLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="132.5" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7rv-qw-Dpa" customClass="TeamTimeLabel" customModule="Debate_Timer" customModuleProvider="target">
-                                                <rect key="frame" x="147.5" y="0.0" width="132.5" height="40"/>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i8U-aV-cXU" customClass="TeamTimeLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                <rect key="frame" x="175" y="0.0" width="160" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="7rv-qw-Dpa" firstAttribute="width" secondItem="AeD-Zh-RKQ" secondAttribute="width" id="Jy6-Bc-Jcq"/>
                                             <constraint firstAttribute="height" constant="40" id="xda-dv-MeQ"/>
                                         </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWJ-l1-6iX" userLabel="Současný řečník">
-                                        <rect key="frame" x="20" y="331.5" width="280" height="25"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FLA-SR-Szf">
-                                                <rect key="frame" x="0.0" y="12.5" width="39.5" height="1"/>
-                                                <color key="backgroundColor" red="0.48229777812957764" green="0.48238468170166016" blue="0.4822922945022583" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="aDL-bH-qfl"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qqo-jT-YaV">
-                                                <rect key="frame" x="240" y="12.5" width="40" height="1"/>
-                                                <color key="backgroundColor" red="0.48229777810000002" green="0.48238468169999998" blue="0.4822922945" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="iDr-mx-sL6"/>
-                                                </constraints>
-                                            </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="SOUČASNÝ ŘEČNÍK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ao-mu-m5p" userLabel="Současný řečník">
-                                                <rect key="frame" x="59.5" y="0.0" width="160.5" height="25"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <color key="textColor" red="0.48305942361968923" green="0.48305942361968923" blue="0.48305942361968923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="FLA-SR-Szf" firstAttribute="leading" secondItem="FWJ-l1-6iX" secondAttribute="leading" id="2j1-0I-hvO"/>
-                                            <constraint firstItem="Qqo-jT-YaV" firstAttribute="leading" secondItem="9ao-mu-m5p" secondAttribute="trailing" constant="20" id="59i-gx-h4q"/>
-                                            <constraint firstItem="Qqo-jT-YaV" firstAttribute="centerY" secondItem="FWJ-l1-6iX" secondAttribute="centerY" id="DCZ-S0-18J"/>
-                                            <constraint firstItem="9ao-mu-m5p" firstAttribute="centerY" secondItem="FWJ-l1-6iX" secondAttribute="centerY" id="HcI-iz-d0N"/>
-                                            <constraint firstAttribute="height" secondItem="9ao-mu-m5p" secondAttribute="height" id="LSR-bl-LkV"/>
-                                            <constraint firstItem="9ao-mu-m5p" firstAttribute="centerX" secondItem="FWJ-l1-6iX" secondAttribute="centerX" id="Mbj-uZ-GxQ"/>
-                                            <constraint firstAttribute="trailing" secondItem="Qqo-jT-YaV" secondAttribute="trailing" id="Opy-jC-Hdo"/>
-                                            <constraint firstItem="FLA-SR-Szf" firstAttribute="centerY" secondItem="FWJ-l1-6iX" secondAttribute="centerY" id="hqH-Tk-jSN"/>
-                                            <constraint firstAttribute="height" constant="25" id="nPz-Yz-K5t"/>
-                                            <constraint firstItem="9ao-mu-m5p" firstAttribute="leading" secondItem="FLA-SR-Szf" secondAttribute="trailing" constant="20" id="u7l-q9-7zr"/>
-                                        </constraints>
-                                    </view>
                                     <containerView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TAA-5W-gWO" userLabel="Speaker Cards View">
-                                        <rect key="frame" x="0.0" y="371.5" width="320" height="146.5"/>
+                                        <rect key="frame" x="0.0" y="203" width="375" height="414"/>
                                         <connections>
                                             <segue destination="1dK-Il-Inl" kind="embed" identifier="embedCardsCVSegue" id="Yc6-qy-SWs"/>
                                         </connections>
@@ -155,17 +157,13 @@
                                 <constraints>
                                     <constraint firstItem="TAA-5W-gWO" firstAttribute="width" secondItem="46p-te-LIV" secondAttribute="width" id="0c0-hj-HfD"/>
                                     <constraint firstItem="77Z-db-ugi" firstAttribute="trailing" secondItem="rue-q9-t3N" secondAttribute="trailing" id="0nv-uU-REq"/>
-                                    <constraint firstAttribute="trailing" secondItem="FWJ-l1-6iX" secondAttribute="trailing" constant="20" id="4Wl-v0-TqN"/>
-                                    <constraint firstItem="FWJ-l1-6iX" firstAttribute="leading" secondItem="rue-q9-t3N" secondAttribute="leading" id="KuZ-ju-153"/>
                                     <constraint firstItem="rue-q9-t3N" firstAttribute="leading" secondItem="46p-te-LIV" secondAttribute="leading" constant="20" id="Nrv-W4-mfj"/>
-                                    <constraint firstItem="FWJ-l1-6iX" firstAttribute="leading" secondItem="46p-te-LIV" secondAttribute="leading" constant="20" id="Teb-re-uSm"/>
-                                    <constraint firstItem="FWJ-l1-6iX" firstAttribute="trailing" secondItem="rue-q9-t3N" secondAttribute="trailing" id="cpX-Rw-xPc"/>
                                     <constraint firstItem="77Z-db-ugi" firstAttribute="leading" secondItem="rue-q9-t3N" secondAttribute="leading" id="f4P-zl-TxH"/>
                                     <constraint firstAttribute="trailing" secondItem="rue-q9-t3N" secondAttribute="trailing" constant="20" id="ys5-Gi-iIF"/>
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rKT-0g-2qa" customClass="PauseButton" customModule="Debate_Timer" customModuleProvider="target">
-                                <rect key="frame" x="139.5" y="508" width="40" height="40"/>
+                                <rect key="frame" x="167.5" y="508" width="40" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rKT-0g-2qa" secondAttribute="height" multiplier="1:1" id="1An-Sg-REH"/>
@@ -195,7 +193,7 @@
                     <connections>
                         <outlet property="pauseView" destination="rKT-0g-2qa" id="9ke-G8-2Mh"/>
                         <outlet property="teamAffirmativeLabel" destination="AeD-Zh-RKQ" id="vRh-zj-Cq6"/>
-                        <outlet property="teamNegativeLabel" destination="7rv-qw-Dpa" id="tlH-te-Hez"/>
+                        <outlet property="teamNegativeLabel" destination="i8U-aV-cXU" id="QmS-JB-qBb"/>
                         <outletCollection property="speakerLabels" destination="lqn-iB-liq" collectionClass="NSMutableArray" id="7OP-0q-S5E"/>
                         <outletCollection property="speakerLabels" destination="ZK0-qZ-1FR" collectionClass="NSMutableArray" id="1ut-PF-J53"/>
                         <outletCollection property="speakerLabels" destination="sHz-0j-Op2" collectionClass="NSMutableArray" id="89y-gl-9kz"/>
@@ -206,14 +204,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28.125" y="-288.38028169014086"/>
+            <point key="canvasLocation" x="-776" y="-438"/>
         </scene>
         <!--Speaker Cards View Controller-->
         <scene sceneID="SYD-RU-S1i">
             <objects>
                 <collectionViewController id="1dK-Il-Inl" customClass="SpeakerCardsViewController" customModule="Debate_Timer" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="CWY-HP-rMn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="146.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4xG-Mf-mxn">
@@ -224,7 +222,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="StartOverCollectionViewCell" id="RqK-lj-2yi" customClass="RoundedCollectionViewCell" customModule="Debate_Timer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="-7" width="303" height="160"/>
+                                <rect key="frame" x="0.0" y="0.0" width="303" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="303" height="160"/>
@@ -232,7 +230,7 @@
                                 </view>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="SpeakerCollectionViewCell" id="89E-lM-XAX" customClass="SpeakerCardCell" customModule="Debate_Timer" customModuleProvider="target">
-                                <rect key="frame" x="313" y="-7" width="303" height="160"/>
+                                <rect key="frame" x="0.0" y="254" width="303" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="303" height="160"/>
@@ -248,7 +246,200 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A6R-zb-GB9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-26.399999999999999" y="221.28935532233885"/>
+            <point key="canvasLocation" x="-777" y="249"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="TzL-0J-qEa">
+            <objects>
+                <viewController storyboardIdentifier="OnboardingTwo" id="Qds-JV-wwK" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="agp-fr-CHc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Měření času" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0E-Ki-sF2">
+                                <rect key="frame" x="114" y="412" width="147" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
+                                <color key="textColor" name="Affirmative"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zmáčknutím tlačítka ve spodní části obrazovky spustíte stopování následující řeči. Jeho opětovným zmáčknutím měření ukončíte." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Xg-gx-CGb">
+                                <rect key="frame" x="40" y="456" width="295" height="86.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboard1" translatesAutoresizingMaskIntoConstraints="NO" id="d4S-1j-vOZ">
+                                <rect key="frame" x="62.5" y="70" width="250" height="317"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="SCR-mz-rij"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="CreamWhite"/>
+                        <constraints>
+                            <constraint firstItem="3Xg-gx-CGb" firstAttribute="centerX" secondItem="1yb-mI-8VM" secondAttribute="centerX" id="1XS-9K-AQP"/>
+                            <constraint firstItem="1yb-mI-8VM" firstAttribute="leading" secondItem="3Xg-gx-CGb" secondAttribute="leading" constant="-40" id="9Il-nB-8R4"/>
+                            <constraint firstItem="D0E-Ki-sF2" firstAttribute="centerX" secondItem="1yb-mI-8VM" secondAttribute="centerX" id="HfG-Y6-gU1"/>
+                            <constraint firstItem="d4S-1j-vOZ" firstAttribute="top" secondItem="1yb-mI-8VM" secondAttribute="top" constant="50" id="JWR-C9-ug1"/>
+                            <constraint firstItem="3Xg-gx-CGb" firstAttribute="top" secondItem="D0E-Ki-sF2" secondAttribute="bottom" constant="15" id="St7-CU-yad"/>
+                            <constraint firstItem="d4S-1j-vOZ" firstAttribute="centerX" secondItem="1yb-mI-8VM" secondAttribute="centerX" id="VAZ-d8-CCr"/>
+                            <constraint firstItem="D0E-Ki-sF2" firstAttribute="top" secondItem="1yb-mI-8VM" secondAttribute="centerY" multiplier="1.2" id="We0-aI-zTz"/>
+                            <constraint firstItem="D0E-Ki-sF2" firstAttribute="top" secondItem="d4S-1j-vOZ" secondAttribute="bottom" constant="25" id="lgD-Rd-eDM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1yb-mI-8VM"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tyG-tV-fe7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7.5" y="-1161.9718309859154"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="10v-uk-76I">
+            <objects>
+                <viewController storyboardIdentifier="OnboardingFour" id="DGX-AK-uff" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cHa-bo-lXN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Časy týmů" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bha-1u-UyW">
+                                <rect key="frame" x="123" y="413" width="129" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
+                                <color key="textColor" name="Affirmative"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Yk-JH-S4Y">
+                                <rect key="frame" x="40" y="457" width="295" height="108.5"/>
+                                <string key="text">Uprostřed obrazovky je možno vidět, kolik času k poradě zbývá oběma týmům. Tento čas se měří automaticky, je ale možné jej manuálně pozastavit.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboard3" translatesAutoresizingMaskIntoConstraints="NO" id="hLA-6n-dgc">
+                                <rect key="frame" x="62.5" y="70" width="250" height="318"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="2dr-Mr-3fc"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="CreamWhite"/>
+                        <constraints>
+                            <constraint firstItem="bha-1u-UyW" firstAttribute="centerX" secondItem="628-Jz-run" secondAttribute="centerX" id="EGF-TR-DAA"/>
+                            <constraint firstItem="2Yk-JH-S4Y" firstAttribute="top" secondItem="bha-1u-UyW" secondAttribute="bottom" constant="15" id="FdX-F8-urf"/>
+                            <constraint firstItem="2Yk-JH-S4Y" firstAttribute="centerX" secondItem="628-Jz-run" secondAttribute="centerX" id="Pxq-2x-sNF"/>
+                            <constraint firstItem="bha-1u-UyW" firstAttribute="top" secondItem="628-Jz-run" secondAttribute="centerY" multiplier="1.2" constant="1" id="UPs-xZ-2qf"/>
+                            <constraint firstItem="628-Jz-run" firstAttribute="leading" secondItem="2Yk-JH-S4Y" secondAttribute="leading" constant="-40" id="UuN-aN-Mhe"/>
+                            <constraint firstItem="bha-1u-UyW" firstAttribute="top" secondItem="hLA-6n-dgc" secondAttribute="bottom" constant="25" id="big-9w-ET7"/>
+                            <constraint firstItem="hLA-6n-dgc" firstAttribute="centerX" secondItem="628-Jz-run" secondAttribute="centerX" id="c6U-yY-qgV"/>
+                            <constraint firstItem="hLA-6n-dgc" firstAttribute="top" secondItem="628-Jz-run" secondAttribute="top" constant="50" id="maX-dn-Wcs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="628-Jz-run"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="01V-ID-JiW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1487" y="-1159"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="cce-WU-jkC">
+            <objects>
+                <viewController storyboardIdentifier="OnboardingFive" id="P67-ZB-u8a" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RIe-VN-PLy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nové měření" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLU-Oc-GyE">
+                                <rect key="frame" x="112.5" y="413" width="150" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
+                                <color key="textColor" name="Affirmative"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Po skončení debaty je možné smazat naměřené časy a začít stopovat znovu po stiknutí šedého tlačítka &quot;Začít znovu&quot;." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcY-KR-1j6">
+                                <rect key="frame" x="40" y="457" width="295" height="86.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboard4" translatesAutoresizingMaskIntoConstraints="NO" id="qjg-mi-mFA">
+                                <rect key="frame" x="62.5" y="70" width="250" height="318"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="t2m-Pm-Af0"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="CreamWhite"/>
+                        <constraints>
+                            <constraint firstItem="ujv-xQ-jNS" firstAttribute="leading" secondItem="qcY-KR-1j6" secondAttribute="leading" constant="-40" id="56f-VT-th1"/>
+                            <constraint firstItem="qcY-KR-1j6" firstAttribute="top" secondItem="uLU-Oc-GyE" secondAttribute="bottom" constant="15" id="5fK-kQ-d0d"/>
+                            <constraint firstItem="qjg-mi-mFA" firstAttribute="centerX" secondItem="ujv-xQ-jNS" secondAttribute="centerX" id="QN7-Ib-5WP"/>
+                            <constraint firstItem="qcY-KR-1j6" firstAttribute="centerX" secondItem="ujv-xQ-jNS" secondAttribute="centerX" id="Yj4-hl-t4x"/>
+                            <constraint firstItem="uLU-Oc-GyE" firstAttribute="centerX" secondItem="ujv-xQ-jNS" secondAttribute="centerX" id="Ymn-RI-t1B"/>
+                            <constraint firstItem="uLU-Oc-GyE" firstAttribute="top" secondItem="qjg-mi-mFA" secondAttribute="bottom" constant="25" id="dZq-hu-O5I"/>
+                            <constraint firstItem="uLU-Oc-GyE" firstAttribute="top" secondItem="ujv-xQ-jNS" secondAttribute="centerY" multiplier="1.2" constant="1" id="mBn-WZ-e8v"/>
+                            <constraint firstItem="qjg-mi-mFA" firstAttribute="top" secondItem="ujv-xQ-jNS" secondAttribute="top" constant="50" id="oJw-sc-gyQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ujv-xQ-jNS"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="heV-Cb-R7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2182.5" y="-1159.8591549295775"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5zd-aL-Std">
+            <objects>
+                <viewController storyboardIdentifier="OnboardingThree" id="Sav-Up-bHM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UWt-cn-LTc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naměřené časy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lr5-TZ-kqJ">
+                                <rect key="frame" x="94" y="413" width="187" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
+                                <color key="textColor" name="Affirmative"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V horní části obrazovky se postupně ukazují časy řečníků, kteří už mluvili." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztE-eT-doR">
+                                <rect key="frame" x="40" y="457" width="295" height="42.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboard2" translatesAutoresizingMaskIntoConstraints="NO" id="yb7-Ec-N6r">
+                                <rect key="frame" x="62.5" y="70" width="250" height="318"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="ILg-GK-Mm7"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="CreamWhite"/>
+                        <constraints>
+                            <constraint firstItem="JOM-Ao-CD6" firstAttribute="leading" secondItem="ztE-eT-doR" secondAttribute="leading" constant="-40" id="0RE-RC-HX8"/>
+                            <constraint firstItem="yb7-Ec-N6r" firstAttribute="top" secondItem="JOM-Ao-CD6" secondAttribute="top" constant="50" id="16v-uG-rVi"/>
+                            <constraint firstItem="ztE-eT-doR" firstAttribute="top" secondItem="lr5-TZ-kqJ" secondAttribute="bottom" constant="15" id="1Nv-SL-7gb"/>
+                            <constraint firstItem="lr5-TZ-kqJ" firstAttribute="top" secondItem="yb7-Ec-N6r" secondAttribute="bottom" constant="25" id="8Qj-JC-PAp"/>
+                            <constraint firstItem="yb7-Ec-N6r" firstAttribute="centerX" secondItem="JOM-Ao-CD6" secondAttribute="centerX" id="H27-GV-uvG"/>
+                            <constraint firstItem="lr5-TZ-kqJ" firstAttribute="top" secondItem="JOM-Ao-CD6" secondAttribute="centerY" multiplier="1.2" constant="1" id="JyT-5P-eAf"/>
+                            <constraint firstItem="lr5-TZ-kqJ" firstAttribute="centerX" secondItem="JOM-Ao-CD6" secondAttribute="centerX" id="U0R-7k-wPI"/>
+                            <constraint firstItem="ztE-eT-doR" firstAttribute="centerX" secondItem="JOM-Ao-CD6" secondAttribute="centerX" id="n1c-3i-lGh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JOM-Ao-CD6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dYT-cB-kEX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="746" y="-1162"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Onboard1" width="186" height="374"/>
+        <image name="Onboard2" width="186" height="374"/>
+        <image name="Onboard3" width="1362" height="2739"/>
+        <image name="Onboard4" width="1362" height="2739"/>
+        <namedColor name="Affirmative">
+            <color red="0.31499999761581421" green="0.73600000143051147" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="CreamWhite">
+            <color red="0.96399998659999997" green="0.98000001910000001" blue="0.99299997090000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

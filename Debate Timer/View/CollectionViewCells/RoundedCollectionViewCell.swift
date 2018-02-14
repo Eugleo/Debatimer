@@ -21,11 +21,11 @@ class RoundedCollectionViewCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        layer.cornerRadius = 15
+        layer.cornerRadius = 20
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = .zero
-        layer.shadowRadius = 8
-        layer.shadowOpacity = 0.3
+        layer.shadowRadius = 6
+        layer.shadowOpacity = 0.15
         layer.masksToBounds = false
         layer.backgroundColor = UIColor(named: "NeutralGray")?.cgColor
 
