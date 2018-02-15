@@ -159,7 +159,7 @@ extension SpeakerCardsViewController {
     }
 
     private struct Transformations {
-        static let bottom = CGAffineTransform(scaleX: 0.97, y: 0.97)
+        static let bottom = CGAffineTransform(scaleX: 0.985, y: 0.985)
         static let middle = CGAffineTransform(scaleX: 0.985, y: 0.985)
         private init() { }
     }

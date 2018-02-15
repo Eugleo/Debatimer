@@ -11,6 +11,7 @@
 		4C0E11BA2014F4250004C773 /* SpeechLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0E11B92014F4250004C773 /* SpeechLabelViewModel.swift */; };
 		4C0E11BC201509260004C773 /* SpeakerCardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0E11BB201509260004C773 /* SpeakerCardCellViewModel.swift */; };
 		4C1F20632013FFFA00D37921 /* CircledLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F20622013FFFA00D37921 /* CircledLabel.swift */; };
+		4C4C99E220359E1B0021A0EB /* EndOnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C99E120359E1B0021A0EB /* EndOnboardViewController.swift */; };
 		4C4E3A92200FB73E006A2368 /* SpeakerCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E3A91200FB73E006A2368 /* SpeakerCardsViewController.swift */; };
 		4C4E3A94200FB998006A2368 /* SpeakerCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E3A93200FB998006A2368 /* SpeakerCardCell.swift */; };
 		4C8719C82028BC0400081D68 /* RoundedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8719C72028BC0400081D68 /* RoundedCollectionViewCell.swift */; };
@@ -61,6 +62,7 @@
 		4C0E11B92014F4250004C773 /* SpeechLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechLabelViewModel.swift; sourceTree = "<group>"; };
 		4C0E11BB201509260004C773 /* SpeakerCardCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCardCellViewModel.swift; sourceTree = "<group>"; };
 		4C1F20622013FFFA00D37921 /* CircledLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircledLabel.swift; sourceTree = "<group>"; };
+		4C4C99E120359E1B0021A0EB /* EndOnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndOnboardViewController.swift; sourceTree = "<group>"; };
 		4C4E3A91200FB73E006A2368 /* SpeakerCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCardsViewController.swift; sourceTree = "<group>"; };
 		4C4E3A93200FB998006A2368 /* SpeakerCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCardCell.swift; sourceTree = "<group>"; };
 		4C8719C72028BC0400081D68 /* RoundedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			children = (
 				4CF85542200D11B0002CB00B /* MainViewController.swift */,
 				4C4E3A91200FB73E006A2368 /* SpeakerCardsViewController.swift */,
+				4C4C99E120359E1B0021A0EB /* EndOnboardViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				4C89FD81200D366B00EFF992 /* Debate.swift in Sources */,
 				4C1F20632013FFFA00D37921 /* CircledLabel.swift in Sources */,
 				4CEF9E70200D2C4500217777 /* SpeechLabel.swift in Sources */,
+				4C4C99E220359E1B0021A0EB /* EndOnboardViewController.swift in Sources */,
 				4CCD229E20138017007B66CC /* StyleExtensions.swift in Sources */,
 				4C89FD83200D368200EFF992 /* Speaker.swift in Sources */,
 				4CCE9F48200E3C500090E2AB /* Speech.swift in Sources */,
@@ -753,7 +757,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.eugenwybitul.Debate-Timer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -769,7 +773,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.eugenwybitul.Debate-Timer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

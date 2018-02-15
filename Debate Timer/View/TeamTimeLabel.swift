@@ -31,11 +31,11 @@ final class TeamTimeLabel: ShadowTappableLabel {
             if team != oldValue && team != nil {
                 gradientLayer.locations = [0.000001, 0.999999]
                 if team == .affirmative {
-                    gradientLayer.colors = [UIColor(named: "CreamWhite")!.cgColor, UIColor(named: "LightBlue")!.cgColor]
+                    gradientLayer.colors = [UIColor(named: "LightBlue")!.cgColor, UIColor(named: "LightBlue")!.cgColor]
                     gradientLayer.transform = CATransform3DMakeRotation(CGFloat.pi / 2, 0, 0, 1)
 
                 } else {
-                    gradientLayer.colors = [UIColor(named: "CreamWhite")!.cgColor, UIColor(named: "LightRed")!.cgColor]
+                    gradientLayer.colors = [ UIColor(named: "LightRed")!.cgColor, UIColor(named: "LightRed")!.cgColor]
                     gradientLayer.transform = CATransform3DMakeRotation(CGFloat.pi / -2, 0, 0, 1)
                 }
             }

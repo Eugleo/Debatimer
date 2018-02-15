@@ -15,8 +15,8 @@ protocol SpeakerCardCollectionViewControllerDelegate {
 }
 
 final class MainViewController: UIViewController {
+    var uiTimer: Timer?
     private var debate = Debate()
-    private var uiTimer: Timer!
     private var delegate: SpeakerCardCollectionViewControllerDelegate?
     private var collectionViewController: SpeakerCardsViewController!
 
@@ -29,12 +29,6 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "CreamWhite")!
 
-        uiTimer = Timer(timeInterval: 0.1, repeats: true, block: { _ in
-            self.refreshUserInterface()
-        })
-
-        RunLoop.main.add(uiTimer, forMode: .commonModes)
-
         for (speaker, label) in zip(debate.allSpeakers(), speakerLabels) {
             label.viewModel = SpeechLabelViewModel(speaker: speaker)
             label.delegate = self
@@ -44,6 +38,22 @@ final class MainViewController: UIViewController {
         teamNegativeLabel.team = .negative
         pauseView.team = .affirmative
         pauseView.togglePaused(to: true)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: .UIApplicationDidBecomeActive, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterBackground), name: .UIApplicationDidEnterBackground, object: nil)
+    }
+
+    @objc func appWillEnterForeground(notification: Notification) {
+        uiTimer?.invalidate()
+        uiTimer = Timer(timeInterval: 0.1, repeats: true, block: { _ in
+            self.refreshUserInterface()
+        })
+        RunLoop.main.add(uiTimer!, forMode: .commonModes)
+    }
+
+    @objc func appWillEnterBackground(notification: Notification) {
+        uiTimer?.invalidate()
     }
 
     private var onboard: SwiftyOnboardVC!
@@ -57,15 +67,18 @@ final class MainViewController: UIViewController {
         let viewThree = storyboard!.instantiateViewController(withIdentifier: "OnboardingThree")
         let viewFour = storyboard!.instantiateViewController(withIdentifier: "OnboardingFour")
         let viewFive = storyboard!.instantiateViewController(withIdentifier: "OnboardingFive")
-        let viewControllers = [viewOne, viewTwo, viewThree, viewFour, viewFive]
+        let viewSix = storyboard!.instantiateViewController(withIdentifier: "OnboardingSix")
+        let viewControllers = [viewOne, viewTwo, viewThree, viewFour, viewFive, viewSix]
 
         onboard = SwiftyOnboardVC(viewControllers: viewControllers)
         onboard.backgroundColor = UIColor(named: "Affirmative")!
+        onboard.hideStatusBar = true
 
         onboard.showLeftButton = false
         onboard.rightButtonText = "Přeskočit prohlídku"
-        onboard.rightButtonBackgroundColor = .clear
-        onboard.rightButtonTextColor = .darkText
+        onboard.rightButtonBackgroundColor = UIColor(named: "NeutralGray")!
+        onboard.rightButtonCornerRadius = 14
+        onboard.rightButtonTextColor = .white
         onboard.currentPageControlTintColor = UIColor(named: "Affirmative")!
 
         onboard.delegate = self
@@ -89,34 +102,26 @@ final class MainViewController: UIViewController {
         }
     }
 
-    private var currentLabel: SpeechLabel?
-
     @objc private func refreshUserInterface() {
+        if let index = debate.currentSpeakerIndex() {
+            let currentSpeaker = debate.currentSpeech()!.speaker1
 
+                delegate?.refreshCell(atIndex: index)
+                let currentLabel = speakerLabels.first { $0.viewModel!.speaker == currentSpeaker }
+                currentLabel!.activate()
+                pauseView.togglePaused(to: true)
 
+        } else {
+                teamAffirmativeLabel.timeLeft = debate.teamTimeLeft().affirmative
+                teamNegativeLabel.timeLeft = debate.teamTimeLeft().negative
 
-            if let index = self.debate.currentSpeakerIndex() {
-                let currentSpeaker = self.debate.currentSpeech()!.speaker1
+                if let currentTeam = debate.timeRunsForTeam() {
+                    pauseView.team = currentTeam
+                    pauseView.togglePaused(to: false)
+                }
 
-                    self.delegate?.refreshCell(atIndex: index)
-                    self.currentLabel = self.speakerLabels.first { $0.viewModel!.speaker == currentSpeaker }
-                    self.currentLabel!.activate()
-                    self.pauseView.togglePaused(to: true)
-
-            } else {
-
-                    self.teamAffirmativeLabel.timeLeft = self.debate.teamTimeLeft().affirmative
-                    self.teamNegativeLabel.timeLeft = self.debate.teamTimeLeft().negative
-
-                    if let currentTeam = self.debate.timeRunsForTeam() {
-                        self.pauseView.team = currentTeam
-                        self.pauseView.togglePaused(to: false)
-                    }
-
-                    if let currentLabel = self.currentLabel {
-                        currentLabel.deactivate()
-                    }
-            }
+                speakerLabels.forEach { $0.deactivate() }
+        }
     }
 }
 
@@ -130,7 +135,7 @@ extension MainViewController: SpeakerCardDelegate {
             if let currentSpeakerIndex = debate.currentSpeakerIndex() {
                 if currentSpeakerIndex == index {
                     let currentSpeaker = debate.currentSpeech()!.speaker1
-                    currentLabel = speakerLabels.first { $0.viewModel!.speaker == currentSpeaker }
+                    let currentLabel = speakerLabels.first { $0.viewModel!.speaker == currentSpeaker }
                     currentLabel?.viewModel = SpeechLabelViewModel(speaker: currentSpeaker)
                     debate.stopSpeech()
 
@@ -196,6 +201,5 @@ extension MainViewController: PauseButtonDelegate {
 extension MainViewController: SwiftyOnboardVCDelegate {
     func rightButtonPressed() {
         onboard.skip()
-        dismiss(animated: true, completion: nil)
     }
 }
