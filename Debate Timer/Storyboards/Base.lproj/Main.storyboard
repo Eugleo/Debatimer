@@ -5,54 +5,12 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="lx4-59-291">
-            <objects>
-                <viewController storyboardIdentifier="OnboardingOne" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="XlA-fy-GjQ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="IQp-2w-93z">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F0S-Z4-dLj">
-                                <rect key="frame" x="35" y="343.5" width="305" height="86.5"/>
-                                <string key="text">Vítejte v aplikaci Debatimer, která vám pomůže s měřením času u debat formátu Karl Popper. Následuje krátké seznámení s aplikací.</string>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vítejte" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJB-Pe-Qfs">
-                                <rect key="frame" x="35" y="299.5" width="305" height="29"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
-                                <color key="textColor" name="Affirmative"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" name="CreamWhite"/>
-                        <constraints>
-                            <constraint firstItem="F0S-Z4-dLj" firstAttribute="top" secondItem="vJB-Pe-Qfs" secondAttribute="bottom" constant="15" id="7YP-2u-vda"/>
-                            <constraint firstItem="vJB-Pe-Qfs" firstAttribute="leading" secondItem="PRN-2q-w8G" secondAttribute="leading" constant="35" id="8We-sP-RCW"/>
-                            <constraint firstItem="PRN-2q-w8G" firstAttribute="trailing" secondItem="vJB-Pe-Qfs" secondAttribute="trailing" constant="35" id="B0Y-Nj-mJs"/>
-                            <constraint firstItem="F0S-Z4-dLj" firstAttribute="top" secondItem="PRN-2q-w8G" secondAttribute="centerY" id="LZU-ad-jl3"/>
-                            <constraint firstItem="F0S-Z4-dLj" firstAttribute="leading" secondItem="PRN-2q-w8G" secondAttribute="leading" constant="35" id="cDY-m6-Ams"/>
-                            <constraint firstItem="PRN-2q-w8G" firstAttribute="trailing" secondItem="F0S-Z4-dLj" secondAttribute="trailing" constant="35" id="lIk-n3-pCk"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="PRN-2q-w8G"/>
-                    </view>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="F1d-d7-ciO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-776.25" y="-1160.9154929577464"/>
-        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -227,6 +185,103 @@
             </objects>
             <point key="canvasLocation" x="-776" y="-438"/>
         </scene>
+        <!--Onboarding View Controller-->
+        <scene sceneID="Tt4-SQ-cMs">
+            <objects>
+                <viewController storyboardIdentifier="Onboarding" id="QXp-1a-YqJ" customClass="OnboardingViewController" customModule="Debate_Timer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jcc-75-dqO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="68F-HA-pHK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" name="Affirmative"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="XRl-bd-5Yh">
+                                    <size key="itemSize" width="40" height="40"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IntroCell" id="2xJ-Fk-mnd" customClass="IntroCollectionViewCell" customModule="Debate_Timer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="14.5" width="146" height="638"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="146" height="638"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                        <color key="backgroundColor" name="CreamWhite"/>
+                                        <size key="customSize" width="146" height="638"/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="7Sh-9u-nWk" customClass="ImageCollectionViewCell" customModule="Debate_Timer" customModuleProvider="target">
+                                        <rect key="frame" x="146" y="33.5" width="366" height="600"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="366" height="600"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                        <color key="backgroundColor" name="CreamWhite"/>
+                                        <size key="customSize" width="366" height="600"/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EndingCell" id="sMq-gL-5aC" customClass="EndingCollectionViewCell" customModule="Debate_Timer" customModuleProvider="target">
+                                        <rect key="frame" x="512" y="33.5" width="366" height="600"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="366" height="600"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                        <color key="backgroundColor" name="CreamWhite"/>
+                                        <size key="customSize" width="366" height="600"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQP-qs-UVU">
+                                <rect key="frame" x="256" y="30" width="99" height="28"/>
+                                <color key="backgroundColor" name="NeutralGray"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="5" maxX="15" maxY="5"/>
+                                <state key="normal" title="Přeskočit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="skipButtonTapped:" destination="QXp-1a-YqJ" eventType="touchUpInside" id="9hf-iS-G5d"/>
+                                </connections>
+                            </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="1W0-HG-IoD">
+                                <rect key="frame" x="168" y="610" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" name="NeutralGray"/>
+                                <color key="currentPageIndicatorTintColor" name="Affirmative"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1W0-HG-IoD" firstAttribute="centerX" secondItem="68F-HA-pHK" secondAttribute="centerX" id="3r2-PF-hJR"/>
+                            <constraint firstItem="1W0-HG-IoD" firstAttribute="bottom" secondItem="jNt-mb-IrP" secondAttribute="bottom" constant="-20" id="3sj-uT-fLc"/>
+                            <constraint firstAttribute="trailing" secondItem="68F-HA-pHK" secondAttribute="trailing" id="9kV-eh-vC3"/>
+                            <constraint firstItem="wQP-qs-UVU" firstAttribute="top" secondItem="jNt-mb-IrP" secondAttribute="top" constant="10" id="IPq-yH-eUo"/>
+                            <constraint firstAttribute="top" secondItem="68F-HA-pHK" secondAttribute="top" id="LgF-Ec-XZd"/>
+                            <constraint firstAttribute="bottom" secondItem="68F-HA-pHK" secondAttribute="bottom" id="PJJ-AB-uBu"/>
+                            <constraint firstItem="68F-HA-pHK" firstAttribute="leading" secondItem="jNt-mb-IrP" secondAttribute="leading" id="PQF-Cm-1Ns"/>
+                            <constraint firstItem="wQP-qs-UVU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Jcc-75-dqO" secondAttribute="leading" constant="20" symbolic="YES" id="UA0-I9-EKV"/>
+                            <constraint firstAttribute="trailing" secondItem="wQP-qs-UVU" secondAttribute="trailing" constant="20" id="bGn-SF-63c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jNt-mb-IrP"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="68F-HA-pHK" id="nN9-8V-60V"/>
+                        <outlet property="pageControl" destination="1W0-HG-IoD" id="Suk-fn-W7s"/>
+                        <outlet property="skipButton" destination="wQP-qs-UVU" id="Yoy-8x-GJy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N2H-L8-Hzl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5.5999999999999996" y="-439.43028485757122"/>
+        </scene>
         <!--Speaker Cards View Controller-->
         <scene sceneID="SYD-RU-S1i">
             <objects>
@@ -269,251 +324,8 @@
             </objects>
             <point key="canvasLocation" x="-777" y="249"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="TzL-0J-qEa">
-            <objects>
-                <viewController storyboardIdentifier="OnboardingTwo" autoresizesArchivedViewToFullSize="NO" id="Qds-JV-wwK" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="agp-fr-CHc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Měření času" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0E-Ki-sF2">
-                                <rect key="frame" x="114" y="412" width="147" height="29"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
-                                <color key="textColor" name="Affirmative"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zmáčknutím tlačítka ve spodní části obrazovky spustíte stopování následující řeči. Jeho opětovným zmáčknutím měření ukončíte." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Xg-gx-CGb">
-                                <rect key="frame" x="40" y="456" width="295" height="86.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="O1" translatesAutoresizingMaskIntoConstraints="NO" id="d4S-1j-vOZ">
-                                <rect key="frame" x="62.5" y="90" width="250" height="297"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="SCR-mz-rij"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" name="CreamWhite"/>
-                        <constraints>
-                            <constraint firstItem="3Xg-gx-CGb" firstAttribute="centerX" secondItem="1yb-mI-8VM" secondAttribute="centerX" id="1XS-9K-AQP"/>
-                            <constraint firstItem="1yb-mI-8VM" firstAttribute="leading" secondItem="3Xg-gx-CGb" secondAttribute="leading" constant="-40" id="9Il-nB-8R4"/>
-                            <constraint firstItem="D0E-Ki-sF2" firstAttribute="centerX" secondItem="1yb-mI-8VM" secondAttribute="centerX" id="HfG-Y6-gU1"/>
-                            <constraint firstItem="d4S-1j-vOZ" firstAttribute="top" secondItem="1yb-mI-8VM" secondAttribute="top" constant="70" id="JWR-C9-ug1"/>
-                            <constraint firstItem="3Xg-gx-CGb" firstAttribute="top" secondItem="D0E-Ki-sF2" secondAttribute="bottom" constant="15" id="St7-CU-yad"/>
-                            <constraint firstItem="d4S-1j-vOZ" firstAttribute="centerX" secondItem="1yb-mI-8VM" secondAttribute="centerX" id="VAZ-d8-CCr"/>
-                            <constraint firstItem="D0E-Ki-sF2" firstAttribute="top" secondItem="1yb-mI-8VM" secondAttribute="centerY" multiplier="1.2" id="We0-aI-zTz"/>
-                            <constraint firstItem="D0E-Ki-sF2" firstAttribute="top" secondItem="d4S-1j-vOZ" secondAttribute="bottom" constant="25" id="lgD-Rd-eDM"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="1yb-mI-8VM"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tyG-tV-fe7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7.5" y="-1161.9718309859154"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="10v-uk-76I">
-            <objects>
-                <viewController storyboardIdentifier="OnboardingFour" autoresizesArchivedViewToFullSize="NO" id="DGX-AK-uff" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cHa-bo-lXN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Časy týmů" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bha-1u-UyW">
-                                <rect key="frame" x="123" y="413" width="129" height="29"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
-                                <color key="textColor" name="Affirmative"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Yk-JH-S4Y">
-                                <rect key="frame" x="40" y="457" width="295" height="108.5"/>
-                                <string key="text">Uprostřed obrazovky je možno vidět, kolik času k poradě zbývá oběma týmům. Tento čas se měří automaticky, je ale možné jej manuálně pozastavit.</string>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="O3" translatesAutoresizingMaskIntoConstraints="NO" id="hLA-6n-dgc">
-                                <rect key="frame" x="62.5" y="90" width="250" height="298"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="2dr-Mr-3fc"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" name="CreamWhite"/>
-                        <constraints>
-                            <constraint firstItem="bha-1u-UyW" firstAttribute="centerX" secondItem="628-Jz-run" secondAttribute="centerX" id="EGF-TR-DAA"/>
-                            <constraint firstItem="2Yk-JH-S4Y" firstAttribute="top" secondItem="bha-1u-UyW" secondAttribute="bottom" constant="15" id="FdX-F8-urf"/>
-                            <constraint firstItem="2Yk-JH-S4Y" firstAttribute="centerX" secondItem="628-Jz-run" secondAttribute="centerX" id="Pxq-2x-sNF"/>
-                            <constraint firstItem="bha-1u-UyW" firstAttribute="top" secondItem="628-Jz-run" secondAttribute="centerY" multiplier="1.2" constant="1" id="UPs-xZ-2qf"/>
-                            <constraint firstItem="628-Jz-run" firstAttribute="leading" secondItem="2Yk-JH-S4Y" secondAttribute="leading" constant="-40" id="UuN-aN-Mhe"/>
-                            <constraint firstItem="bha-1u-UyW" firstAttribute="top" secondItem="hLA-6n-dgc" secondAttribute="bottom" constant="25" id="big-9w-ET7"/>
-                            <constraint firstItem="hLA-6n-dgc" firstAttribute="centerX" secondItem="628-Jz-run" secondAttribute="centerX" id="c6U-yY-qgV"/>
-                            <constraint firstItem="hLA-6n-dgc" firstAttribute="top" secondItem="628-Jz-run" secondAttribute="top" constant="70" id="maX-dn-Wcs"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="628-Jz-run"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="01V-ID-JiW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1487" y="-1159"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="cce-WU-jkC">
-            <objects>
-                <viewController storyboardIdentifier="OnboardingFive" autoresizesArchivedViewToFullSize="NO" id="P67-ZB-u8a" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="RIe-VN-PLy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nové měření" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLU-Oc-GyE">
-                                <rect key="frame" x="112.5" y="413" width="150" height="29"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
-                                <color key="textColor" name="Affirmative"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Po skončení debaty je možné smazat naměřené časy a začít stopovat znovu stisknutím šedého tlačítka &quot;Začít znovu&quot;." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcY-KR-1j6">
-                                <rect key="frame" x="40" y="457" width="295" height="86.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="O4" translatesAutoresizingMaskIntoConstraints="NO" id="qjg-mi-mFA">
-                                <rect key="frame" x="62.5" y="90" width="250" height="298"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="t2m-Pm-Af0"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" name="CreamWhite"/>
-                        <constraints>
-                            <constraint firstItem="ujv-xQ-jNS" firstAttribute="leading" secondItem="qcY-KR-1j6" secondAttribute="leading" constant="-40" id="56f-VT-th1"/>
-                            <constraint firstItem="qcY-KR-1j6" firstAttribute="top" secondItem="uLU-Oc-GyE" secondAttribute="bottom" constant="15" id="5fK-kQ-d0d"/>
-                            <constraint firstItem="qjg-mi-mFA" firstAttribute="centerX" secondItem="ujv-xQ-jNS" secondAttribute="centerX" id="QN7-Ib-5WP"/>
-                            <constraint firstItem="qcY-KR-1j6" firstAttribute="centerX" secondItem="ujv-xQ-jNS" secondAttribute="centerX" id="Yj4-hl-t4x"/>
-                            <constraint firstItem="uLU-Oc-GyE" firstAttribute="centerX" secondItem="ujv-xQ-jNS" secondAttribute="centerX" id="Ymn-RI-t1B"/>
-                            <constraint firstItem="uLU-Oc-GyE" firstAttribute="top" secondItem="qjg-mi-mFA" secondAttribute="bottom" constant="25" id="dZq-hu-O5I"/>
-                            <constraint firstItem="uLU-Oc-GyE" firstAttribute="top" secondItem="ujv-xQ-jNS" secondAttribute="centerY" multiplier="1.2" constant="1" id="mBn-WZ-e8v"/>
-                            <constraint firstItem="qjg-mi-mFA" firstAttribute="top" secondItem="ujv-xQ-jNS" secondAttribute="top" constant="70" id="oJw-sc-gyQ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="ujv-xQ-jNS"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="heV-Cb-R7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2182.5" y="-1159.8591549295775"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="5zd-aL-Std">
-            <objects>
-                <viewController storyboardIdentifier="OnboardingThree" autoresizesArchivedViewToFullSize="NO" id="Sav-Up-bHM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UWt-cn-LTc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naměřené časy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lr5-TZ-kqJ">
-                                <rect key="frame" x="94" y="413" width="187" height="29"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
-                                <color key="textColor" name="Affirmative"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V horní části obrazovky se postupně ukazují časy řečníků, kteří už mluvili." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztE-eT-doR">
-                                <rect key="frame" x="40" y="457" width="295" height="42.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="O2" translatesAutoresizingMaskIntoConstraints="NO" id="yb7-Ec-N6r">
-                                <rect key="frame" x="62.5" y="90" width="250" height="298"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="ILg-GK-Mm7"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" name="CreamWhite"/>
-                        <constraints>
-                            <constraint firstItem="JOM-Ao-CD6" firstAttribute="leading" secondItem="ztE-eT-doR" secondAttribute="leading" constant="-40" id="0RE-RC-HX8"/>
-                            <constraint firstItem="yb7-Ec-N6r" firstAttribute="top" secondItem="JOM-Ao-CD6" secondAttribute="top" constant="70" id="16v-uG-rVi"/>
-                            <constraint firstItem="ztE-eT-doR" firstAttribute="top" secondItem="lr5-TZ-kqJ" secondAttribute="bottom" constant="15" id="1Nv-SL-7gb"/>
-                            <constraint firstItem="lr5-TZ-kqJ" firstAttribute="top" secondItem="yb7-Ec-N6r" secondAttribute="bottom" constant="25" id="8Qj-JC-PAp"/>
-                            <constraint firstItem="yb7-Ec-N6r" firstAttribute="centerX" secondItem="JOM-Ao-CD6" secondAttribute="centerX" id="H27-GV-uvG"/>
-                            <constraint firstItem="lr5-TZ-kqJ" firstAttribute="top" secondItem="JOM-Ao-CD6" secondAttribute="centerY" multiplier="1.2" constant="1" id="JyT-5P-eAf"/>
-                            <constraint firstItem="lr5-TZ-kqJ" firstAttribute="centerX" secondItem="JOM-Ao-CD6" secondAttribute="centerX" id="U0R-7k-wPI"/>
-                            <constraint firstItem="ztE-eT-doR" firstAttribute="centerX" secondItem="JOM-Ao-CD6" secondAttribute="centerX" id="n1c-3i-lGh"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="JOM-Ao-CD6"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dYT-cB-kEX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="746" y="-1162"/>
-        </scene>
-        <!--End Onboard View Controller-->
-        <scene sceneID="wdF-Ve-Zsd">
-            <objects>
-                <viewController storyboardIdentifier="OnboardingSix" autoresizesArchivedViewToFullSize="NO" id="lzn-zh-mHR" customClass="EndOnboardViewController" customModule="Debate_Timer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vfb-Cs-PM8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Konec prohlídky" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBa-wU-6eO">
-                                <rect key="frame" x="89.5" y="243" width="196.5" height="29"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
-                                <color key="textColor" name="Affirmative"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Už můžete začít debatovat! Pokud budete mít nějaké dotazy nebo připomínky, napište na wybitul.evzen@gmail.com." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEg-k0-lp4">
-                                <rect key="frame" x="40" y="287" width="295" height="86.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZnQ-tH-x9q">
-                                <rect key="frame" x="101.5" y="527" width="172" height="60"/>
-                                <color key="backgroundColor" red="0.31431716680526733" green="0.73666507005691528" blue="0.99877184629440308" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="gBl-B6-pNS"/>
-                                    <constraint firstAttribute="width" constant="172" id="iRu-kV-1JC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <state key="normal" title="Vstoupit do aplikace">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="lzn-zh-mHR" eventType="touchUpInside" id="hc6-4Q-mf0"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" name="CreamWhite"/>
-                        <constraints>
-                            <constraint firstItem="iBa-wU-6eO" firstAttribute="centerX" secondItem="g3J-dQ-0O4" secondAttribute="centerX" id="0Ec-Ad-Qej"/>
-                            <constraint firstItem="MEg-k0-lp4" firstAttribute="trailing" secondItem="g3J-dQ-0O4" secondAttribute="trailing" constant="-40" id="A4Z-hn-XSR"/>
-                            <constraint firstItem="MEg-k0-lp4" firstAttribute="top" secondItem="iBa-wU-6eO" secondAttribute="bottom" constant="15" id="Cop-Ws-Jzl"/>
-                            <constraint firstItem="g3J-dQ-0O4" firstAttribute="bottom" secondItem="ZnQ-tH-x9q" secondAttribute="bottom" constant="80" id="S2a-Fj-Xem"/>
-                            <constraint firstItem="ZnQ-tH-x9q" firstAttribute="centerX" secondItem="g3J-dQ-0O4" secondAttribute="centerX" id="fAV-u6-ncf"/>
-                            <constraint firstItem="iBa-wU-6eO" firstAttribute="centerY" secondItem="g3J-dQ-0O4" secondAttribute="centerY" multiplier="0.75" id="y5t-g1-gJU"/>
-                            <constraint firstItem="MEg-k0-lp4" firstAttribute="leading" secondItem="g3J-dQ-0O4" secondAttribute="leading" constant="40" id="zrV-Nb-MVh"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="g3J-dQ-0O4"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MPE-0d-EI7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2901.5999999999999" y="-1160.8695652173915"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="O1" width="448" height="900"/>
-        <image name="O2" width="448" height="900"/>
-        <image name="O3" width="448" height="900"/>
-        <image name="O4" width="448" height="900"/>
         <namedColor name="Affirmative">
             <color red="0.31499999760000003" green="0.73600000139999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -525,6 +337,9 @@
         </namedColor>
         <namedColor name="LightRed">
             <color red="0.97000002861022949" green="0.92500001192092896" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NeutralGray">
+            <color red="0.70099997520000001" green="0.7599999905" blue="0.80699998139999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

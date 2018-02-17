@@ -11,8 +11,10 @@
 		4C0E11BA2014F4250004C773 /* SpeechLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0E11B92014F4250004C773 /* SpeechLabelViewModel.swift */; };
 		4C0E11BC201509260004C773 /* SpeakerCardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0E11BB201509260004C773 /* SpeakerCardCellViewModel.swift */; };
 		4C1F20632013FFFA00D37921 /* CircledLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F20622013FFFA00D37921 /* CircledLabel.swift */; };
-		4C471D952038297D00B79E54 /* SwiftyOnboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C471D942038297D00B79E54 /* SwiftyOnboardVC.swift */; };
-		4C4C99E220359E1B0021A0EB /* EndOnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4C99E120359E1B0021A0EB /* EndOnboardViewController.swift */; };
+		4C49287020387AA900867019 /* IntroCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49286F20387AA900867019 /* IntroCollectionViewCell.swift */; };
+		4C49287220387CE400867019 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49287120387CE400867019 /* ImageCollectionViewCell.swift */; };
+		4C49287420387E8400867019 /* OnboardingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49287320387E8400867019 /* OnboardingCard.swift */; };
+		4C49287620388A2500867019 /* EndingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49287520388A2500867019 /* EndingCollectionViewCell.swift */; };
 		4C4E3A92200FB73E006A2368 /* SpeakerCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E3A91200FB73E006A2368 /* SpeakerCardsViewController.swift */; };
 		4C4E3A94200FB998006A2368 /* SpeakerCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E3A93200FB998006A2368 /* SpeakerCardCell.swift */; };
 		4C8719C82028BC0400081D68 /* RoundedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8719C72028BC0400081D68 /* RoundedCollectionViewCell.swift */; };
@@ -21,6 +23,7 @@
 		4C89FD81200D366B00EFF992 /* Debate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89FD80200D366B00EFF992 /* Debate.swift */; };
 		4C89FD83200D368200EFF992 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89FD82200D368200EFF992 /* Speaker.swift */; };
 		4C89FD85200D3B2E00EFF992 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89FD84200D3B2E00EFF992 /* CountdownTimer.swift */; };
+		4C8EEEE9203878CB00343A7F /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8EEEE8203878CB00343A7F /* OnboardingViewController.swift */; };
 		4CC0FC45201A140800C4F833 /* TeamTimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC0FC44201A140800C4F833 /* TeamTimeLabel.swift */; };
 		4CCD229E20138017007B66CC /* StyleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD229D20138017007B66CC /* StyleExtensions.swift */; };
 		4CCE9F48200E3C500090E2AB /* Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE9F47200E3C500090E2AB /* Speech.swift */; };
@@ -63,8 +66,10 @@
 		4C0E11B92014F4250004C773 /* SpeechLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechLabelViewModel.swift; sourceTree = "<group>"; };
 		4C0E11BB201509260004C773 /* SpeakerCardCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCardCellViewModel.swift; sourceTree = "<group>"; };
 		4C1F20622013FFFA00D37921 /* CircledLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircledLabel.swift; sourceTree = "<group>"; };
-		4C471D942038297D00B79E54 /* SwiftyOnboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyOnboardVC.swift; sourceTree = "<group>"; };
-		4C4C99E120359E1B0021A0EB /* EndOnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndOnboardViewController.swift; sourceTree = "<group>"; };
+		4C49286F20387AA900867019 /* IntroCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IntroCollectionViewCell.swift; path = "Debate Timer/View/CollectionViewCells/IntroCollectionViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		4C49287120387CE400867019 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		4C49287320387E8400867019 /* OnboardingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCard.swift; sourceTree = "<group>"; };
+		4C49287520388A2500867019 /* EndingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndingCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C4E3A91200FB73E006A2368 /* SpeakerCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCardsViewController.swift; sourceTree = "<group>"; };
 		4C4E3A93200FB998006A2368 /* SpeakerCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCardCell.swift; sourceTree = "<group>"; };
 		4C8719C72028BC0400081D68 /* RoundedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -73,6 +78,7 @@
 		4C89FD80200D366B00EFF992 /* Debate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debate.swift; sourceTree = "<group>"; };
 		4C89FD82200D368200EFF992 /* Speaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
 		4C89FD84200D3B2E00EFF992 /* CountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
+		4C8EEEE8203878CB00343A7F /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		4CC0FC44201A140800C4F833 /* TeamTimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTimeLabel.swift; sourceTree = "<group>"; };
 		4CCD229D20138017007B66CC /* StyleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleExtensions.swift; sourceTree = "<group>"; };
 		4CCE9F47200E3C500090E2AB /* Speech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speech.swift; sourceTree = "<group>"; };
@@ -145,7 +151,7 @@
 			children = (
 				4CF85542200D11B0002CB00B /* MainViewController.swift */,
 				4C4E3A91200FB73E006A2368 /* SpeakerCardsViewController.swift */,
-				4C4C99E120359E1B0021A0EB /* EndOnboardViewController.swift */,
+				4C8EEEE8203878CB00343A7F /* OnboardingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -157,6 +163,7 @@
 				4C89FD84200D3B2E00EFF992 /* CountdownTimer.swift */,
 				4C89FD82200D368200EFF992 /* Speaker.swift */,
 				4CCE9F47200E3C500090E2AB /* Speech.swift */,
+				4C49287320387E8400867019 /* OnboardingCard.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,6 +179,9 @@
 		4C8719C92028BC1900081D68 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				4C49286F20387AA900867019 /* IntroCollectionViewCell.swift */,
+				4C49287120387CE400867019 /* ImageCollectionViewCell.swift */,
+				4C49287520388A2500867019 /* EndingCollectionViewCell.swift */,
 				4C8719C72028BC0400081D68 /* RoundedCollectionViewCell.swift */,
 				4C4E3A93200FB998006A2368 /* SpeakerCardCell.swift */,
 				4C0E11BB201509260004C773 /* SpeakerCardCellViewModel.swift */,
@@ -211,7 +221,6 @@
 				4CF85540200D11B0002CB00B /* AppDelegate.swift */,
 				4CE5CD8320380E1A001E5246 /* Reviewer.swift */,
 				4CCD229D20138017007B66CC /* StyleExtensions.swift */,
-				4C471D942038297D00B79E54 /* SwiftyOnboardVC.swift */,
 				4CF85547200D11B0002CB00B /* Assets.xcassets */,
 				4CF8554C200D11B0002CB00B /* Info.plist */,
 			);
@@ -405,12 +414,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Debate Timer/Pods-Debate Timer-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Device.swift/Device_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/Yalta/Yalta.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Device_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Yalta.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -574,15 +581,18 @@
 				4C1F20632013FFFA00D37921 /* CircledLabel.swift in Sources */,
 				4CEF9E70200D2C4500217777 /* SpeechLabel.swift in Sources */,
 				4CE5CD8420380E1A001E5246 /* Reviewer.swift in Sources */,
-				4C471D952038297D00B79E54 /* SwiftyOnboardVC.swift in Sources */,
-				4C4C99E220359E1B0021A0EB /* EndOnboardViewController.swift in Sources */,
+				4C49287420387E8400867019 /* OnboardingCard.swift in Sources */,
+				4C8EEEE9203878CB00343A7F /* OnboardingViewController.swift in Sources */,
 				4CCD229E20138017007B66CC /* StyleExtensions.swift in Sources */,
 				4C89FD83200D368200EFF992 /* Speaker.swift in Sources */,
+				4C49287620388A2500867019 /* EndingCollectionViewCell.swift in Sources */,
+				4C49287020387AA900867019 /* IntroCollectionViewCell.swift in Sources */,
 				4CCE9F48200E3C500090E2AB /* Speech.swift in Sources */,
 				4C0E11BC201509260004C773 /* SpeakerCardCellViewModel.swift in Sources */,
 				4C4E3A92200FB73E006A2368 /* SpeakerCardsViewController.swift in Sources */,
 				4CC0FC45201A140800C4F833 /* TeamTimeLabel.swift in Sources */,
 				4C89FD85200D3B2E00EFF992 /* CountdownTimer.swift in Sources */,
+				4C49287220387CE400867019 /* ImageCollectionViewCell.swift in Sources */,
 				4C883F4D2020E00E0083F801 /* ShadowTappableLabel.swift in Sources */,
 				4C883F4F2020EBFB0083F801 /* PlayPauseView.swift in Sources */,
 				4CF85543200D11B0002CB00B /* MainViewController.swift in Sources */,

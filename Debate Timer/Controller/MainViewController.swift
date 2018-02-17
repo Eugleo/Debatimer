@@ -55,40 +55,25 @@ final class MainViewController: UIViewController {
         uiTimer?.invalidate()
     }
 
-    private var onboard: SwiftyOnboardVC!
-
     private var shouldShowOnboard = true
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        guard shouldShowOnboard else { return }
+        guard shouldShowOnboard else { return } // Reviewer.getRunCount() == 1 &&
+
+        let onboarding = storyboard!.instantiateViewController(withIdentifier: "Onboarding") as! OnboardingViewController
+        let o0 = OnboardingCard(title: "Vítejte", description: "Vítejte v aplikaci Debatimer, která vám pomůže s měřením času u debat formátu Karl Popper. Následuje krátké seznámení s aplikací.", kind: .intro)
+        let o1 = OnboardingCard(title: "Měření času", description: "Zmáčknutím tlačítka ve spodní části obrazovky spustíte stopování následující řeči. Jeho opětovným zmáčknutím měření ukončíte.", kind: .image, image: UIImage(named: "O2"))
+        let o2 = OnboardingCard(title: "Naměřené časy", description: "V horní části obrazovky se postupně ukazují časy řečníků, kteří už mluvili.", kind: .image, image: UIImage(named: "O2"))
+        let o3 = OnboardingCard(title: "Přípravné časy", description: "Uprostřed obrazovky je možno vidět, kolik času k poradě zbývá oběma týmům. Tento čas se měří automaticky, je ale možné jej manuálně pozastavit.", kind: .image, image: UIImage(named: "O3"))
+        let o4 = OnboardingCard(title: "Nová debata", description: "Po skončení debaty je možné smazat naměřené časy a začít stopovat znovu stisknutím šedého tlačítka.", kind: .image, image: UIImage(named: "O4"))
+        let o5 = OnboardingCard(title: "Konec prohlídky", description: "Děkujeme, nyní už můžete začít debatovat! Pokud budete mít nějaké dotazy nebo připomínky, napište na wybitul.evzen@gmail.com.", kind: .ending)
+
+        onboarding.onboardingCards = [o0, o1, o2, o3, o4, o5]
 
         shouldShowOnboard = false
-
-        let viewOne = storyboard!.instantiateViewController(withIdentifier: "OnboardingOne")
-        let viewTwo = storyboard!.instantiateViewController(withIdentifier: "OnboardingTwo")
-        let viewThree = storyboard!.instantiateViewController(withIdentifier: "OnboardingThree")
-        let viewFour = storyboard!.instantiateViewController(withIdentifier: "OnboardingFour")
-        let viewFive = storyboard!.instantiateViewController(withIdentifier: "OnboardingFive")
-        let viewSix = storyboard!.instantiateViewController(withIdentifier: "OnboardingSix")
-        let viewControllers = [viewOne, viewTwo, viewThree, viewFour, viewFive, viewSix]
-
-        onboard = SwiftyOnboardVC(viewControllers: viewControllers)
-        onboard.backgroundColor = UIColor(named: "Affirmative")!
-        onboard.hideStatusBar = true
-
-        //onboard.buttonTopMargin = 50
-
-        //onboard.showLeftButton = false
-        onboard.rightButtonText = "Přeskočit prohlídku"
-        onboard.rightButtonBackgroundColor = UIColor(named: "NeutralGray")!
-        onboard.rightButtonCornerRadius = 14
-        onboard.rightButtonTextColor = .white
-        onboard.currentPageControlTintColor = UIColor(named: "Affirmative")!
-
-        onboard.delegate = self
         
-        present(onboard, animated: true, completion: nil)
+        present(onboarding, animated: true, completion: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -195,11 +180,5 @@ extension MainViewController: PauseButtonDelegate {
             debate.unpauseTimer(forTeam: pauseView.team!)
         }
         pauseView.togglePaused()
-    }
-}
-
-extension MainViewController: SwiftyOnboardVCDelegate {
-    func rightButtonPressed() {
-        onboard.skip()
     }
 }
