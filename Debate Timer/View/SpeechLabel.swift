@@ -61,6 +61,12 @@ final class SpeechLabel: ShadowTappableLabel {
 
     func deactivate() {
         activated = false
+
+        if state == .hasSpeech && speechLabelAnimated ||
+            state == .hasCrossQuestions && crossLabelAnimated ||
+            state == .hasSpeechAndCrossQuestions && speechLabelAnimated && crossLabelAnimated {
+            speakerLabel.layer.removeAllAnimations()
+        }
     }
 
     private func animateResetting() {
@@ -86,12 +92,16 @@ final class SpeechLabel: ShadowTappableLabel {
 
                         self.layoutIfNeeded()
         },
-                       completion: nil)
+                       completion: {_ in
+                        self.crossLabelAnimated = false
+                        self.speechLabelAnimated = false
+        })
     }
 
+    private var speechLabelAnimated = false
     private func animateSpeechLabel() {
         speechTimeLabel.alpha = 0
-        self.speakerLabel.layer.removeAllAnimations()
+        speakerLabel.layer.removeAllAnimations()
         UIView.animate(withDuration: 0.8,
                        delay: 0,
                        usingSpringWithDamping: 0.8,
@@ -104,9 +114,10 @@ final class SpeechLabel: ShadowTappableLabel {
                         self.layoutIfNeeded()
                         self.speechTimeLabel.alpha = 1
         },
-                       completion: nil)
+                       completion: {_ in self.speechLabelAnimated = true })
     }
 
+    private var crossLabelAnimated = false
     private func animateCrossQuetionsLabel() {
         crossQuestionsStackView.alpha = 0
         self.speakerLabel.layer.removeAllAnimations()
@@ -124,7 +135,7 @@ final class SpeechLabel: ShadowTappableLabel {
                         self.layoutIfNeeded()
                         self.crossQuestionsStackView.alpha = 1
                         },
-                       completion: nil)
+                       completion: {_ in self.crossLabelAnimated = true })
     }
 
     private var bcg: UIColor?

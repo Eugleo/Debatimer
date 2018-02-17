@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -17,7 +16,7 @@
         <!--View Controller-->
         <scene sceneID="lx4-59-291">
             <objects>
-                <viewController storyboardIdentifier="OnboardingOne" id="XlA-fy-GjQ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingOne" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="XlA-fy-GjQ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IQp-2w-93z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,6 +46,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PRN-2q-w8G"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F1d-d7-ciO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -271,7 +272,7 @@
         <!--View Controller-->
         <scene sceneID="TzL-0J-qEa">
             <objects>
-                <viewController storyboardIdentifier="OnboardingTwo" id="Qds-JV-wwK" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingTwo" autoresizesArchivedViewToFullSize="NO" id="Qds-JV-wwK" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="agp-fr-CHc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -316,7 +317,7 @@
         <!--View Controller-->
         <scene sceneID="10v-uk-76I">
             <objects>
-                <viewController storyboardIdentifier="OnboardingFour" id="DGX-AK-uff" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingFour" autoresizesArchivedViewToFullSize="NO" id="DGX-AK-uff" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cHa-bo-lXN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -362,7 +363,7 @@
         <!--View Controller-->
         <scene sceneID="cce-WU-jkC">
             <objects>
-                <viewController storyboardIdentifier="OnboardingFive" id="P67-ZB-u8a" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingFive" autoresizesArchivedViewToFullSize="NO" id="P67-ZB-u8a" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RIe-VN-PLy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -407,7 +408,7 @@
         <!--View Controller-->
         <scene sceneID="5zd-aL-Std">
             <objects>
-                <viewController storyboardIdentifier="OnboardingThree" id="Sav-Up-bHM" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingThree" autoresizesArchivedViewToFullSize="NO" id="Sav-Up-bHM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UWt-cn-LTc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -452,7 +453,7 @@
         <!--End Onboard View Controller-->
         <scene sceneID="wdF-Ve-Zsd">
             <objects>
-                <viewController storyboardIdentifier="OnboardingSix" id="lzn-zh-mHR" customClass="EndOnboardViewController" customModule="Debate_Timer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingSix" autoresizesArchivedViewToFullSize="NO" id="lzn-zh-mHR" customClass="EndOnboardViewController" customModule="Debate_Timer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vfb-Cs-PM8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -509,7 +510,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="O1" width="1362" height="2739"/>
+        <image name="O1" width="448" height="900"/>
         <image name="O2" width="448" height="900"/>
         <image name="O3" width="448" height="900"/>
         <image name="O4" width="448" height="900"/>

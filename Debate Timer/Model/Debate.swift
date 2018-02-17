@@ -39,8 +39,8 @@ final class Debate {
                          Speech(speaker1: n1, speaker2: a2, timeLimit: 180),
                          Speech(speaker1: n2, timeLimit: 360),
                          Speech(speaker1: a1, speaker2: n2, timeLimit: 180),
-                         Speech(speaker1: a3, timeLimit: 360),
-                         Speech(speaker1: n3, timeLimit: 360) ]
+                         Speech(speaker1: a3, timeLimit: 300),
+                         Speech(speaker1: n3, timeLimit: 300) ]
         self.speakers = [a1, n1, a2, n2, a3, n3]
         self.speeches = speeches
 

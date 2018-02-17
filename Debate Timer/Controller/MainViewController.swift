@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftyOnboardVC
 
 protocol SpeakerCardCollectionViewControllerDelegate {
     func showSpeaker(atIndex index: Int)
@@ -57,10 +56,14 @@ final class MainViewController: UIViewController {
     }
 
     private var onboard: SwiftyOnboardVC!
-    var i = 0
 
+    private var shouldShowOnboard = true
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
+        guard shouldShowOnboard else { return }
+
+        shouldShowOnboard = false
 
         let viewOne = storyboard!.instantiateViewController(withIdentifier: "OnboardingOne")
         let viewTwo = storyboard!.instantiateViewController(withIdentifier: "OnboardingTwo")
@@ -74,7 +77,9 @@ final class MainViewController: UIViewController {
         onboard.backgroundColor = UIColor(named: "Affirmative")!
         onboard.hideStatusBar = true
 
-        onboard.showLeftButton = false
+        //onboard.buttonTopMargin = 50
+
+        //onboard.showLeftButton = false
         onboard.rightButtonText = "Přeskočit prohlídku"
         onboard.rightButtonBackgroundColor = UIColor(named: "NeutralGray")!
         onboard.rightButtonCornerRadius = 14
@@ -82,14 +87,8 @@ final class MainViewController: UIViewController {
         onboard.currentPageControlTintColor = UIColor(named: "Affirmative")!
 
         onboard.delegate = self
-
-        //let shouldNotShowOnboard = UserDefaults.standard.bool(forKey: "shouldNotShowOnboard2")
-        if i == 0 {
-            present(onboard, animated: true, completion: nil)
-            i = 1
-            //UserDefaults.standard.set(true, forKey: "shouldNotShowOnboard2")
-        }
-        //UserDefaults.standard.set(false, forKey: "shouldNotShowOnboard")
+        
+        present(onboard, animated: true, completion: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -150,6 +149,7 @@ extension MainViewController: SpeakerCardDelegate {
             }
         } else {
             reset()
+            Reviewer.showReview()
         }
     }
 
