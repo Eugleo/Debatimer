@@ -161,7 +161,7 @@ final class SpeechLabel: ShadowTappableLabel {
                 }
             }
 
-            speechTimeLabel.text = viewModel.speechTime
+            speechTimeLabel.text =  viewModel.speechTime
             crossQuestionsTimeLabel.text = viewModel.crossQuestionTime
             speakerLabel.text = viewModel.name
             speakerLabel.backgroundColor =

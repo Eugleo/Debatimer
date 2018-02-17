@@ -59,7 +59,7 @@ final class MainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        guard shouldShowOnboard else { return } // Reviewer.getRunCount() == 1 &&
+        guard Reviewer.getRunCount() == 1 && shouldShowOnboard else { return }
 
         let onboarding = storyboard!.instantiateViewController(withIdentifier: "Onboarding") as! OnboardingViewController
         let o0 = OnboardingCard(title: "Vítejte", description: "Vítejte v aplikaci Debatimer, která vám pomůže s měřením času u debat formátu Karl Popper. Následuje krátké seznámení s aplikací.", kind: .intro)
