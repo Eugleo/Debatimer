@@ -140,6 +140,7 @@ final class SpeechLabel: ShadowTappableLabel {
 
     private var bcg: UIColor?
 
+
     public var viewModel: SpeechLabelViewModel? {
         didSet {
             guard let viewModel = viewModel else {
@@ -172,6 +173,13 @@ final class SpeechLabel: ShadowTappableLabel {
 
             bcg = speakerLabel.backgroundColor
         }
+    }
+    
+    private func formatTimeInterval(_ interval: TimeInterval) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.zeroFormattingBehavior = .pad
+        formatter.allowedUnits = [.minute, .second]
+        return formatter.string(from: interval)!
     }
 
     private let speakerLabel = CircledLabel()

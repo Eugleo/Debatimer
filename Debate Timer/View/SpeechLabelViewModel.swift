@@ -9,22 +9,22 @@
 import Foundation
 
 struct SpeechLabelViewModel {
-    public var speechTime: String? {
-        guard let value = speaker.speechTime else { return nil }
-        return formatTimeInterval(value)
+    var speechTime: String? {
+        guard let ti = speaker.speechTime else { return nil }
+        return formatTimeInterval(ti)
     }
-    public var crossQuestionTime: String? {
-        guard let value = speaker.crossQuestionsTime else { return nil }
-        return formatTimeInterval(value)
+    var crossQuestionTime: String? {
+        guard let ti = speaker.crossTime else { return nil }
+        return formatTimeInterval(ti)
     }
-    public var team: Team {
-        return speaker.team
+
+    var name: String {
+        return speaker.id.rawValue
     }
-    public var name: String {
-        return "\(speaker.team.rawValue.uppercased().first!)\(speaker.position)"
+    var team: Team {
+        return speaker.id.team()
     }
-    
-    public let speaker: Speaker
+    let speaker: Speaker
 
     init(speaker: Speaker) {
         self.speaker = speaker

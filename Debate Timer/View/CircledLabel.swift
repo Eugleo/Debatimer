@@ -9,37 +9,49 @@
 import UIKit
 
 class CircledLabel: UIView {
+    // MARK: Public UI properties
+    var font: UIFont = UIFont.boldSystemFont(ofSize: 15) {
+        didSet {
+            titleLabel.font = font
+        }
+    }
+
     var text: String? {
         didSet {
             titleLabel.text = text
         }
     }
 
-    private let titleLabel = UILabel {
-        $0.textColor = .white
-        $0.font = UIFont.boldSystemFont(ofSize: 15)
-        $0.textAlignment = .center
-        $0.layer.masksToBounds = true
+    // MARK: Private UI properties
+    private let titleLabel = UILabel { l in
+        l.textColor = .white
+        l.font = UIFont.boldSystemFont(ofSize: 15)
+        l.textAlignment = .center
+        l.layer.masksToBounds = true
     }
 
+    // MARK: Initialization
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupTitleLabel()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupTitleLabel()
+    }
+
+    // MARK: Overrides
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = frame.height / 2
     }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        layer.cornerRadius = 15
-        clipsToBounds = true
-        addSubview(titleLabel) {
-            $0.edges.pinToSuperview()
+    // MARK: Private functions
+    private func setupTitleLabel() {
+        addSubview(titleLabel) { l in
+            l.edges.pinToSuperview()
         }
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        addSubview(titleLabel) {
-            $0.edges.pinToSuperview()
-        }
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
     }
 }

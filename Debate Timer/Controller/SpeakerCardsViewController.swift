@@ -97,12 +97,12 @@ final class SpeakerCardsViewController: UICollectionViewController {
         targetContentOffset.pointee.x = (newOffset > tmp ? tmp : newOffset) - scrollView.contentInset.left
     }
 
-    func refreshCell(atIndex index: Int) {
+    func refreshCell(atIndex index: Int, withTimeLeft time: TimeInterval) {
         guard let collectionView = collectionView else { return }
 
         let speech = debate.allSpeeches()[index]
-        if let cell = collectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? SpeakerCardCell {
-            cell.viewModel = SpeakerCardCellViewModel(speech: speech)
+        if let cell = collectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? SpeechCollectionViewCell {
+            cell.viewModel = SpeechCollectionViewCellViewModel(speech: speech, timeLeft: time)
         }
     }
 
@@ -229,13 +229,13 @@ extension SpeakerCardsViewController {
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         if indexPath.row < debate.allSpeeches().count {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SpeakerCardCell.reuseID,
-                                                          for: indexPath) as! SpeakerCardCell
-            cell.viewModel = SpeakerCardCellViewModel(speech: debate.allSpeeches()[indexPath.row])
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SpeechCollectionViewCell.reuseIdentifier,
+                                                          for: indexPath) as! SpeechCollectionViewCell
+            cell.viewModel = SpeechCollectionViewCellViewModel(speech: debate.allSpeeches()[indexPath.row])
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RoundedCollectionViewCell.reuseID,
-                                                          for: indexPath) as! RoundedCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResetDebateCollectionViewCell.reuseIdentifier,
+                                                          for: indexPath) as! ResetDebateCollectionViewCell
             return cell
         }
     }
