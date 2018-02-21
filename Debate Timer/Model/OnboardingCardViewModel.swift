@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct OnboardingCard {
+struct OnboardingCardViewModel {
     enum Kind {
         case intro, image, ending
     }

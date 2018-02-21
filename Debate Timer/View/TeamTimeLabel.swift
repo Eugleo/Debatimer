@@ -48,7 +48,7 @@ final class TeamTimeLabel: ShadowTappableLabel {
         gradientLayer.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
     }
     
-    private let playPauseView = PlayPauseView()
+    private let playPauseView = PausableView()
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

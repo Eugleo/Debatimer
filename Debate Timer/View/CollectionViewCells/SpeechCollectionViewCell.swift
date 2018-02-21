@@ -10,7 +10,9 @@ import UIKit
 import Yalta
 
 class SpeechCollectionViewCell: CardesqueCollectionViewCell {
+
     // MARK: Public properties
+    
     var viewModel: SpeechCollectionViewCellViewModel? {
         didSet {
             guard let viewModel = viewModel else { return }

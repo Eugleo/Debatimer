@@ -9,7 +9,7 @@
 import UIKit
 
 class OnboardingViewController: UIViewController {
-    var onboardingCards: [OnboardingCard] = []
+    var onboardingCards: [OnboardingCardViewModel] = []
 
     private enum Keys: String {
         case introCell = "IntroCell"

@@ -9,32 +9,40 @@
 import Foundation
 
 struct Debate {
+
     // MARK: Properties
-    private var speeches: [Speech3]
+
+    private var speeches: [Speech]
     private var currentIndex = 0
     private var affirmativeTimer = CountdownTimer()
     private var negativeTimer = CountdownTimer()
     private var speechTimer = CountdownTimer()
 
-    // MARK: Initializers
+    // MARK: Initialization
     // An implementation with defaults according to classic debate rules: A1, X, N1, X, A2, X, N2, X, A3, N3
     init() {
         let crossTimeLimit: TimeInterval = 180
-        let a1 = Speech3(speaker1: .A1)
-        let n3a1 = Speech3(speaker1: .N3, speaker2: .A1, timeLimit: crossTimeLimit)
-        let n1 = Speech3(speaker1: .N1)
-        let a3n1 = Speech3(speaker1: .A3, speaker2: .N1, timeLimit: crossTimeLimit)
-        let a2 = Speech3(speaker1: .A2)
-        let n1a2 = Speech3(speaker1: .N1, speaker2: .A2, timeLimit: crossTimeLimit)
-        let n2 = Speech3(speaker1: .N2)
-        let a1n2 = Speech3(speaker1: .A1, speaker2: .N2, timeLimit: crossTimeLimit)
-        let a3 = Speech3(speaker1: .A3)
-        let n3 = Speech3(speaker1: .N3)
+        let a1 = Speech(speaker1: .A1)
+        let n3a1 = Speech(speaker1: .N3, speaker2: .A1, timeLimit: crossTimeLimit)
+        let n1 = Speech(speaker1: .N1)
+        let a3n1 = Speech(speaker1: .A3, speaker2: .N1, timeLimit: crossTimeLimit)
+        let a2 = Speech(speaker1: .A2)
+        let n1a2 = Speech(speaker1: .N1, speaker2: .A2, timeLimit: crossTimeLimit)
+        let n2 = Speech(speaker1: .N2)
+        let a1n2 = Speech(speaker1: .A1, speaker2: .N2, timeLimit: crossTimeLimit)
+        let a3 = Speech(speaker1: .A3)
+        let n3 = Speech(speaker1: .N3)
 
         speeches = [a1, n3a1, n1, a3n1, a2, n1a2, n2, a1n2, a3, n3]
+
+        negativeTimer.countdown(startingAt: Team.negative.preparationTime())
+        negativeTimer.pause()
+        affirmativeTimer.countdown(startingAt: Team.affirmative.preparationTime())
+        affirmativeTimer.pause()
     }
 
     // MARK: Private functions
+
     mutating func runPrepTime() {
         let lastSpeech = speeches[currentIndex]
 
@@ -53,7 +61,8 @@ struct Debate {
     }
 
     // MARK: Public functions
-    func allSpeeches() -> [Speech3] {
+
+    func allSpeeches() -> [Speech] {
         return speeches
     }
 
@@ -69,7 +78,7 @@ struct Debate {
         return currentSpeech.speaker1
     }
 
-    func currentSpeech() -> Speech3? {
+    func currentSpeech() -> Speech? {
         guard speechTimer.isRunning() else { return nil }
 
         return speeches[currentIndex]
@@ -96,7 +105,7 @@ struct Debate {
         speechTimer.countdown(startingAt: speeches[currentIndex].timeLimit)
     }
 
-    mutating func stopSpeech() -> TimeInterval {
+    mutating func stopAndMeasureCurrentSpeech() -> TimeInterval {
         runPrepTime()
 
         let measurement = speechTimer.elapsedTime

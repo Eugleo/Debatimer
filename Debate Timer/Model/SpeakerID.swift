@@ -49,7 +49,7 @@ final class Speaker {
     var speechTime: TimeInterval?
     var crossTime: TimeInterval?
 
-    // MARK: Initializers
+    // MARK: Initialization
     init(id: SpeakerID) {
         self.id = id
     }

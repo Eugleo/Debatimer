@@ -9,7 +9,9 @@
 import UIKit
 
 class CircledLabel: UIView {
+
     // MARK: Public UI properties
+
     var font: UIFont = UIFont.boldSystemFont(ofSize: 15) {
         didSet {
             titleLabel.font = font
@@ -23,6 +25,7 @@ class CircledLabel: UIView {
     }
 
     // MARK: Private UI properties
+
     private let titleLabel = UILabel { l in
         l.textColor = .white
         l.font = UIFont.boldSystemFont(ofSize: 15)
@@ -31,6 +34,7 @@ class CircledLabel: UIView {
     }
 
     // MARK: Initialization
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupTitleLabel()
@@ -42,12 +46,14 @@ class CircledLabel: UIView {
     }
 
     // MARK: Overrides
+
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = frame.height / 2
     }
 
     // MARK: Private functions
+    
     private func setupTitleLabel() {
         addSubview(titleLabel) { l in
             l.edges.pinToSuperview()

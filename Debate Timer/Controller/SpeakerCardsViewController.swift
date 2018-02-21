@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol SpeakerCardDelegate: class {
+protocol SpeechCollectionViewCellDelegate: class {
     func cardTapped(atIndex index: Int)
 }
 
 final class SpeakerCardsViewController: UICollectionViewController {
     var debate: Debate!
-    var delegate: SpeakerCardDelegate?
+    var delegate: SpeechCollectionViewCellDelegate?
 
     private let itemSpacing: CGFloat = 20
 
@@ -40,7 +40,6 @@ final class SpeakerCardsViewController: UICollectionViewController {
     }
 
     func configureGestureRecognizers() {
-        // Long Press Gesture Recognizer
         let longPressGestureRecognizer =
             UILongPressGestureRecognizer(target: self,
                                          action: #selector(handleLongPressGesture(gestureRecognizer:)))
@@ -128,11 +127,8 @@ extension SpeakerCardsViewController {
             break
         }
 
-
         if let indexPath = collectionView.indexPathForItem(at: p) {
-            // get the cell at indexPath (the one you long pressed)
             let selectedCell = collectionView.cellForItem(at: indexPath)!
-            // do stuff with the cell
 
             switch gestureRecognizer.state {
             case .began:

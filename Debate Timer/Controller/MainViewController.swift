@@ -14,7 +14,9 @@ protocol SpeakerCardCollectionViewControllerDelegate {
 }
 
 final class MainViewController: UIViewController {
+
     // MARK: Properties
+
     var speakers: [SpeakerID: Speaker] = [:]
 
     var uiTimer: Timer?
@@ -28,14 +30,17 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var pauseView: PauseButton!
 
     // MARK: Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "CreamWhite")!
 
         debate.allSpeakers().forEach { speakers[$0] = Speaker(id: $0) }
 
-        for (s, label) in zip(debate.allSpeakers(), speakerLabels) {
-            label.viewModel = SpeechLabelViewModel(speaker: speakers[s]!)
+        let speakerIDs: [SpeakerID] = [.A1, .N1, .A2, .N2, .A3, .N3]
+        for label in speakerLabels {
+            let speaker = speakerIDs[label.tag]
+            label.viewModel = SpeechLabelViewModel(speaker: speakers[speaker]!)
             label.delegate = self
         }
 
@@ -45,9 +50,12 @@ final class MainViewController: UIViewController {
         pauseView.team = .affirmative
         pauseView.togglePaused(to: true)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: .UIApplicationDidBecomeActive, object: nil)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterBackground), name: .UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(appWillEnterForeground),
+                                               name: .UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(appWillEnterBackground),
+                                               name: .UIApplicationDidEnterBackground, object: nil)
     }
 
     @objc func appWillEnterForeground(notification: Notification) {
@@ -68,38 +76,6 @@ final class MainViewController: UIViewController {
         showOnboarding()
     }
 
-    private func showOnboarding() {
-        let onboarding = storyboard!.instantiateViewController(withIdentifier: "Onboarding") as! OnboardingViewController
-
-        let o0 = OnboardingCard(title: "Vítejte",
-                                description: "Vítejte v aplikaci Debatimer, která vám pomůže s měřením času u debat formátu Karl Popper. Následuje krátké seznámení s aplikací.",
-                                kind: .intro)
-        let o1 = OnboardingCard(title: "Měření času",
-                                description: "Zmáčknutím tlačítka ve spodní části obrazovky spustíte stopování následující řeči. Jeho opětovným zmáčknutím měření ukončíte.",
-                                kind: .image,
-                                image: UIImage(named: "O2"))
-        let o2 = OnboardingCard(title: "Naměřené časy",
-                                description: "V horní části obrazovky se postupně ukazují časy řečníků, kteří už mluvili.",
-                                kind: .image,
-                                image: UIImage(named: "O2"))
-        let o3 = OnboardingCard(title: "Přípravné časy",
-                                description: "Uprostřed obrazovky je možno vidět, kolik času k poradě zbývá oběma týmům. Tento čas se měří automaticky, je ale možné jej manuálně pozastavit.",
-                                kind: .image, image: UIImage(named: "O3"))
-        let o4 = OnboardingCard(title: "Nová debata",
-                                description: "Po skončení debaty je možné smazat naměřené časy a začít stopovat znovu stisknutím šedého tlačítka.",
-                                kind: .image,
-                                image: UIImage(named: "O4"))
-        let o5 = OnboardingCard(title: "Konec prohlídky",
-                                description: "Děkujeme, nyní už můžete začít debatovat! Pokud budete mít nějaké dotazy nebo připomínky, napište na wybitul.evzen@gmail.com.",
-                                kind: .ending)
-
-        onboarding.onboardingCards = [o0, o1, o2, o3, o4, o5]
-
-        shouldShowOnboard = false
-
-        present(onboarding, animated: true, completion: nil)
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "embedCardsCVSegue" {
             let childVC = segue.destination as! SpeakerCardsViewController
@@ -111,47 +87,48 @@ final class MainViewController: UIViewController {
     }
 
     @objc private func refreshUserInterface() {
-        if  let currentSpeaker = debate.currentSpeaker(),
-            let currentIndex = debate.allSpeakers().index(of: currentSpeaker),
+        if let currentSpeechIndex = debate.currentSpeechIndex(),
             let currentTimeLeft = debate.currentSpeechTimeLeft() {
 
-            delegate?.refreshCell(atIndex: currentIndex, withTimeLeft: currentTimeLeft)
-
-            pauseView.togglePaused(to: true)
+            delegate?.refreshCell(atIndex: currentSpeechIndex, withTimeLeft: currentTimeLeft)
         } else {
             let prepTimeLeft = debate.prepTimeLeft()
-            teamAffirmativeLabel.timeLeft = prepTimeLeft.affirmative
-            teamNegativeLabel.timeLeft = prepTimeLeft.negative
+            teamAffirmativeLabel.timeLeft = round(prepTimeLeft.affirmative)
+            teamNegativeLabel.timeLeft = round(prepTimeLeft.negative)
+        }
+    }
 
-            if let currentTeam = debate.teamPreparing() {
-                pauseView.team = currentTeam
-                pauseView.togglePaused(to: false)
-            }
-
-            speakerLabels.forEach { $0.deactivate() }
+    private func updatePauseViewTeam() {
+        if let currentTeam = debate.teamPreparing() {
+            pauseView.team = currentTeam
+            pauseView.togglePaused(to: false)
+        } else {
+            pauseView.togglePaused(to: true)
         }
     }
 }
 
-extension MainViewController: SpeakerCardDelegate {
+extension MainViewController: SpeechCollectionViewCellDelegate {
     func cardTapped(atIndex index: Int) {
         guard index < debate.allSpeeches().count else {
-            reset()
+            askUserBeforeReset()
             Reviewer.showReview()
             return
         }
 
         if let currentSpeakerID = debate.currentSpeaker(),
            let currentSpeech = debate.currentSpeech(),
-           let currentSpeechIndex = debate.currentSpeechIndex(),
-           let currentSpeakerIndex = debate.allSpeakers().index(of: currentSpeakerID) {
+           let currentSpeechIndex = debate.currentSpeechIndex() {
 
             guard currentSpeechIndex == index else {
                 delegate?.showSpeaker(atIndex: currentSpeechIndex)
                 return
             }
 
-            let measurement = debate.stopSpeech()
+            speakerLabels.forEach { $0.deactivate() }
+            let measurement = debate.stopAndMeasureCurrentSpeech()
+            updatePauseViewTeam()
+            pauseView.isEnabled = true
 
             let currentSpeaker = speakers[currentSpeakerID]!
             if currentSpeech.isCross {
@@ -160,20 +137,23 @@ extension MainViewController: SpeakerCardDelegate {
                 currentSpeaker.speechTime = measurement
             }
 
-            let currentLabel = speakerLabels[currentSpeakerIndex]
+            let currentLabel = speakerLabels.first { $0.viewModel?.speaker.id == currentSpeakerID }!
             currentLabel.viewModel = SpeechLabelViewModel(speaker: currentSpeaker)
 
+            if currentSpeechIndex != debate.allSpeeches().count - 1 {
+                delegate?.showSpeaker(atIndex: currentSpeechIndex + 1)
+            }
         } else {
             debate.startSpeech(atIndex: index)
-            let speaker = debate.currentSpeaker()!
             speakerLabels
-                .first { $0.viewModel!.speaker.id == speaker }!
+                .first { $0.viewModel!.speaker.id == debate.currentSpeaker()! }!
                 .activate()
-
+            pauseView.isEnabled = false
+            updatePauseViewTeam()
         }
     }
 
-    private func reset() {
+    private func askUserBeforeReset() {
         let alert = UIAlertController(title: "Smazání debaty",
                                       message: "Přejete si opravdu současný průběh debaty smazat a začít debatu novou?",
                                       preferredStyle: .actionSheet)
@@ -188,8 +168,11 @@ extension MainViewController: SpeakerCardDelegate {
 
     @objc private func resetConfirmed() {
         debate = Debate()
-        for (s, label) in zip(debate.allSpeakers(), speakerLabels) {
-            label.viewModel = SpeechLabelViewModel(speaker: speakers[s]!)
+        debate.allSpeakers().forEach { speakers[$0] = Speaker(id: $0) }
+        let speakerIDs: [SpeakerID] = [.A1, .N1, .A2, .N2, .A3, .N3]
+        for label in speakerLabels {
+            let speaker = speakerIDs[label.tag]
+            label.viewModel = SpeechLabelViewModel(speaker: speakers[speaker]!)
             label.delegate = self
         }
         collectionViewController.reset(withNewDebate: debate)
@@ -207,12 +190,48 @@ extension MainViewController: ShadowTappableLabelDelegate {
 }
 
 extension MainViewController: PauseButtonDelegate {
-    func tapped() {
+    func didTapPauseButton() {
         if let currentTeam = debate.teamPreparing() {
             debate.pauseTimer(for: currentTeam)
         } else {
             debate.unpauseTimer(forTeam: pauseView.team!)
         }
         pauseView.togglePaused()
+    }
+}
+
+// MARK: Onboarding
+
+extension MainViewController {
+    private func showOnboarding() {
+        let onboarding = storyboard!.instantiateViewController(withIdentifier: "Onboarding") as! OnboardingViewController
+
+        let o0 = OnboardingCardViewModel(title: "Vítejte",
+                                         description: "Vítejte v aplikaci Debatimer, která vám pomůže s měřením času u debat formátu Karl Popper. Následuje krátké seznámení s aplikací.",
+                                         kind: .intro)
+        let o1 = OnboardingCardViewModel(title: "Měření času",
+                                         description: "Zmáčknutím tlačítka ve spodní části obrazovky spustíte stopování následující řeči. Jeho opětovným zmáčknutím měření ukončíte.",
+                                         kind: .image,
+                                         image: UIImage(named: "O2"))
+        let o2 = OnboardingCardViewModel(title: "Naměřené časy",
+                                         description: "V horní části obrazovky se postupně ukazují časy řečníků, kteří už mluvili.",
+                                         kind: .image,
+                                         image: UIImage(named: "O2"))
+        let o3 = OnboardingCardViewModel(title: "Přípravné časy",
+                                         description: "Uprostřed obrazovky je možno vidět, kolik času k poradě zbývá oběma týmům. Tento čas se měří automaticky, je ale možné jej manuálně pozastavit.",
+                                         kind: .image, image: UIImage(named: "O3"))
+        let o4 = OnboardingCardViewModel(title: "Nová debata",
+                                         description: "Po skončení debaty je možné smazat naměřené časy a začít stopovat znovu stisknutím šedého tlačítka.",
+                                         kind: .image,
+                                         image: UIImage(named: "O4"))
+        let o5 = OnboardingCardViewModel(title: "Konec prohlídky",
+                                         description: "Děkujeme, nyní už můžete začít debatovat! Pokud budete mít nějaké dotazy nebo připomínky, napište na wybitul.evzen@gmail.com.",
+                                         kind: .ending)
+
+        onboarding.onboardingCards = [o0, o1, o2, o3, o4, o5]
+
+        shouldShowOnboard = false
+
+        present(onboarding, animated: true, completion: nil)
     }
 }

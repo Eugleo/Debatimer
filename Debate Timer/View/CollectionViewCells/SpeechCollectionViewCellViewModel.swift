@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 
 struct SpeechCollectionViewCellViewModel {
+
     // MARK: Public properties
+
     public var timeLeftStr: String? {
         return formatTimeInterval(timeLeft ?? speech.timeLimit)
     }
@@ -32,15 +34,18 @@ struct SpeechCollectionViewCellViewModel {
     }
 
     // MARK: Initialization
-    private let speech: Speech3
+
+    private let speech: Speech
 
     // MARK: Private properties
-    init(speech: Speech3, timeLeft: TimeInterval? = nil) {
+
+    init(speech: Speech, timeLeft: TimeInterval? = nil) {
         self.speech = speech
         self.timeLeft = timeLeft
     }
 
     // MARK: Private functions
+
     private func formatTimeInterval(_ interval: TimeInterval) -> String {
         let formatter = DateComponentsFormatter()
         formatter.zeroFormattingBehavior = .pad

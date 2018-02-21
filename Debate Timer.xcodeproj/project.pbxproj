@@ -11,17 +11,18 @@
 		4C0E11BA2014F4250004C773 /* SpeechLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0E11B92014F4250004C773 /* SpeechLabelViewModel.swift */; };
 		4C0E11BC201509260004C773 /* SpeechCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0E11BB201509260004C773 /* SpeechCollectionViewCellViewModel.swift */; };
 		4C1F20632013FFFA00D37921 /* CircledLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F20622013FFFA00D37921 /* CircledLabel.swift */; };
+		4C2C5750203D7F5200F42495 /* PausableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2C574F203D7F5200F42495 /* PausableView.swift */; };
 		4C49287020387AA900867019 /* IntroCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49286F20387AA900867019 /* IntroCollectionViewCell.swift */; };
 		4C49287220387CE400867019 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49287120387CE400867019 /* ImageCollectionViewCell.swift */; };
-		4C49287420387E8400867019 /* OnboardingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49287320387E8400867019 /* OnboardingCard.swift */; };
+		4C49287420387E8400867019 /* OnboardingCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49287320387E8400867019 /* OnboardingCardViewModel.swift */; };
 		4C49287620388A2500867019 /* EndingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49287520388A2500867019 /* EndingCollectionViewCell.swift */; };
 		4C4E3A92200FB73E006A2368 /* SpeakerCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E3A91200FB73E006A2368 /* SpeakerCardsViewController.swift */; };
 		4C4E3A94200FB998006A2368 /* SpeechCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E3A93200FB998006A2368 /* SpeechCollectionViewCell.swift */; };
+		4C53A27C203D792E0066958C /* PauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C53A27B203D792D0066958C /* PauseButton.swift */; };
 		4C7BB734203C6AE700DBD910 /* CardesqueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7BB733203C6AE700DBD910 /* CardesqueCollectionViewCell.swift */; };
 		4C7BB736203C6E3600DBD910 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7BB735203C6E3600DBD910 /* Reusable.swift */; };
 		4C87D16D203C70440075CC8A /* ResetDebateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C87D16C203C70430075CC8A /* ResetDebateCollectionViewCell.swift */; };
 		4C883F4D2020E00E0083F801 /* ShadowTappableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C883F4C2020E00E0083F801 /* ShadowTappableLabel.swift */; };
-		4C883F4F2020EBFB0083F801 /* PlayPauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C883F4E2020EBFB0083F801 /* PlayPauseView.swift */; };
 		4C89FD81200D366B00EFF992 /* Debate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89FD80200D366B00EFF992 /* Debate.swift */; };
 		4C89FD83200D368200EFF992 /* SpeakerID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89FD82200D368200EFF992 /* SpeakerID.swift */; };
 		4C89FD85200D3B2E00EFF992 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89FD84200D3B2E00EFF992 /* CountdownTimer.swift */; };
@@ -30,7 +31,6 @@
 		4CCD229E20138017007B66CC /* StyleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD229D20138017007B66CC /* StyleExtensions.swift */; };
 		4CCE9F48200E3C500090E2AB /* Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE9F47200E3C500090E2AB /* Speech.swift */; };
 		4CE5CD8420380E1A001E5246 /* Reviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5CD8320380E1A001E5246 /* Reviewer.swift */; };
-		4CE6597A2031B3480085D5BF /* PauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE659792031B3480085D5BF /* PauseButton.swift */; };
 		4CEF9E70200D2C4500217777 /* SpeechLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF9E6F200D2C4500217777 /* SpeechLabel.swift */; };
 		4CF85541200D11B0002CB00B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF85540200D11B0002CB00B /* AppDelegate.swift */; };
 		4CF85543200D11B0002CB00B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF85542200D11B0002CB00B /* MainViewController.swift */; };
@@ -68,17 +68,18 @@
 		4C0E11B92014F4250004C773 /* SpeechLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechLabelViewModel.swift; sourceTree = "<group>"; };
 		4C0E11BB201509260004C773 /* SpeechCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		4C1F20622013FFFA00D37921 /* CircledLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircledLabel.swift; sourceTree = "<group>"; };
+		4C2C574F203D7F5200F42495 /* PausableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PausableView.swift; sourceTree = "<group>"; };
 		4C49286F20387AA900867019 /* IntroCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IntroCollectionViewCell.swift; path = "Debate Timer/View/CollectionViewCells/IntroCollectionViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		4C49287120387CE400867019 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		4C49287320387E8400867019 /* OnboardingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCard.swift; sourceTree = "<group>"; };
+		4C49287320387E8400867019 /* OnboardingCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCardViewModel.swift; sourceTree = "<group>"; };
 		4C49287520388A2500867019 /* EndingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndingCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C4E3A91200FB73E006A2368 /* SpeakerCardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCardsViewController.swift; sourceTree = "<group>"; };
 		4C4E3A93200FB998006A2368 /* SpeechCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechCollectionViewCell.swift; sourceTree = "<group>"; };
+		4C53A27B203D792D0066958C /* PauseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseButton.swift; sourceTree = "<group>"; };
 		4C7BB733203C6AE700DBD910 /* CardesqueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardesqueCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C7BB735203C6E3600DBD910 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		4C87D16C203C70430075CC8A /* ResetDebateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetDebateCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C883F4C2020E00E0083F801 /* ShadowTappableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowTappableLabel.swift; sourceTree = "<group>"; };
-		4C883F4E2020EBFB0083F801 /* PlayPauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPauseView.swift; sourceTree = "<group>"; };
 		4C89FD80200D366B00EFF992 /* Debate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debate.swift; sourceTree = "<group>"; };
 		4C89FD82200D368200EFF992 /* SpeakerID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerID.swift; sourceTree = "<group>"; };
 		4C89FD84200D3B2E00EFF992 /* CountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
@@ -87,7 +88,6 @@
 		4CCD229D20138017007B66CC /* StyleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleExtensions.swift; sourceTree = "<group>"; };
 		4CCE9F47200E3C500090E2AB /* Speech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speech.swift; sourceTree = "<group>"; };
 		4CE5CD8320380E1A001E5246 /* Reviewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviewer.swift; sourceTree = "<group>"; };
-		4CE659792031B3480085D5BF /* PauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseButton.swift; sourceTree = "<group>"; };
 		4CEF9E6F200D2C4500217777 /* SpeechLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechLabel.swift; sourceTree = "<group>"; };
 		4CF8553D200D11B0002CB00B /* Debate Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Debate Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF85540200D11B0002CB00B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -143,8 +143,8 @@
 				4CEF9E6F200D2C4500217777 /* SpeechLabel.swift */,
 				4C0E11B92014F4250004C773 /* SpeechLabelViewModel.swift */,
 				4C1F20622013FFFA00D37921 /* CircledLabel.swift */,
-				4C883F4E2020EBFB0083F801 /* PlayPauseView.swift */,
-				4CE659792031B3480085D5BF /* PauseButton.swift */,
+				4C2C574F203D7F5200F42495 /* PausableView.swift */,
+				4C53A27B203D792D0066958C /* PauseButton.swift */,
 				4C8719C92028BC1900081D68 /* CollectionViewCells */,
 			);
 			path = View;
@@ -167,7 +167,7 @@
 				4C89FD84200D3B2E00EFF992 /* CountdownTimer.swift */,
 				4C89FD82200D368200EFF992 /* SpeakerID.swift */,
 				4CCE9F47200E3C500090E2AB /* Speech.swift */,
-				4C49287320387E8400867019 /* OnboardingCard.swift */,
+				4C49287320387E8400867019 /* OnboardingCardViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -580,7 +580,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CE6597A2031B3480085D5BF /* PauseButton.swift in Sources */,
 				4C4E3A94200FB998006A2368 /* SpeechCollectionViewCell.swift in Sources */,
 				4C0E11BA2014F4250004C773 /* SpeechLabelViewModel.swift in Sources */,
 				4C89FD81200D366B00EFF992 /* Debate.swift in Sources */,
@@ -589,7 +588,7 @@
 				4C7BB736203C6E3600DBD910 /* Reusable.swift in Sources */,
 				4CE5CD8420380E1A001E5246 /* Reviewer.swift in Sources */,
 				4C87D16D203C70440075CC8A /* ResetDebateCollectionViewCell.swift in Sources */,
-				4C49287420387E8400867019 /* OnboardingCard.swift in Sources */,
+				4C49287420387E8400867019 /* OnboardingCardViewModel.swift in Sources */,
 				4C8EEEE9203878CB00343A7F /* OnboardingViewController.swift in Sources */,
 				4CCD229E20138017007B66CC /* StyleExtensions.swift in Sources */,
 				4C7BB734203C6AE700DBD910 /* CardesqueCollectionViewCell.swift in Sources */,
@@ -598,12 +597,13 @@
 				4C49287020387AA900867019 /* IntroCollectionViewCell.swift in Sources */,
 				4CCE9F48200E3C500090E2AB /* Speech.swift in Sources */,
 				4C0E11BC201509260004C773 /* SpeechCollectionViewCellViewModel.swift in Sources */,
+				4C2C5750203D7F5200F42495 /* PausableView.swift in Sources */,
+				4C53A27C203D792E0066958C /* PauseButton.swift in Sources */,
 				4C4E3A92200FB73E006A2368 /* SpeakerCardsViewController.swift in Sources */,
 				4CC0FC45201A140800C4F833 /* TeamTimeLabel.swift in Sources */,
 				4C89FD85200D3B2E00EFF992 /* CountdownTimer.swift in Sources */,
 				4C49287220387CE400867019 /* ImageCollectionViewCell.swift in Sources */,
 				4C883F4D2020E00E0083F801 /* ShadowTappableLabel.swift in Sources */,
-				4C883F4F2020EBFB0083F801 /* PlayPauseView.swift in Sources */,
 				4CF85543200D11B0002CB00B /* MainViewController.swift in Sources */,
 				4CF85541200D11B0002CB00B /* AppDelegate.swift in Sources */,
 			);
@@ -773,7 +773,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.eugenwybitul.debatetimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -791,7 +791,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.eugenwybitul.debatetimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

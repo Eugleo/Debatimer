@@ -56,7 +56,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="157.5" height="34.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZK0-qZ-1FR" userLabel="A1 Label" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                    <view tag="1" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZK0-qZ-1FR" userLabel="A1 Label" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
                                                         <rect key="frame" x="177.5" y="0.0" width="157.5" height="34.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
@@ -65,11 +65,11 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mWn-Ic-wOK" userLabel="Second Speakers">
                                                 <rect key="frame" x="0.0" y="49.5" width="335" height="34"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sHz-0j-Op2" userLabel="N2 Label" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                    <view tag="2" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sHz-0j-Op2" userLabel="N2 Label" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="157.5" height="34"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M0k-0l-yAh" userLabel="A2 Label" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                    <view tag="3" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M0k-0l-yAh" userLabel="A2 Label" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
                                                         <rect key="frame" x="177.5" y="0.0" width="157.5" height="34"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
@@ -78,11 +78,11 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="n7v-V8-ZlU" userLabel="Third Speakers">
                                                 <rect key="frame" x="0.0" y="98.5" width="335" height="34.5"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWx-a0-Poy" userLabel="A3 Label" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                    <view tag="4" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWx-a0-Poy" userLabel="A3 Label" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="157.5" height="34.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4NB-js-IHP" userLabel="N3 Label" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
+                                                    <view tag="5" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4NB-js-IHP" userLabel="N3 Label" customClass="SpeechLabel" customModule="Debate_Timer" customModuleProvider="target">
                                                         <rect key="frame" x="177.5" y="0.0" width="157.5" height="34.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>

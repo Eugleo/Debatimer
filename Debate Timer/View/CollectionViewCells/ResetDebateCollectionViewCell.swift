@@ -9,7 +9,9 @@
 import UIKit
 
 class ResetDebateCollectionViewCell: CardesqueCollectionViewCell {
+
     // MARK: Initialization
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 

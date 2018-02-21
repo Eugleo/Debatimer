@@ -9,7 +9,9 @@
 import UIKit
 
 class CardesqueCollectionViewCell: UICollectionViewCell, Reusable {
+    
     // MARK: Public UI Properties
+
     let topLabel: CircledLabel = {
         let l = CircledLabel()
         l.backgroundColor = UIColor(white: 1, alpha: 0.3)
@@ -36,6 +38,7 @@ class CardesqueCollectionViewCell: UICollectionViewCell, Reusable {
     }
 
     // MARK: Initialization
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
@@ -44,6 +47,7 @@ class CardesqueCollectionViewCell: UICollectionViewCell, Reusable {
     }
 
     // MARK: Private functions
+
     private func setupLayer() {
         layer.cornerRadius = 20
         layer.shadowColor = UIColor.black.cgColor
