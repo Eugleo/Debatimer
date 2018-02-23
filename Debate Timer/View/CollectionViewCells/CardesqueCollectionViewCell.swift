@@ -12,32 +12,33 @@ class CardesqueCollectionViewCell: UICollectionViewCell, Reusable {
     
     // MARK: Public UI Properties
 
-    let topLabel: CircledLabel = {
-        let l = CircledLabel()
+    let topLabel = CircledLabel().with { l in
         l.backgroundColor = UIColor(white: 1, alpha: 0.3)
-        return l
-    }()
+    }
 
-    let middleLabel: CircledLabel = {
-        let l = CircledLabel()
+    let middleLabel = CircledLabel().with { l in
         l.backgroundColor = UIColor(white: 1, alpha: 0.3)
         l.text = "⨯"
-        return l
-    }()
+    }
 
-    let bottomLabel: CircledLabel = {
-        let l = CircledLabel()
+    let bottomLabel = CircledLabel().with { l in
         l.backgroundColor = UIColor(white: 1, alpha: 0.3)
-        return l
-    }()
+    }
 
-    let titleLabel = UILabel {
-        $0.textColor = .white
-        $0.font = UIFont.boldSystemFont(ofSize: 35)
-        $0.textAlignment = .center
+    let titleLabel = UILabel().with { l in
+        l.textColor = .white
+        l.font = UIFont.boldSystemFont(ofSize: 35)
+        l.textAlignment = .center
     }
 
     // MARK: Initialization
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        setupLayer()
+        setupConstraints()
+    }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -49,7 +50,7 @@ class CardesqueCollectionViewCell: UICollectionViewCell, Reusable {
     // MARK: Private functions
 
     private func setupLayer() {
-        layer.cornerRadius = 20
+        layer.cornerRadius = Constants.UI.CornerRadius.standart
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = .zero
         layer.shadowRadius = 6

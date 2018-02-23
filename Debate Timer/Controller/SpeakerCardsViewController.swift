@@ -16,7 +16,7 @@ final class SpeakerCardsViewController: UICollectionViewController {
     var debate: Debate!
     var delegate: SpeechCollectionViewCellDelegate?
 
-    private let itemSpacing: CGFloat = 20
+    private let itemSpacing: CGFloat = Constants.UI.Spacing.large
 
     private var collectionViewHeight: CGFloat = 0.0 {
         didSet {
@@ -31,10 +31,16 @@ final class SpeakerCardsViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.clipsToBounds = false 
+
         guard let collectionView = collectionView else { return }
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.decelerationRate = UIScrollViewDecelerationRateFast
         collectionView.contentInset = UIEdgeInsets(top: 0, left: itemSpacing, bottom: 0, right: 40 + 4)
+        collectionView.backgroundColor = .clear
+        
+        collectionView.register(SpeechCollectionViewCell.self)
+        collectionView.register(ResetDebateCollectionViewCell.self)
 
         configureGestureRecognizers()
     }
@@ -225,13 +231,11 @@ extension SpeakerCardsViewController {
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         if indexPath.row < debate.allSpeeches().count {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SpeechCollectionViewCell.reuseIdentifier,
-                                                          for: indexPath) as! SpeechCollectionViewCell
+            let cell: SpeechCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             cell.viewModel = SpeechCollectionViewCellViewModel(speech: debate.allSpeeches()[indexPath.row])
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResetDebateCollectionViewCell.reuseIdentifier,
-                                                          for: indexPath) as! ResetDebateCollectionViewCell
+            let cell: ResetDebateCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             return cell
         }
     }

@@ -18,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Reviewer.incrementRunCount()
         application.isIdleTimerDisabled = true
+
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = TestViewController()
+        window?.makeKeyAndVisible()
+
         return true
     }
 }

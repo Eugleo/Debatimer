@@ -8,20 +8,20 @@
 
 import UIKit
 
-class ImageCollectionViewCell: UICollectionViewCell {
-    let titleLabel = UILabel { l in
+class ImageCollectionViewCell: UICollectionViewCell, Reusable {
+    let titleLabel = UILabel().with { l in
         l.font = UIFont.systemFont(ofSize: 24, weight: .black)
         l.textColor = UIColor(named: "Affirmative")
         l.textAlignment = .center
     }
 
-    let descriptionLabel = UILabel { l in
+    let descriptionLabel = UILabel().with { l in
         l.font = UIFont.preferredFont(forTextStyle: .body)
         l.numberOfLines = 0
         l.textAlignment = .center
     }
 
-    let imageView = UIImageView { i in
+    let imageView = UIImageView().with { i in
         i.contentMode = .scaleAspectFit
     }
 

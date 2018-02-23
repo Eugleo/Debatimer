@@ -26,7 +26,7 @@ class CircledLabel: UIView {
 
     // MARK: Private UI properties
 
-    private let titleLabel = UILabel { l in
+    private let titleLabel = UILabel().with { l in
         l.textColor = .white
         l.font = UIFont.boldSystemFont(ofSize: 15)
         l.textAlignment = .center

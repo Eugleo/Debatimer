@@ -12,22 +12,22 @@ protocol EndingCollectionViewCellDelegate {
     func buttonTapped()
 }
 
-class EndingCollectionViewCell: UICollectionViewCell {
+class EndingCollectionViewCell: UICollectionViewCell, Reusable {
     var delegate: EndingCollectionViewCellDelegate?
 
-    let titleLabel = UILabel { l in
+    let titleLabel = UILabel().with { l in
         l.font = UIFont.systemFont(ofSize: 24, weight: .black)
         l.textColor = UIColor(named: "Affirmative")
         l.textAlignment = .center
     }
 
-    let descriptionLabel = UILabel { l in
+    let descriptionLabel = UILabel().with { l in
         l.font = UIFont.preferredFont(forTextStyle: .body)
         l.numberOfLines = 0
         l.textAlignment = .center
     }
 
-    private let button = UIButton { b in
+    private let button = UIButton().with { b in
         b.layer.cornerRadius = 15
         b.contentEdgeInsets = UIEdgeInsets(top: 25, left: 15, bottom: 25, right: 15)
         b.setTitle("Ukončit prohlídku", for: .normal)

@@ -13,10 +13,15 @@ struct Debate {
     // MARK: Properties
 
     private var speeches: [Speech]
-    private var currentIndex = 0
     private var affirmativeTimer = CountdownTimer()
     private var negativeTimer = CountdownTimer()
     private var speechTimer = CountdownTimer()
+
+    enum State {
+        case speech(Int, SpeakerID), cross(Int, SpeakerID, SpeakerID), preparation(Team), empty
+    }
+
+    private(set) var state: State = .empty
 
     // MARK: Initialization
     // An implementation with defaults according to classic debate rules: A1, X, N1, X, A2, X, N2, X, A3, N3
@@ -44,19 +49,37 @@ struct Debate {
     // MARK: Private functions
 
     mutating func runPrepTime() {
-        let lastSpeech = speeches[currentIndex]
+        switch state {
+        case .speech(let i, _) where i == speeches.count - 1,
+             .cross(let i, _, _) where i == speeches.count - 1:
 
-        if (lastSpeech.speaker1.team() == .affirmative && lastSpeech.isCross) ||
-            (lastSpeech.speaker1.team() == .negative && !lastSpeech.isCross) {
-
-            affirmativeTimer.unpause()
-        } else {
-            negativeTimer.unpause()
-        }
-
-        if currentIndex == speeches.count - 1 {
+            state = .empty
             affirmativeTimer.pause()
             negativeTimer.pause()
+            return
+        default:
+            break
+        }
+
+        switch state {
+        case .speech(_, let speaker):
+            if speaker.team() == .affirmative {
+                state = .preparation(.negative)
+                negativeTimer.unpause()
+            } else {
+                state = .preparation(.affirmative)
+                affirmativeTimer.unpause()
+            }
+        case .cross(_, let speaker, _):
+            if speaker.team() == .affirmative {
+                state = .preparation(.affirmative)
+                affirmativeTimer.unpause()
+            } else {
+                state = .preparation(.negative)
+                negativeTimer.unpause()
+            }
+        default:
+            return
         }
     }
 
@@ -72,37 +95,29 @@ struct Debate {
             .reduce([]) { acc, s in acc.contains(s) ? acc : acc + [s] }
     }
 
-    func currentSpeaker() -> SpeakerID? {
-        guard let currentSpeech = self.currentSpeech() else { return nil }
-
-        return currentSpeech.speaker1
-    }
-
-    func currentSpeech() -> Speech? {
-        guard speechTimer.isRunning() else { return nil }
-
-        return speeches[currentIndex]
-    }
-
-    func currentSpeechIndex() -> Int? {
-        guard speechTimer.isRunning() else { return nil }
-
-        return currentIndex
-    }
-
     func currentSpeechTimeLeft() -> TimeInterval? {
-        guard speechTimer.isRunning() else { return nil }
-
-        return speechTimer.timeLeft
+        switch state {
+        case .speech(_, _), .cross(_, _, _):
+            return speechTimer.timeLeft
+        default:
+            return nil
+        }
     }
 
     mutating func startSpeech(atIndex index: Int) {
         guard index < speeches.count else { return }
 
-        currentIndex = index
         affirmativeTimer.pause()
         negativeTimer.pause()
-        speechTimer.countdown(startingAt: speeches[currentIndex].timeLimit)
+
+        let currentSpeech = speeches[index]
+        speechTimer.countdown(startingAt: currentSpeech.timeLimit)
+
+        if !currentSpeech.isCross {
+            state = .speech(index, currentSpeech.speaker1)
+        } else {
+            state = .cross(index, currentSpeech.speaker1, currentSpeech.speaker2!)
+        }
     }
 
     mutating func stopAndMeasureCurrentSpeech() -> TimeInterval {
@@ -113,21 +128,17 @@ struct Debate {
         return measurement
     }
 
-    func teamPreparing() -> Team? {
-        if affirmativeTimer.isRunning() {
-            return .affirmative
-        } else if negativeTimer.isRunning() {
-            return .negative
-        } else {
-            return nil
-        }
-    }
-
     func prepTimeLeft() -> (affirmative: TimeInterval, negative: TimeInterval) {
         return (affirmative: affirmativeTimer.timeLeft, negativeTimer.timeLeft)
     }
 
-    mutating func unpauseTimer(forTeam team: Team) {
+    func isTeamTimerRunning() -> Bool {
+        return affirmativeTimer.isRunning() || negativeTimer.isRunning()
+    }
+
+    mutating func unpauseTeamTimer() {
+        guard case let .preparation(team) = state else { return }
+
         if team == .affirmative {
             affirmativeTimer.unpause()
             negativeTimer.pause()
@@ -137,7 +148,9 @@ struct Debate {
         }
     }
 
-    mutating func pauseTimer(for team: Team) {
+    mutating func pauseTeamTimer() {
+        guard case let .preparation(team) = state else { return }
+        
         if team == .affirmative {
             affirmativeTimer.pause()
         } else {

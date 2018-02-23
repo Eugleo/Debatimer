@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SpeechLabelViewModel {
+struct SpeakerLabelViewModel {
 
     // MARK: Public properties
 

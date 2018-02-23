@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PauseButtonDelegate {
-    func didTapPauseButton()
+    func pauseButtonTapped(sender: PauseButton)
 }
 
 class PauseButton: UIView {
@@ -17,7 +17,7 @@ class PauseButton: UIView {
     // MARK: Public properties
 
     var delegate: PauseButtonDelegate?
-    var team: Team? {
+    var bckgrndColor: UIColor = .clear {
         didSet {
             updateBackgroundColor()
         }
@@ -41,6 +41,15 @@ class PauseButton: UIView {
 
     // MARK: Initialization
 
+    init() {
+        super.init(frame: .zero)
+
+        backgroundColor = .clear
+
+        setupConstraints()
+        setupGestureRecognizers()
+    }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
@@ -48,7 +57,6 @@ class PauseButton: UIView {
 
         setupConstraints()
         setupGestureRecognizers()
-        playPauseView.isPaused = true
     }
 
     // MARK: Private functions
@@ -71,22 +79,15 @@ class PauseButton: UIView {
     }
 
     private func updateBackgroundColor() {
-        guard isEnabled else {
-            teamLabel.backgroundColor = UIColor(named: "NeutralGray")
-            return
-        }
-
-        guard let team = team else { return }
-        switch team {
-        case .affirmative:
-            teamLabel.backgroundColor = UIColor(named: "Affirmative")
-        case .negative:
-            teamLabel.backgroundColor = UIColor(named: "Negative")
+        if isEnabled {
+            teamLabel.backgroundColor = bckgrndColor
+        } else {
+            teamLabel.backgroundColor = Constants.UI.Colors.gray
         }
     }
 
     @objc private func didTap() {
-        delegate?.didTapPauseButton()
+        delegate?.pauseButtonTapped(sender: self)
     }
 
     // MARK: Public functions

@@ -16,7 +16,7 @@ protocol ShadowTappableLabelDelegate {
 class ShadowTappableLabel: UIView {
     var delegate: ShadowTappableLabelDelegate?
 
-    private let shadowView = UIView { v in
+    private let shadowView = UIView().with { v in
         v.frame = .zero
         v.layer.shadowRadius = 8
         v.layer.shadowColor = UIColor.black.cgColor
@@ -25,7 +25,7 @@ class ShadowTappableLabel: UIView {
         v.clipsToBounds = false
     }
 
-    private let backgroundView = UIView { v in
+    private let backgroundView = UIView().with { v in
         v.layer.cornerRadius = 15
         v.backgroundColor = .white
         v.clipsToBounds = true
@@ -56,6 +56,23 @@ class ShadowTappableLabel: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+
+        backgroundColor = .clear
+
+        insertSubview(shadowView, at: 0)
+        Constraints.init(for: shadowView) { v in
+            v.edges.pinToSuperview()
+        }
+        insertSubview(backgroundView, at: 1)
+        Constraints.init(for: backgroundView) { v in
+            v.edges.pinToSuperview()
+        }
+
+        configureGestureRecognizers()
+    }
+
+    init() {
+        super.init(frame: .zero)
 
         backgroundColor = .clear
 

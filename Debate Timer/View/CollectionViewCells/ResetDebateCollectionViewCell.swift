@@ -11,10 +11,20 @@ import UIKit
 class ResetDebateCollectionViewCell: CardesqueCollectionViewCell {
 
     // MARK: Initialization
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setupView()
+    }
 
+    // MARK: Private functions
+
+    private func setupView() {
         topLabel.text = "↻"
         topLabel.font = UIFont.boldSystemFont(ofSize: 25)
         titleLabel.text = "Začít znovu"

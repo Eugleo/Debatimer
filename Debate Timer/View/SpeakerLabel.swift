@@ -9,7 +9,7 @@
 import UIKit
 import Yalta
 
-final class SpeechLabel: ShadowTappableLabel {
+final class SpeakerLabel: ShadowTappableLabel {
     enum State {
         case empty, hasSpeech, hasCrossQuestions, hasSpeechAndCrossQuestions
     }
@@ -67,6 +67,47 @@ final class SpeechLabel: ShadowTappableLabel {
             state == .hasSpeechAndCrossQuestions && speechLabelAnimated && crossLabelAnimated {
             speakerLabel.layer.removeAllAnimations()
         }
+    }
+
+    override init() {
+        super.init()
+
+        let insets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        addSubview(superStackView) {
+            $0.edges.pinToSuperviewMargins(insets: insets, relation: .equal)
+        }
+        superStackView.addArrangedSubview(speakerStackView)
+
+        speakerStackView.insertArrangedSubview(spacingView1, at: 0)
+        speakerStackView.insertArrangedSubview(speakerLabel, at: 1)
+        speakerStackView.insertArrangedSubview(spacingView2, at: 2)
+
+        crossQuestionsStackView.insertArrangedSubview(crossQuestionsLabel, at: 0)
+        crossQuestionsStackView.insertArrangedSubview(crossQuestionsTimeLabel, at: 1)
+        crossQuestionsLabel.backgroundColor = UIColor(named: "NeutralGray")
+        crossQuestionsLabel.text = "⨯"
+
+        Constraints(for: spacingView1, spacingView2) { (sv1, sv2) in
+            sv1.width.match(sv2.width)
+            sv1.height.match(sv2.height)
+            sv1.height.set(2)
+        }
+
+        Constraints(for: self.speakerLabel) { l in
+            l.height.set(30)
+            l.width.set(30)
+        }
+        speakerLabel.text = "A"
+
+        clipsToBounds = false
+        backgroundColor = .clear
+
+        // Add the mockup views to the view
+        addSubview(mockupSuperStackView) {
+            $0.edges.pinToSuperviewMargins(insets: insets, relation: .equal)
+        }
+        mockupSuperStackView.addArrangedSubview(mockupLabel1)
+        mockupSuperStackView.addArrangedSubview(mockupLabel2)
     }
 
     private func animateResetting() {
@@ -141,7 +182,7 @@ final class SpeechLabel: ShadowTappableLabel {
     private var bcg: UIColor?
 
 
-    public var viewModel: SpeechLabelViewModel? {
+    public var viewModel: SpeakerLabelViewModel? {
         didSet {
             guard let viewModel = viewModel else {
                 state = .empty
@@ -185,19 +226,19 @@ final class SpeechLabel: ShadowTappableLabel {
     private let speakerLabel = CircledLabel()
     private let crossQuestionsLabel = CircledLabel()
 
-    private let crossQuestionsTimeLabel = UILabel {
+    private let crossQuestionsTimeLabel = UILabel().with {
         $0.textColor = .lightGray
         $0.textAlignment = .center
         $0.font = UIFont.boldSystemFont(ofSize: 26)
     }
 
-    private let speechTimeLabel = UILabel {
+    private let speechTimeLabel = UILabel().with {
         $0.textColor = .darkGray
         $0.textAlignment = .center
         $0.font = UIFont.boldSystemFont(ofSize: 26)
     }
 
-    private let speakerStackView = UIStackView {
+    private let speakerStackView = UIStackView().with {
         $0.alignment = .center
         $0.distribution = .fill
         $0.axis = .horizontal
@@ -206,7 +247,7 @@ final class SpeechLabel: ShadowTappableLabel {
     private let spacingView1 = UIView()
     private let spacingView2 = UIView()
 
-    private let superStackView = UIStackView {
+    private let superStackView = UIStackView().with {
         $0.alignment = .fill
         $0.distribution = .equalSpacing
         $0.axis = .vertical
@@ -214,7 +255,7 @@ final class SpeechLabel: ShadowTappableLabel {
         $0.isUserInteractionEnabled = false
     }
 
-    private let crossQuestionsStackView = UIStackView {
+    private let crossQuestionsStackView = UIStackView().with {
         $0.alignment = .center
         $0.distribution = .fill
         $0.axis = .horizontal
@@ -225,7 +266,7 @@ final class SpeechLabel: ShadowTappableLabel {
 
     // Mockup views, so that the cell has the correct height even if empty
 
-    private let mockupSuperStackView = UIStackView {
+    private let mockupSuperStackView = UIStackView().with {
         $0.alignment = .fill
         $0.distribution = .fillEqually
         $0.axis = .vertical
@@ -233,12 +274,12 @@ final class SpeechLabel: ShadowTappableLabel {
         $0.isUserInteractionEnabled = false
     }
 
-    private let mockupLabel1 = UILabel { l in
+    private let mockupLabel1 = UILabel().with { l in
         l.text = " "
         l.font = UIFont.boldSystemFont(ofSize: 26)
     }
 
-    private let mockupLabel2 = UILabel { l in
+    private let mockupLabel2 = UILabel().with { l in
         l.text = " "
         l.font = UIFont.boldSystemFont(ofSize: 26)
     }

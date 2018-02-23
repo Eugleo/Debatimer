@@ -8,14 +8,14 @@
 
 import UIKit
 
-class IntroCollectionViewCell: UICollectionViewCell {
-    let titleLabel = UILabel { l in
+class IntroCollectionViewCell: UICollectionViewCell, Reusable {
+    let titleLabel = UILabel().with { l in
         l.font = UIFont.systemFont(ofSize: 24, weight: .black)
         l.textColor = UIColor(named: "Affirmative")
         l.textAlignment = .center
     }
 
-    let descriptionLabel = UILabel { l in
+    let descriptionLabel = UILabel().with { l in
         l.font = UIFont.preferredFont(forTextStyle: .body)
         l.numberOfLines = 0
         l.textAlignment = .center
