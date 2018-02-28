@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.isIdleTimerDisabled = true
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = TestViewController()
+        window?.rootViewController = DebateViewController()
         window?.makeKeyAndVisible()
 
         return true

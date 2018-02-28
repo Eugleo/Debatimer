@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import DeviceKit
 
 class TeamTimeViewController: UIViewController {
 
-     // MARK: Private UI properties
+     // MARK: - Private UI properties
 
     private let stackView = UIStackView().with { v in
         v.alignment = .fill
@@ -31,14 +32,14 @@ class TeamTimeViewController: UIViewController {
         b.togglePaused(to: true)
     }
 
-    // MARK: Lifecycle
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
     }
 
-    // MARK: Private functions
+    // MARK: - Private functions
 
     private func setupViews() {
         // Main stack view
@@ -70,7 +71,7 @@ class TeamTimeViewController: UIViewController {
         // Pause button
         view.addSubview(pauseButton) { b in
             b.height.match(b.width)
-            b.height.set(40)
+            b.height.set(Device().isPhone ? 40 : 50)
             b.top.align(with: stackView.al.top)
             b.bottom.align(with: stackView.al.bottom)
             b.centerX.align(with: affirmativeTimeLabel.al.trailing)
@@ -79,9 +80,14 @@ class TeamTimeViewController: UIViewController {
         if let parent = parent as? PauseButtonDelegate {
             pauseButton.delegate = parent
         }
+
+        if Device().isPad {
+            affirmativeTimeLabel.font = UIFont.boldSystemFont(ofSize: 28)
+            negativeTimeLabel.font = UIFont.boldSystemFont(ofSize: 28)
+        }
     }
 
-    // MARK: Public functions
+    // MARK: - Public functions
 
     func setTimeLeft(_ time: TimeInterval, forTeam team: Team) {
         switch team {
@@ -93,9 +99,9 @@ class TeamTimeViewController: UIViewController {
     }
 
     func setCurrentTeam(to team: Team) {
-        pauseButton.bckgrndColor = team == .affirmative ?
-            Constants.UI.Colors.affirmative :
-            Constants.UI.Colors.negative
+        pauseButton.gradientColors = team == .affirmative ?
+            Constants.UI.GradientColors.affirmative :
+            Constants.UI.GradientColors.negative
     }
 
     func setEnabled(to state: Bool) {

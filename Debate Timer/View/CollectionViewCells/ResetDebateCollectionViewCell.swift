@@ -10,7 +10,7 @@ import UIKit
 
 class ResetDebateCollectionViewCell: CardesqueCollectionViewCell {
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,12 +22,12 @@ class ResetDebateCollectionViewCell: CardesqueCollectionViewCell {
         setupView()
     }
 
-    // MARK: Private functions
+    // MARK: - Private functions
 
     private func setupView() {
         topLabel.text = "↻"
         topLabel.font = UIFont.boldSystemFont(ofSize: 25)
-        titleLabel.text = "Začít znovu"
-        backgroundColor = UIColor(named: "NeutralGray")
+        titleLabel.text = "Vymazat"
+        gradientColors = Constants.UI.GradientColors.gray
     }
 }

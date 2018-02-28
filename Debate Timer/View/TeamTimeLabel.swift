@@ -10,25 +10,30 @@ import UIKit
 
 final class TeamTimeLabel: ShadowTappableLabel {
 
-    // MARK: Public properties
+    // MARK: - Public properties
 
-    var timeLeft: TimeInterval? {
+    var font: UIFont = UIFont.boldSystemFont(ofSize: 22) {
         didSet {
-            guard let timeLeft = timeLeft else { return }
-
-            timeLeftLabel.text = formatTimeInterval(timeLeft)
+            timeLeftLabel.font = font
         }
     }
 
-    // MARK: Private UI properties
+    var timeLeft: TimeInterval? {
+        didSet {
+            guard let timeLeft = timeLeft, round(timeLeft) >= 0 else { return }
+            timeLeftLabel.text = formatTimeInterval(round(timeLeft))
+        }
+    }
+
+    // MARK: - Private UI properties
 
     private let timeLeftLabel = UILabel().with { l in
         l.textColor = .darkGray
         l.textAlignment = .center
-        l.font = UIFont.boldSystemFont(ofSize: 26)
+        l.font = UIFont.boldSystemFont(ofSize: 22)
     }
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     override init() {
         super.init()
@@ -39,7 +44,7 @@ final class TeamTimeLabel: ShadowTappableLabel {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: Private functions
+    // MARK: - Private functions
 
     private func setupViews() {
         layer.cornerRadius = Constants.UI.CornerRadius.standart

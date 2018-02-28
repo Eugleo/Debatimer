@@ -11,45 +11,38 @@ import UIKit
 
 struct SpeechCollectionViewCellViewModel {
 
-    // MARK: Public properties
+    // MARK: - Public properties
 
-    public var timeLeftStr: String? {
-        return formatTimeInterval(timeLeft ?? speech.timeLimit)
+    public var timeLimit: String {
+        return Format.formatTimeInterval(speech.timeLimit)
     }
-    private var timeLeft: TimeInterval?
+
     public var team: Team {
         return speech.speaker1.team()
     }
+
     public var speaker1Name: String {
         return speech.speaker1.rawValue
     }
+
     public var speaker2Name: String? {
         guard let speaker2 = speech.speaker2 else { return nil }
         return speaker2.rawValue
     }
-    public var backgroundColor: UIColor {
+
+    public var backgroundGradient: [UIColor] {
         return team == .affirmative ?
-            UIColor(named: "Affirmative")! :
-            UIColor(named: "Negative")!
+            Constants.UI.GradientColors.affirmative :
+            Constants.UI.GradientColors.negative
     }
 
-    // MARK: Initialization
+    // MARK: - Private properties
 
     private let speech: Speech
 
-    // MARK: Private properties
+    // MARK: - Initialization
 
-    init(speech: Speech, timeLeft: TimeInterval? = nil) {
+    init(speech: Speech) {
         self.speech = speech
-        self.timeLeft = timeLeft
-    }
-
-    // MARK: Private functions
-
-    private func formatTimeInterval(_ interval: TimeInterval) -> String {
-        let formatter = DateComponentsFormatter()
-        formatter.zeroFormattingBehavior = .pad
-        formatter.allowedUnits = [.minute, .second]
-        return formatter.string(from: interval)!
     }
 }

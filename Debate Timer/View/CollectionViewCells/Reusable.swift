@@ -24,13 +24,13 @@ extension UICollectionView {
     }
 }
 
-// MARK: Protocol definition
+// MARK: - Protocol definition
 
 protocol Reusable {
     static var reuseIdentifier: String { get }
 }
 
-// MARK: Default implementation
+// MARK: - Default implementation
 
 extension Reusable {
     static var reuseIdentifier: String {
@@ -38,7 +38,7 @@ extension Reusable {
     }
 }
 
-// MARK: UIStackView extension
+// MARK: - UIStackView extension
 
 public extension UIStackView {
     func insertArrangedSubviews(_ subviews: [UIView]) {

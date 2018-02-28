@@ -11,13 +11,13 @@ import Yalta
 
 class SpeakerLabelsViewController: UIViewController {
 
-    // MARK: Private UI properties
+    // MARK: - Private UI properties
 
     private let stackView = UIStackView().with { v in
-        v.alignment = .center
+        v.alignment = .fill
         v.axis = .horizontal
         v.distribution = .fillEqually
-        v.spacing = Constants.UI.Spacing.medium
+        v.spacing = Constants.UI.Spacing.large
     }
 
     private let affirmativeSpeakerLabelStack: SpeakerLabelStackView
@@ -35,7 +35,7 @@ class SpeakerLabelsViewController: UIViewController {
 
     private var speakerLabels: [SpeakerLabel]
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     init(vm1: SpeakerLabelViewModel,
          vm2: SpeakerLabelViewModel,
@@ -62,7 +62,7 @@ class SpeakerLabelsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: Lifecycle
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,7 @@ class SpeakerLabelsViewController: UIViewController {
         setupViews()
     }
 
-    // MARK: Private functions
+    // MARK: - Private functions
 
     private func setupViews() {
         view.addSubview(stackView) { v in
@@ -99,7 +99,7 @@ class SpeakerLabelsViewController: UIViewController {
         }
     }
 
-    // MARK: Public functions
+    // MARK: - Public functions
 
     func setActivated(ofLabelWithSpeaker speaker: SpeakerID, to state: Bool) {
         let label = speakerLabels.first {$0.viewModel?.speaker.id == speaker}!

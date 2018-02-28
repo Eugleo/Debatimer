@@ -10,7 +10,7 @@ import Foundation
 
 struct SpeakerLabelViewModel {
 
-    // MARK: Public properties
+    // MARK: - Public properties
 
     var speechTime: String? {
         guard let ti = speaker.speechTime else { return nil }
@@ -32,13 +32,13 @@ struct SpeakerLabelViewModel {
 
     let speaker: Speaker
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     init(speaker: Speaker) {
         self.speaker = speaker
     }
 
-    // MARK: Private functions
+    // MARK: - Private functions
 
     private func formatTimeInterval(_ interval: TimeInterval) -> String {
         let formatter = DateComponentsFormatter()

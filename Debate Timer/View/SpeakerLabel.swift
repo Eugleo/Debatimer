@@ -8,6 +8,7 @@
 
 import UIKit
 import Yalta
+import DeviceKit
 
 final class SpeakerLabel: ShadowTappableLabel {
     enum State {
@@ -44,29 +45,11 @@ final class SpeakerLabel: ShadowTappableLabel {
     private var activated = false
     
     func activate() {
-        if !activated {
-            UIView.animate(withDuration: 1,
-                           delay: 0.2,
-                           usingSpringWithDamping: 1,
-                           initialSpringVelocity: 0,
-                           options: [.repeat, .autoreverse, .curveEaseInOut],
-                           animations: {
-                            self.speakerLabel.backgroundColor = UIColor(named: "NeutralGray")
-                            self.speakerLabel.backgroundColor = self.bcg!
-            },
-                           completion: nil)
-            activated = true
-        }
+
     }
 
     func deactivate() {
-        activated = false
 
-        if state == .hasSpeech && speechLabelAnimated ||
-            state == .hasCrossQuestions && crossLabelAnimated ||
-            state == .hasSpeechAndCrossQuestions && speechLabelAnimated && crossLabelAnimated {
-            speakerLabel.layer.removeAllAnimations()
-        }
     }
 
     override init() {
@@ -94,13 +77,24 @@ final class SpeakerLabel: ShadowTappableLabel {
         }
 
         Constraints(for: self.speakerLabel) { l in
-            l.height.set(30)
-            l.width.set(30)
+            if Device().isPad {
+                l.height.set(45)
+                l.width.set(45)
+            } else {
+                l.height.set(30)
+                l.width.set(30)
+            }
         }
         speakerLabel.text = "A"
 
         clipsToBounds = false
         backgroundColor = .clear
+
+        if Device().isPad {
+            setupViewsForIPad()
+        } else {
+            setupViewsForIPhone()
+        }
 
         // Add the mockup views to the view
         addSubview(mockupSuperStackView) {
@@ -108,6 +102,26 @@ final class SpeakerLabel: ShadowTappableLabel {
         }
         mockupSuperStackView.addArrangedSubview(mockupLabel1)
         mockupSuperStackView.addArrangedSubview(mockupLabel2)
+    }
+
+    private func setupViewsForIPad() {
+        speakerLabel.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+        crossQuestionsLabel.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+
+        speechTimeLabel.font = UIFont.boldSystemFont(ofSize: 28)
+        crossQuestionsTimeLabel.font = UIFont.boldSystemFont(ofSize: 28)
+
+        Constraints(for: self.speakerLabel) { l in
+            l.height.set(45)
+            l.width.set(45)
+        }
+    }
+
+    private func setupViewsForIPhone() {
+        Constraints(for: self.speakerLabel) { l in
+            l.height.set(30)
+            l.width.set(30)
+        }
     }
 
     private func animateResetting() {
@@ -170,8 +184,8 @@ final class SpeakerLabel: ShadowTappableLabel {
                        animations: {
                         self.superStackView.addArrangedSubview(self.crossQuestionsStackView)
                         Constraints(for: self.crossQuestionsLabel) { l in
-                            l.height.set(30)
-                            l.width.set(30)
+                            l.height.set(Device().isPhone ? 30 : 45)
+                            l.width.set(Device().isPhone ? 30 : 45)
                         }
                         self.layoutIfNeeded()
                         self.crossQuestionsStackView.alpha = 1
@@ -229,13 +243,13 @@ final class SpeakerLabel: ShadowTappableLabel {
     private let crossQuestionsTimeLabel = UILabel().with {
         $0.textColor = .lightGray
         $0.textAlignment = .center
-        $0.font = UIFont.boldSystemFont(ofSize: 26)
+        $0.font = UIFont.boldSystemFont(ofSize: 22)
     }
 
     private let speechTimeLabel = UILabel().with {
         $0.textColor = .darkGray
         $0.textAlignment = .center
-        $0.font = UIFont.boldSystemFont(ofSize: 26)
+        $0.font = UIFont.boldSystemFont(ofSize: 22)
     }
 
     private let speakerStackView = UIStackView().with {

@@ -10,9 +10,9 @@ import UIKit
 
 class CircledLabel: UIView {
 
-    // MARK: Public UI properties
+    // MARK: - Public UI properties
 
-    var font: UIFont = UIFont.boldSystemFont(ofSize: 15) {
+    var font: UIFont = UIFont.systemFont(ofSize: 17, weight: .semibold) {
         didSet {
             titleLabel.font = font
         }
@@ -24,16 +24,16 @@ class CircledLabel: UIView {
         }
     }
 
-    // MARK: Private UI properties
+    // MARK: - Private UI properties
 
     private let titleLabel = UILabel().with { l in
         l.textColor = .white
-        l.font = UIFont.boldSystemFont(ofSize: 15)
+        l.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         l.textAlignment = .center
         l.layer.masksToBounds = true
     }
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,17 +42,17 @@ class CircledLabel: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupTitleLabel()
+        fatalError("Not yet implemented init(coder:)")
     }
 
-    // MARK: Overrides
+    // MARK: - Overrides
 
     override func layoutSubviews() {
-        super.layoutSubviews()
         layer.cornerRadius = frame.height / 2
+        super.layoutSubviews()
     }
 
-    // MARK: Private functions
+    // MARK: - Private functions
     
     private func setupTitleLabel() {
         addSubview(titleLabel) { l in

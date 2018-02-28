@@ -10,7 +10,7 @@ import UIKit
 
 class OnboardingViewController: UICollectionViewController {
 
-    // MARK: Public properties
+    // MARK: - Public properties
 
     var onboardingCardViewModels: [OnboardingCardViewModel] = [] {
         didSet {
@@ -18,7 +18,7 @@ class OnboardingViewController: UICollectionViewController {
         }
     }
 
-    // MARK: Private UI properties
+    // MARK: - Private UI properties
 
     private let pageControl = UIPageControl().with { p in
         p.tintColor = Constants.UI.Colors.gray
@@ -35,7 +35,7 @@ class OnboardingViewController: UICollectionViewController {
         b.layer.cornerRadius = Constants.UI.CornerRadius.medium
     }
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     init(collectionViewLayout: UICollectionViewLayout, onboardingCardViewModels: [OnboardingCardViewModel]) {
         self.onboardingCardViewModels = onboardingCardViewModels
@@ -47,7 +47,7 @@ class OnboardingViewController: UICollectionViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: Lifecycle
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +58,7 @@ class OnboardingViewController: UICollectionViewController {
         setupConstraints()
     }
 
-    // MARK: Private functions
+    // MARK: - Private functions
 
     private func setupCollectionView() {
         guard let collectionView = collectionView else { return }

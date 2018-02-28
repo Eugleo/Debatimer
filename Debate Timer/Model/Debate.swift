@@ -10,7 +10,7 @@ import Foundation
 
 struct Debate {
 
-    // MARK: Properties
+    // MARK: - Properties
 
     private var speeches: [Speech]
     private var affirmativeTimer = CountdownTimer()
@@ -23,7 +23,7 @@ struct Debate {
 
     private(set) var state: State = .empty
 
-    // MARK: Initialization
+    // MARK: - Initialization
     // An implementation with defaults according to classic debate rules: A1, X, N1, X, A2, X, N2, X, A3, N3
     init() {
         let crossTimeLimit: TimeInterval = 180
@@ -46,7 +46,7 @@ struct Debate {
         affirmativeTimer.pause()
     }
 
-    // MARK: Private functions
+    // MARK: - Private functions
 
     mutating func runPrepTime() {
         switch state {
@@ -83,7 +83,7 @@ struct Debate {
         }
     }
 
-    // MARK: Public functions
+    // MARK: - Public functions
 
     func allSpeeches() -> [Speech] {
         return speeches

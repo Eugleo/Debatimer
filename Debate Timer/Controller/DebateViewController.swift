@@ -8,14 +8,15 @@
 
 import UIKit
 import Yalta
+import DeviceKit
 
 protocol SpeakerCardCollectionViewControllerDelegate {
     func showSpeaker(atIndex index: Int)
 }
 
-class TestViewController: UIViewController {
+class DebateViewController: UIViewController {
 
-    // MARK: Private properties
+    // MARK: - Private properties
 
     private var uiTimer: Timer?
     private var speakers: [SpeakerID: Speaker] = [:]
@@ -24,9 +25,9 @@ class TestViewController: UIViewController {
 
     private let speakerLabelsVC: SpeakerLabelsViewController
     private let teamTimeVC: TeamTimeViewController
-    private let speechesCollectionVC: SpeakerCardsViewController
+    private let speechesCollectionVC: SpeechesCollectionViewController
 
-    // MARK: Private UI properties
+    // MARK: - Private UI properties
 
     private let superStackView = UIStackView().with { v in
         v.alignment = .center
@@ -35,7 +36,7 @@ class TestViewController: UIViewController {
         v.spacing = Constants.UI.Spacing.medium
     }
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     init() {
         for speakerID in debate.allSpeakers() {
@@ -49,19 +50,20 @@ class TestViewController: UIViewController {
         }
 
         speakerLabelsVC = SpeakerLabelsViewController(vm1: spVms[0],
-                                                                  vm2: spVms[1],
-                                                                  vm3: spVms[2],
-                                                                  vm4: spVms[3],
-                                                                  vm5: spVms[4],
-                                                                  vm6: spVms[5])
+                                                      vm2: spVms[1],
+                                                      vm3: spVms[2],
+                                                      vm4: spVms[3],
+                                                      vm5: spVms[4],
+                                                      vm6: spVms[5])
 
         teamTimeVC = TeamTimeViewController()
 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        speechesCollectionVC = SpeakerCardsViewController(collectionViewLayout: layout)
-        speechesCollectionVC.debate = debate
+        layout.minimumLineSpacing = Constants.UI.Spacing.large
+        speechesCollectionVC = SpeechesCollectionViewController(collectionViewLayout: layout,
+                                                          speeches: debate.allSpeeches())
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -70,7 +72,7 @@ class TestViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: Lifecycle
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +84,7 @@ class TestViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if shouldShowOnboard {
+        if shouldShowOnboard && Reviewer.getRunCount() < 1 {
             showOnboarding()
         }
     }
@@ -97,7 +99,7 @@ class TestViewController: UIViewController {
         uiTimer?.invalidate()
     }
 
-    // MARK: Private functions
+    // MARK: - Private functions
 
     private func setupLifecycleNotificaitions() {
         NotificationCenter.default.addObserver(self,
@@ -109,18 +111,27 @@ class TestViewController: UIViewController {
     }
 
     private func setupViews() {
-        teamTimeVC.setEnabled(to: false)
         speechesCollectionVC.delegate = self
         view.backgroundColor = Constants.UI.Colors.almostWhite
 
         view.addSubview(superStackView) { v in
-            let insets = UIEdgeInsets(top: 10, left: 0, bottom: 15, right: 0)
+            let insets = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
             v.edges.pinToSafeArea(of: self, insets: insets, relation: .equal)
         }
 
-        addViewControllerToStackView(speakerLabelsVC, atIndex: 0, widthOffset: -Constants.UI.Spacing.medium * 2)
-        addViewControllerToStackView(teamTimeVC, atIndex: 1, widthOffset: -Constants.UI.Spacing.medium * 2)
+        let prepTimeLeft = debate.prepTimeLeft()
+        teamTimeVC.setTimeLeft(prepTimeLeft.negative, forTeam: .negative)
+        teamTimeVC.setTimeLeft(prepTimeLeft.affirmative, forTeam: .affirmative)
+
+        addViewControllerToStackView(speakerLabelsVC, atIndex: 0, widthOffset: -Constants.UI.Spacing.large * 2)
+        addViewControllerToStackView(teamTimeVC, atIndex: 1, widthOffset: -Constants.UI.Spacing.large * 2)
         addViewControllerToStackView(speechesCollectionVC, atIndex: 2, widthOffset: 0)
+
+        guard Device().isPad else { return }
+
+        Constraints(for: speechesCollectionVC.view) { v in
+            v.height.set(view.frame.height / 2.5, relation: .lessThanOrEqual)
+        }
     }
 
     private func addViewControllerToStackView(_ vc: UIViewController, atIndex index: Int, widthOffset offset: CGFloat) {
@@ -137,11 +148,17 @@ class TestViewController: UIViewController {
         case .speech(let i, _), .cross(let i, _, _):
             let currentTimeLeft = debate.currentSpeechTimeLeft()!
             speechesCollectionVC.refreshCell(atIndex: i, withTimeLeft: currentTimeLeft)
-        default:
+        case .empty:
+            teamTimeVC.setEnabled(to: false)
+        case .preparation(let team):
             let prepTimeLeft = debate.prepTimeLeft()
+            teamTimeVC.setEnabled(to: true)
 
-            teamTimeVC.setTimeLeft(prepTimeLeft.affirmative, forTeam: .affirmative)
-            teamTimeVC.setTimeLeft(prepTimeLeft.negative, forTeam: .negative)
+            if team == .affirmative {
+                 teamTimeVC.setTimeLeft(prepTimeLeft.affirmative, forTeam: .affirmative)
+            } else {
+                 teamTimeVC.setTimeLeft(prepTimeLeft.negative, forTeam: .negative)
+            }
         }
     }
 
@@ -156,10 +173,10 @@ class TestViewController: UIViewController {
     }
 }
 
-// MARK: Speech collection view cell delegate implementation
+// MARK: - Speech collection view cell delegate implementation
 
-extension TestViewController: SpeechCollectionViewCellDelegate {
-    func cardTapped(atIndex index: Int) {
+extension DebateViewController: SpeechCollectionViewCellDelegate {
+    func cardTapped(at index: Int) {
         guard index < debate.allSpeeches().count else {
             askUserBeforeReset()
             Reviewer.showReview()
@@ -187,7 +204,6 @@ extension TestViewController: SpeechCollectionViewCellDelegate {
             speakerLabelsVC.setViewModel(ofLabelWithSpeaker: speaker, to: SpeakerLabelViewModel(speaker: currentSpeaker))
 
             updatePauseViewTeam()
-            teamTimeVC.setEnabled(to: true)
 
             if i != debate.allSpeeches().count - 1 {
                 speechesCollectionVC.showSpeaker(atIndex: i + 1)
@@ -209,17 +225,17 @@ extension TestViewController: SpeechCollectionViewCellDelegate {
     private func askUserBeforeReset() {
         let alert = UIAlertController(title: "Smazání debaty",
                                       message: "Přejete si opravdu současný průběh debaty smazat a začít debatu novou?",
-                                      preferredStyle: .actionSheet)
+                                      preferredStyle: Device().isPhone ? .actionSheet : .alert)
         alert.addAction(UIAlertAction(title: "Ano",
                                       style: .destructive,
-                                      handler: { _ in self.resetConfirmed()}))
+                                      handler: { _ in self.reset()}))
         alert.addAction(UIAlertAction(title: "Zrušit",
                                       style: .cancel,
                                       handler: nil))
         self.show(alert, sender: nil)
     }
 
-    @objc private func resetConfirmed() {
+    @objc private func reset() {
         debate = Debate()
         debate.allSpeakers().forEach { speakers[$0] = Speaker(id: $0) }
 
@@ -230,27 +246,29 @@ extension TestViewController: SpeechCollectionViewCellDelegate {
                               vm4: spVms[3],
                               vm5: spVms[4],
                               vm6: spVms[5])
-        speechesCollectionVC.reset(withNewDebate: debate)
+        speechesCollectionVC.reset(withSpeeches: debate.allSpeeches())
 
-        teamTimeVC.setCurrentTeam(to: .affirmative)
+        let prepTimeLeft = debate.prepTimeLeft()
+        teamTimeVC.setTimeLeft(prepTimeLeft.affirmative, forTeam: .affirmative)
+        teamTimeVC.setTimeLeft(prepTimeLeft.negative, forTeam: .negative)
+
         teamTimeVC.togglePaused(to: true)
-        teamTimeVC.setEnabled(to: false)
     }
 }
 
-// MARK: Shadow tappable label button delegate implementation
+// MARK: - Shadow tappable label button delegate implementation
 
-extension TestViewController: ShadowTappableLabelDelegate {
+extension DebateViewController: ShadowTappableLabelDelegate {
     func handleTapGesture(sender: ShadowTappableLabel) {
         guard let sender = sender as? SpeakerLabel else { return }
-        let index = debate.allSpeeches().index { $0.speaker1 == sender.viewModel!.speaker.id && $0.speaker2 == nil}
+        let index = debate.allSpeeches().index { $0.speaker1 == sender.viewModel!.speaker.id && $0.speaker2 == nil }
         speechesCollectionVC.showSpeaker(atIndex: index!)
     }
 }
 
-// MARK: Pause button delegate implementation
+// MARK: - Pause button delegate implementation
 
-extension TestViewController: PauseButtonDelegate {
+extension DebateViewController: PauseButtonDelegate {
     func pauseButtonTapped(sender: PauseButton) {
         if debate.isTeamTimerRunning() {
             debate.pauseTeamTimer()
@@ -261,9 +279,9 @@ extension TestViewController: PauseButtonDelegate {
     }
 }
 
-// MARK: Onboarding implementation
+// MARK: - Onboarding implementation
 
-extension TestViewController {
+extension DebateViewController {
     private func showOnboarding() {
         let o0 = OnboardingCardViewModel(title: "Vítejte",
                                          description: "Vítejte v aplikaci Debatimer, která vám pomůže s měřením času u debat formátu Karl Popper. Následuje krátké seznámení s aplikací.",

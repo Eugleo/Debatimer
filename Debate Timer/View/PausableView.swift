@@ -10,7 +10,7 @@ import UIKit
 
 class PausableView: UIView {
 
-    // MARK: Public properties
+    // MARK: - Public properties
 
     var isPaused: Bool? {
         didSet {
@@ -20,11 +20,11 @@ class PausableView: UIView {
         }
     }
 
-    // MARK: Private UI properties
+    // MARK: - Private UI properties
 
     private let imageView = UIImageView()
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,10 +33,10 @@ class PausableView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupConstraints()
+        fatalError("Not yet implemented init(coder:)")
     }
 
-    // MARK: Private functions
+    // MARK: - Private functions
 
     private func setupConstraints() {
         addSubview(imageView) { v in
@@ -55,14 +55,14 @@ class PausableView: UIView {
     }
 
     private func animateChange(to image: UIImage) {
-        UIView.animate(withDuration: 0.1,
+        UIView.animate(withDuration: 0.06,
                        delay: 0,
                        options: .curveEaseIn,
                        animations: {
                         self.imageView.alpha = 0
         }, completion: { _ in
             self.imageView.image = image
-            UIView.animate(withDuration: 0.1,
+            UIView.animate(withDuration: 0.06,
                            delay: 0,
                            options: .curveEaseIn,
                            animations: {

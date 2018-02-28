@@ -10,7 +10,7 @@ import UIKit
 
 class SpeakerLabelStackView: UIView {
 
-    // MARK: Public properties18
+    // MARK: - Public properties18
 
     var delegate: ShadowTappableLabelDelegate? {
         didSet {
@@ -18,7 +18,7 @@ class SpeakerLabelStackView: UIView {
         }
     }
 
-    // MARK: Private UI properties
+    // MARK: - Private UI properties
 
     private let stackView = UIStackView().with { v in
         v.alignment = .fill
@@ -31,7 +31,7 @@ class SpeakerLabelStackView: UIView {
     let speechLabel2 = SpeakerLabel()
     let speechLabel3 = SpeakerLabel()
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     init(vm1: SpeakerLabelViewModel, vm2: SpeakerLabelViewModel, vm3: SpeakerLabelViewModel) {
         super.init(frame: .zero)
@@ -49,7 +49,7 @@ class SpeakerLabelStackView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: Private functions
+    // MARK: - Private functions
 
     private func setupConstraints() {
         stackView.removeFromSuperview()
@@ -59,7 +59,7 @@ class SpeakerLabelStackView: UIView {
         }
     }
 
-     // MARK: Public functions
+     // MARK: - Public functions
 
     func reset(vm1: SpeakerLabelViewModel, vm2: SpeakerLabelViewModel, vm3: SpeakerLabelViewModel) {
         speechLabel1.viewModel = vm1

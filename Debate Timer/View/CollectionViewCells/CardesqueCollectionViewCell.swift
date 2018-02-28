@@ -7,10 +7,21 @@
 //
 
 import UIKit
+import Yalta
+import DeviceKit
 
 class CardesqueCollectionViewCell: UICollectionViewCell, Reusable {
+
+    // MARK: - Public properties
+
+    var gradientColors: [UIColor]? {
+        didSet {
+            guard let colors = gradientColors else { return }
+            gradientLayer.colors = colors.map { $0.cgColor }
+        }
+    }
     
-    // MARK: Public UI Properties
+    // MARK: - Public UI Properties
 
     let topLabel = CircledLabel().with { l in
         l.backgroundColor = UIColor(white: 1, alpha: 0.3)
@@ -27,59 +38,107 @@ class CardesqueCollectionViewCell: UICollectionViewCell, Reusable {
 
     let titleLabel = UILabel().with { l in
         l.textColor = .white
-        l.font = UIFont.boldSystemFont(ofSize: 35)
+        l.font = UIFont.boldSystemFont(ofSize: 34)
         l.textAlignment = .center
     }
 
-    // MARK: Initialization
+    // MARK: - Private UI properties
+
+    private let stackView = UIStackView().with { s in
+        s.alignment = .fill
+        s.axis = .vertical
+        s.distribution = .equalSpacing
+        s.spacing = 10
+    }
+
+    private let gradientLayer = CAGradientLayer()
+    private let shadowLayer = CAShapeLayer()
+
+    // MARK: - Initialization
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         setupLayer()
         setupConstraints()
+        if Device().isPad {
+            setupViewsOnIPad()
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-
-        setupLayer()
-        setupConstraints()
+        fatalError("Required init(coder aDecoder: NSCoder) not yet implemented!")
     }
 
-    // MARK: Private functions
+    // MARK: - Overrides
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
+        gradientLayer.frame = frame
+
+        let radius = Constants.UI.CornerRadius.standart
+        let shadowBounds = CGRect(x: bounds.minX + 5, y: bounds.minY, width: bounds.width - 10, height: bounds.height)
+        let radiusPath = UIBezierPath(roundedRect: shadowBounds, cornerRadius: radius).cgPath
+
+        shadowLayer.removeFromSuperlayer()
+        shadowLayer.path = radiusPath
+        shadowLayer.fillColor = UIColor.white.cgColor
+        shadowLayer.shadowColor = UIColor.darkGray.cgColor
+        shadowLayer.shadowPath = shadowLayer.path
+        shadowLayer.shadowOffset = CGSize(width: 0, height: 5.0)
+        shadowLayer.shadowOpacity = 0.3
+        shadowLayer.shadowRadius = 4
+        layer.insertSublayer(shadowLayer, at: 0)
+
+        shadowLayer.frame = frame
+    }
+
+    // MARK: - Private functions
+
+    private func setupViewsOnIPad() {
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 48)
+        topLabel.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+        middleLabel.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+        bottomLabel.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+    }
 
     private func setupLayer() {
-        layer.cornerRadius = Constants.UI.CornerRadius.standart
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = .zero
-        layer.shadowRadius = 6
-        layer.shadowOpacity = 0.15
+        let radius = Constants.UI.CornerRadius.standart
+
+        gradientLayer.cornerRadius = radius
+        layer.insertSublayer(gradientLayer, at: 1)
+
+        layer.cornerRadius = radius
         layer.masksToBounds = false
     }
 
     private func setupConstraints() {
+        addSubview(stackView) { s in
+            s.top.pinToSuperviewMargin()
+            s.leading.pinToSuperviewMargin()
+            s.width.set(Device().isPhone ? 30 : 45)
+
+            if Device().isOneOf([.iPhoneSE, .simulator(.iPhoneSE)]) {
+                s.bottom.pinToSuperviewMargin()
+            }
+        }
+        stackView.insertArrangedSubviews([topLabel, middleLabel, bottomLabel])
+
         addSubview(titleLabel) { l in
             l.center.alignWithSuperview()
         }
 
-        addSubview(topLabel, middleLabel, bottomLabel) { l1, l2, l3 in
-            l1.leading.pinToSuperviewMargin()
-            l1.top.pinToSuperviewMargin()
-            l1.height.set(30)
-            l1.width.set(30)
-
-            l2.leading.pinToSuperviewMargin()
-            l2.top.align(with: l1.bottom.offsetting(by: 10))
-            l2.height.set(30)
-            l2.width.set(30)
-
-            l3.leading.pinToSuperviewMargin()
-            l3.top.align(with: l2.bottom.offsetting(by: 10))
-            l3.height.set(30)
-            l3.width.set(30)
+        Constraints(for: topLabel, middleLabel, bottomLabel) { l1, l2, l3 in
+            l1.height.set(Device().isPhone ? 30 : 45)
+            l1.width.set(Device().isPhone ? 30 : 45)
+            l2.height.set(Device().isPhone ? 30 : 45)
+            l2.width.set(Device().isPhone ? 30 : 45)
+            l3.height.set(Device().isPhone ? 30 : 45)
+            l3.width.set(Device().isPhone ? 30 : 45)
         }
-        middleLabel.isHidden = true
-        bottomLabel.isHidden = true
+        middleLabel.alpha = 0
+        bottomLabel.alpha = 0
     }
 }

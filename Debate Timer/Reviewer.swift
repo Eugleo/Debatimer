@@ -10,25 +10,31 @@ import Foundation
 import StoreKit
 
 struct Reviewer {
-    static let runCountKey = "runCount"
-    static let minimumCount = 3
+    private static let runCountKey = "runCount"
+    private static let requestCountKey = "requestCount"
+    static let minimumCount = 4
 
     static func incrementRunCount() {
-        let runs = getRunCount() + 1
-        UserDefaults.standard.setValue(runs, forKey: runCountKey)
+        let runs = getRunCount()
+        UserDefaults.standard.setValue(runs + 1, forKey: runCountKey)
     }
 
     static func getRunCount() -> Int {
-        let runs = UserDefaults.standard.value(forKey: runCountKey)
+        return UserDefaults.standard.integer(forKey: runCountKey)
+    }
 
-        return runs as? Int ?? 0
+    static func getRequestCount() -> Int {
+        return UserDefaults.standard.integer(forKey: requestCountKey)
     }
 
     static func showReview() {
         let runs = getRunCount()
+        let requests = getRequestCount()
 
-        if runs > minimumCount {
+        // Ask every 4th launch
+        if runs > (requests + 1) * minimumCount {
             SKStoreReviewController.requestReview()
+            UserDefaults.standard.setValue(requests + 1, forKey: runCountKey)
         }
     }
 }

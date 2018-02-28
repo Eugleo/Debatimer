@@ -8,6 +8,21 @@
 
 import UIKit
 
+enum Format {
+    static func formatTimeInterval(_ ti: TimeInterval) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.zeroFormattingBehavior = .pad
+        formatter.allowedUnits = [.minute, .second]
+        return formatter.string(from: ti)!
+    }
+}
+
+enum Info {
+    static func isDevicePhone() -> Bool {
+        return UIDevice.current.userInterfaceIdiom == .phone
+    }
+}
+
 enum Constants {
     enum UI {
         enum Spacing {
@@ -24,9 +39,26 @@ enum Constants {
             static let gray = UIColor(named: "NeutralGray")!
         }
 
+        enum GradientColors {
+            static let affirmative = [UIColor(named: "AffirmativeGradient")!, Constants.UI.Colors.affirmative]
+            static let negative = [UIColor(named: "NegativeGradient")!, Constants.UI.Colors.negative]
+            static let gray = [UIColor(named: "NeutralGrayGradient")!, Constants.UI.Colors.gray]
+        }
+
         enum CornerRadius {
             static let standart: CGFloat = 20
             static let medium: CGFloat = 15
+        }
+
+        enum Transformations {
+            static let large = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            static let medium = CGAffineTransform(scaleX: 0.985, y: 0.985)
+            static let small = CGAffineTransform(scaleX: 0.99, y: 0.99)
+        }
+
+        enum Shadows {
+            static let large: CGFloat = 6
+            static let medium: CGFloat = 4
         }
     }
 }

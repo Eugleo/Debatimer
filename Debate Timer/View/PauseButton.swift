@@ -14,14 +14,17 @@ protocol PauseButtonDelegate {
 
 class PauseButton: UIView {
 
-    // MARK: Public properties
+    // MARK: - Public properties
 
     var delegate: PauseButtonDelegate?
-    var bckgrndColor: UIColor = .clear {
+
+    var gradientColors: [UIColor]? {
         didSet {
-            updateBackgroundColor()
+            guard let colors = gradientColors else { return }
+            gradientLayer.colors = colors.map { $0.cgColor }
         }
     }
+
     var isEnabled: Bool = true {
         didSet {
             if isEnabled {
@@ -29,23 +32,25 @@ class PauseButton: UIView {
             } else {
                 isUserInteractionEnabled = false
             }
-
             updateBackgroundColor()
         }
     }
 
-    // MARK: Private UI properties
+    // MARK: - Private UI properties
 
     private let playPauseView = PausableView()
     private let teamLabel = CircledLabel()
+    private let gradientLayer = CAGradientLayer()
+    private let shadowLayer = CAShapeLayer()
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     init() {
         super.init(frame: .zero)
 
         backgroundColor = .clear
 
+        setupLayer()
         setupConstraints()
         setupGestureRecognizers()
     }
@@ -53,13 +58,43 @@ class PauseButton: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        backgroundColor = .clear
-
-        setupConstraints()
-        setupGestureRecognizers()
+        fatalError("Not yet implemented init(coder:)")
     }
 
-    // MARK: Private functions
+    // MARK: - Overrides
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
+        gradientLayer.frame = frame
+
+        let radius = frame.height / 2
+        let shadowBounds = CGRect(x: bounds.minX + 1, y: bounds.minY, width: bounds.width - 2, height: bounds.height)
+        let radiusPath = UIBezierPath(roundedRect: shadowBounds, cornerRadius: radius).cgPath
+
+        shadowLayer.removeFromSuperlayer()
+        shadowLayer.path = radiusPath
+        shadowLayer.fillColor = UIColor.white.cgColor
+        shadowLayer.shadowColor = UIColor.darkGray.cgColor
+        shadowLayer.shadowPath = shadowLayer.path
+        shadowLayer.shadowOffset = CGSize(width: 0, height: 3.0)
+        shadowLayer.shadowOpacity = 0.3
+        shadowLayer.shadowRadius = 4
+        layer.insertSublayer(shadowLayer, at: 0)
+
+        gradientLayer.cornerRadius = radius
+        layer.cornerRadius = radius
+
+        gradientLayer.frame = frame
+        shadowLayer.frame = frame
+    }
+
+    // MARK: - Private functions
+
+    private func setupLayer() {
+        layer.insertSublayer(gradientLayer, at: 1)
+        layer.masksToBounds = false
+    }
 
     private func setupConstraints() {
         addSubview(teamLabel) { l in
@@ -80,17 +115,36 @@ class PauseButton: UIView {
 
     private func updateBackgroundColor() {
         if isEnabled {
-            teamLabel.backgroundColor = bckgrndColor
+            gradientLayer.colors = gradientColors!.map { $0.cgColor }
+            animateChange(hideShadow: false, transformation: .identity)
         } else {
-            teamLabel.backgroundColor = Constants.UI.Colors.gray
+            let colors = Constants.UI.GradientColors.gray
+            gradientLayer.colors = colors.map { $0.cgColor }
+            animateChange(hideShadow: true, transformation: Constants.UI.Transformations.large)
         }
+    }
+
+    private func animateChange(hideShadow: Bool, transformation: CGAffineTransform) {
+        UIView.animate(withDuration: 0.2,
+                       delay: 0,
+                       options: .curveEaseInOut,
+                       animations: {
+                        self.transform = transformation
+                        if hideShadow {
+                            self.shadowLayer.removeFromSuperlayer()
+                        } else {
+                            self.shadowLayer.removeFromSuperlayer()
+                            self.layer.insertSublayer(self.shadowLayer, at: 0)
+                        }
+                       },
+                       completion: nil)
     }
 
     @objc private func didTap() {
         delegate?.pauseButtonTapped(sender: self)
     }
 
-    // MARK: Public functions
+    // MARK: - Public functions
 
     public func togglePaused(to state: Bool? = nil) {
         if let state = state {
@@ -99,6 +153,4 @@ class PauseButton: UIView {
             playPauseView.isPaused = !playPauseView.isPaused!
         }
     }
-
-
 }

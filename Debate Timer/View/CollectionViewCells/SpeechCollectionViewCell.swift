@@ -11,7 +11,13 @@ import Yalta
 
 class SpeechCollectionViewCell: CardesqueCollectionViewCell {
 
-    // MARK: Public properties
+    // MARK: - Public properties
+
+    var timeLeft: String? {
+        didSet {
+            titleLabel.text = timeLeft
+        }
+    }
     
     var viewModel: SpeechCollectionViewCellViewModel? {
         didSet {
@@ -20,14 +26,14 @@ class SpeechCollectionViewCell: CardesqueCollectionViewCell {
             topLabel.text = viewModel.speaker1Name
             if let speaker2Name = viewModel.speaker2Name {
                 bottomLabel.text = speaker2Name
-                bottomLabel.isHidden = false
-                middleLabel.isHidden = false
+                bottomLabel.alpha = 1
+                middleLabel.alpha = 1
             } else {
-                bottomLabel.isHidden = true
-                middleLabel.isHidden = true
+                bottomLabel.alpha = 0
+                middleLabel.alpha = 0
             }
-            titleLabel.text = viewModel.timeLeftStr
-            backgroundColor = viewModel.backgroundColor
+            gradientColors = viewModel.backgroundGradient
+            titleLabel.text = timeLeft ?? viewModel.timeLimit
         }
     }
 }

@@ -20,7 +20,7 @@ class ShadowTappableLabel: UIView {
         v.frame = .zero
         v.layer.shadowRadius = 8
         v.layer.shadowColor = UIColor.black.cgColor
-        v.layer.shadowOffset = .zero
+        v.layer.shadowOffset = CGSize(width: 0, height: 6)
         v.layer.shadowOpacity = 0
         v.clipsToBounds = false
     }
