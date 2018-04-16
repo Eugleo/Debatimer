@@ -6,11 +6,21 @@
 //  Copyright © 2018 Evžen Wybitul. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct SpeakerLabelViewModel {
 
     // MARK: - Public properties
+
+    var speechTimeColor: UIColor {
+        guard let speechTime = speaker.speechTime else { return .darkGray }
+        return speechTime > speaker.id.timeLimit() ? Constants.UI.Colors.errorDarkRed : .darkGray
+    }
+
+    var crossTimeColor: UIColor {
+        guard let crossTime = speaker.crossTime else { return .lightGray }
+        return crossTime > Constants.crossQuestionTime ? Constants.UI.Colors.errorLightRed : .lightGray
+    }
 
     var speechTime: String? {
         guard let ti = speaker.speechTime else { return nil }

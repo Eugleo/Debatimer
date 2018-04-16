@@ -224,9 +224,11 @@ final class SpeakerLabel: ShadowTappableLabel {
                 viewModel.team == .affirmative ?
                     UIColor(named: "Affirmative") :
                     UIColor(named: "Negative")
-            
 
             bcg = speakerLabel.backgroundColor
+
+            speechTimeLabel.textColor = viewModel.speechTimeColor
+            crossQuestionsTimeLabel.textColor = viewModel.crossTimeColor
         }
     }
     

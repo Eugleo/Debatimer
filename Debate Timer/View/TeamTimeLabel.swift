@@ -44,6 +44,14 @@ final class TeamTimeLabel: ShadowTappableLabel {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Overrides
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        layer.cornerRadius = frame.height / 2
+    }
+
     // MARK: - Private functions
 
     private func setupViews() {

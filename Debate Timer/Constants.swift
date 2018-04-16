@@ -24,9 +24,11 @@ enum Info {
 }
 
 enum Constants {
+    static let crossQuestionTime: TimeInterval = 180
+
     enum UI {
         enum Spacing {
-            static let large: CGFloat = 20
+            static let large: CGFloat = 15
             static let medium: CGFloat = 15
         }
 
@@ -37,6 +39,8 @@ enum Constants {
             static let negativeLight = UIColor(named: "LightRed")!
             static let almostWhite = UIColor(named: "CreamWhite")!
             static let gray = UIColor(named: "NeutralGray")!
+            static let errorDarkRed = UIColor(named: "DarkRedError")!
+            static let errorLightRed = UIColor(named: "LightRedError")!
         }
 
         enum GradientColors {
@@ -51,9 +55,9 @@ enum Constants {
         }
 
         enum Transformations {
-            static let large = CGAffineTransform(scaleX: 0.95, y: 0.95)
-            static let medium = CGAffineTransform(scaleX: 0.985, y: 0.985)
-            static let small = CGAffineTransform(scaleX: 0.99, y: 0.99)
+            static let small2 = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            static let small1 = CGAffineTransform(scaleX: 0.99, y: 0.99)
+            static let large1 = CGAffineTransform(scaleX: 1.05, y: 1.05)
         }
 
         enum Shadows {

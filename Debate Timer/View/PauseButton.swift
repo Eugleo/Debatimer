@@ -116,11 +116,11 @@ class PauseButton: UIView {
     private func updateBackgroundColor() {
         if isEnabled {
             gradientLayer.colors = gradientColors!.map { $0.cgColor }
-            animateChange(hideShadow: false, transformation: .identity)
+            animateChange(hideShadow: false, transformation: Constants.UI.Transformations.large1)
         } else {
             let colors = Constants.UI.GradientColors.gray
             gradientLayer.colors = colors.map { $0.cgColor }
-            animateChange(hideShadow: true, transformation: Constants.UI.Transformations.large)
+            animateChange(hideShadow: true, transformation: .identity)
         }
     }
 

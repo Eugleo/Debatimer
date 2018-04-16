@@ -61,7 +61,7 @@ final class SpeechesCollectionViewController: UICollectionViewController {
                                             withVelocity velocity: CGPoint,
                                             targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 
-        guard let collectionView = collectionView, Info.isDevicePhone() else { return }
+        guard let collectionView = collectionView else { return }
 
         let insetFrame = UIEdgeInsetsInsetRect(scrollView.frame, scrollView.contentInset)
         var index = collectionView.contentOffset.x / insetFrame.size.width
@@ -174,7 +174,7 @@ extension SpeechesCollectionViewController {
     }
 
     private func handleLongPressBegan(onCell cell: UICollectionViewCell) {
-        animateButtonPress(transformation: Constants.UI.Transformations.small,
+        animateButtonPress(transformation: Constants.UI.Transformations.small1,
                            shadowHeight: Constants.UI.Shadows.large,
                            ofCell: cell)
     }
@@ -239,7 +239,7 @@ extension SpeechesCollectionViewController: UICollectionViewDelegateFlowLayout {
         if Device().isPhone {
             availableWidth = collectionView.frame.width - insetsLR - layout.minimumLineSpacing
         } else {
-            availableWidth = (collectionView.frame.width - insetsLR) / 2 - layout.minimumLineSpacing
+            availableWidth = collectionView.frame.width - insetsLR - layout.minimumLineSpacing
         }
 
         return CGSize(width: availableWidth, height: availableHeight)

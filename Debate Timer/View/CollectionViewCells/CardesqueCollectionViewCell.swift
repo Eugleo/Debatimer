@@ -75,7 +75,7 @@ class CardesqueCollectionViewCell: UICollectionViewCell, Reusable {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        let frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
+        let frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height + 1)
         gradientLayer.frame = frame
 
         let radius = Constants.UI.CornerRadius.standart
@@ -105,7 +105,7 @@ class CardesqueCollectionViewCell: UICollectionViewCell, Reusable {
     }
 
     private func setupLayer() {
-        let radius = Constants.UI.CornerRadius.standart
+        let radius: CGFloat = Constants.UI.CornerRadius.standart
 
         gradientLayer.cornerRadius = radius
         layer.insertSublayer(gradientLayer, at: 1)

@@ -64,8 +64,8 @@ class DebateViewController: UIViewController {
         layout.minimumLineSpacing = Constants.UI.Spacing.large
         speechesCollectionVC = SpeechesCollectionViewController(collectionViewLayout: layout,
                                                           speeches: debate.allSpeeches())
-
         super.init(nibName: nil, bundle: nil)
+        setupLifecycleNotificaitions()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -78,7 +78,6 @@ class DebateViewController: UIViewController {
         super.viewDidLoad()
 
         setupViews()
-        setupLifecycleNotificaitions()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -99,6 +98,14 @@ class DebateViewController: UIViewController {
         uiTimer?.invalidate()
     }
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: nil, completion: {
+            _ in
+            self.speechesCollectionVC.collectionViewLayout.invalidateLayout()
+        })
+    }
+
     // MARK: - Private functions
 
     private func setupLifecycleNotificaitions() {
@@ -115,7 +122,7 @@ class DebateViewController: UIViewController {
         view.backgroundColor = Constants.UI.Colors.almostWhite
 
         view.addSubview(superStackView) { v in
-            let insets = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
+            let insets = UIEdgeInsets(top: 5, left: 0, bottom: Constants.UI.Spacing.large, right: 0)
             v.edges.pinToSafeArea(of: self, insets: insets, relation: .equal)
         }
 
@@ -130,7 +137,7 @@ class DebateViewController: UIViewController {
         guard Device().isPad else { return }
 
         Constraints(for: speechesCollectionVC.view) { v in
-            v.height.set(view.frame.height / 2.5, relation: .lessThanOrEqual)
+            v.height.match(view.al.height, offset: 0, multiplier: 0.33, relation: .equal)
         }
     }
 

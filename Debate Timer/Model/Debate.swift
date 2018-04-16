@@ -26,15 +26,14 @@ struct Debate {
     // MARK: - Initialization
     // An implementation with defaults according to classic debate rules: A1, X, N1, X, A2, X, N2, X, A3, N3
     init() {
-        let crossTimeLimit: TimeInterval = 180
         let a1 = Speech(speaker1: .A1)
-        let n3a1 = Speech(speaker1: .N3, speaker2: .A1, timeLimit: crossTimeLimit)
+        let n3a1 = Speech(speaker1: .N3, speaker2: .A1, timeLimit: Constants.crossQuestionTime)
         let n1 = Speech(speaker1: .N1)
-        let a3n1 = Speech(speaker1: .A3, speaker2: .N1, timeLimit: crossTimeLimit)
+        let a3n1 = Speech(speaker1: .A3, speaker2: .N1, timeLimit: Constants.crossQuestionTime)
         let a2 = Speech(speaker1: .A2)
-        let n1a2 = Speech(speaker1: .N1, speaker2: .A2, timeLimit: crossTimeLimit)
+        let n1a2 = Speech(speaker1: .N1, speaker2: .A2, timeLimit: Constants.crossQuestionTime)
         let n2 = Speech(speaker1: .N2)
-        let a1n2 = Speech(speaker1: .A1, speaker2: .N2, timeLimit: crossTimeLimit)
+        let a1n2 = Speech(speaker1: .A1, speaker2: .N2, timeLimit: Constants.crossQuestionTime)
         let a3 = Speech(speaker1: .A3)
         let n3 = Speech(speaker1: .N3)
 
