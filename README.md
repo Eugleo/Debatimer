@@ -7,9 +7,9 @@ Debatimer does only one thing, but it does it well — it tracks time. Measuring
 
 ## Features
 
-● Simple, zero-friction, elegant interface that doesn’t get in the way.
-● Big smart button that keeps track of the current speaker; you only have to do the pushing.
-● All measurements are visible at once, even after the debate. You don’t have to worry about the time until you want to.
+- Simple, zero-friction, elegant interface that doesn’t get in the way.
+- Big smart button that keeps track of the current speaker; you only have to do the pushing.
+- All measurements are visible at once, even after the debate. You don’t have to worry about the time until you want to.
 
 ## Get involved
 
