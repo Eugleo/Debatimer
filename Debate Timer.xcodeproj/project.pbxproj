@@ -21,6 +21,7 @@
 		4C53A27C203D792E0066958C /* PauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C53A27B203D792D0066958C /* PauseButton.swift */; };
 		4C7BB734203C6AE700DBD910 /* CardesqueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7BB733203C6AE700DBD910 /* CardesqueCollectionViewCell.swift */; };
 		4C7BB736203C6E3600DBD910 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7BB735203C6E3600DBD910 /* Reusable.swift */; };
+		4C7E2BB120CD034000991F16 /* SpeakerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7E2BB020CD034000991F16 /* SpeakerCard.swift */; };
 		4C87D16D203C70440075CC8A /* ResetDebateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C87D16C203C70430075CC8A /* ResetDebateCollectionViewCell.swift */; };
 		4C883F4D2020E00E0083F801 /* ShadowTappableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C883F4C2020E00E0083F801 /* ShadowTappableLabel.swift */; };
 		4C89FD81200D366B00EFF992 /* Debate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89FD80200D366B00EFF992 /* Debate.swift */; };
@@ -81,6 +82,7 @@
 		4C53A27B203D792D0066958C /* PauseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseButton.swift; sourceTree = "<group>"; };
 		4C7BB733203C6AE700DBD910 /* CardesqueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardesqueCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C7BB735203C6E3600DBD910 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		4C7E2BB020CD034000991F16 /* SpeakerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCard.swift; sourceTree = "<group>"; };
 		4C87D16C203C70430075CC8A /* ResetDebateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetDebateCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C883F4C2020E00E0083F801 /* ShadowTappableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowTappableLabel.swift; sourceTree = "<group>"; };
 		4C89FD80200D366B00EFF992 /* Debate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 		4C4E3A8D200FB385006A2368 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4C7E2BB020CD034000991F16 /* SpeakerCard.swift */,
 				4C49287320387E8400867019 /* OnboardingCardViewModel.swift */,
 				4CC0FC44201A140800C4F833 /* TeamTimeLabel.swift */,
 				4CDED79F2040393400C84C61 /* SpeakerLabelStackView.swift */,
@@ -287,7 +290,6 @@
 				4CF8553A200D11B0002CB00B /* Frameworks */,
 				4CF8553B200D11B0002CB00B /* Resources */,
 				0A210C8F0A5E55629CF3038E /* [CP] Embed Pods Frameworks */,
-				61BFB9027E1009F1C732DB8B /* [CP] Copy Pods Resources */,
 				4C89FD7F200D2D6E00EFF992 /* ShellScript */,
 			);
 			buildRules = (
@@ -307,8 +309,6 @@
 				4CF8554D200D11B0002CB00B /* Sources */,
 				4CF8554E200D11B0002CB00B /* Frameworks */,
 				4CF8554F200D11B0002CB00B /* Resources */,
-				C24D38E3B65629382A4397CF /* [CP] Embed Pods Frameworks */,
-				899591F5FDFCA7EA058D9B5B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -328,8 +328,6 @@
 				4CF85558200D11B0002CB00B /* Sources */,
 				4CF85559200D11B0002CB00B /* Frameworks */,
 				4CF8555A200D11B0002CB00B /* Resources */,
-				5ABEE3DADA706BF28FA5442C /* [CP] Embed Pods Frameworks */,
-				BC59A033A6C407BA52EE149D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -446,36 +444,6 @@
 			shellPath = /bin/sh;
 			shellScript = "";
 		};
-		5ABEE3DADA706BF28FA5442C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Debate TimerUITests/Pods-Debate TimerUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		61BFB9027E1009F1C732DB8B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Debate Timer/Pods-Debate Timer-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		776D853D40DC6CBB2FB99259 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -494,21 +462,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		899591F5FDFCA7EA058D9B5B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Debate TimerTests/Pods-Debate TimerTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8E3116EC537FF963C235FE85 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -525,36 +478,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BC59A033A6C407BA52EE149D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Debate TimerUITests/Pods-Debate TimerUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C24D38E3B65629382A4397CF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Debate TimerTests/Pods-Debate TimerTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DFD69575C006ACF1C6D82BC0 /* [CP] Check Pods Manifest.lock */ = {
@@ -605,6 +528,7 @@
 				4C0E11BC201509260004C773 /* SpeechCollectionViewCellViewModel.swift in Sources */,
 				4C2C5750203D7F5200F42495 /* PausableView.swift in Sources */,
 				4C53A27C203D792E0066958C /* PauseButton.swift in Sources */,
+				4C7E2BB120CD034000991F16 /* SpeakerCard.swift in Sources */,
 				4CCD45C9204018BF000BB0EB /* DebateViewController.swift in Sources */,
 				4C4E3A92200FB73E006A2368 /* SpeechesCollectionViewController.swift in Sources */,
 				4CC0FC45201A140800C4F833 /* TeamTimeLabel.swift in Sources */,

@@ -8,6 +8,25 @@
 
 import Foundation
 
+class Stopwatch {
+    private var intervalStartTime: Date?
+    private var lastInterval: TimeInterval?
+    
+    func startNewInterval() {
+        lastInterval = currentIntervalLength()
+        intervalStartTime = Date()
+    }
+    
+    func currentIntervalLength() -> TimeInterval? {
+        guard let intervalStartTime = intervalStartTime else { return nil }
+        return Date().timeIntervalSince(intervalStartTime)
+    }
+    
+    func lastIntervalLength() -> TimeInterval? {
+        return lastInterval
+    }
+}
+
 struct CountdownTimer {
     private var startTime: Date?
     private var interval: TimeInterval = 0

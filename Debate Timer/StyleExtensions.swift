@@ -3,6 +3,7 @@
 // Copyright (c) 2018 Alexander Grebenyuk (github.com/kean).
 
 import Foundation
+import UIKit
 
 public protocol With {}
 

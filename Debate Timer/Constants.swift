@@ -52,6 +52,7 @@ enum Constants {
         enum CornerRadius {
             static let standart: CGFloat = 20
             static let medium: CGFloat = 15
+            static let small: CGFloat = 12
         }
 
         enum Transformations {

@@ -8,6 +8,148 @@
 
 import Foundation
 
+enum SpeechType {
+    case questions(asking: SpeakerID, answering: SpeakerID), normal(speaking: SpeakerID)
+    
+    func timeLimit() -> TimeInterval {
+        switch self {
+        case .normal(speaking: let speaker):
+            return speaker.timeLimit()
+        case .questions(asking: _, answering: _):
+            return Constants.crossQuestionTime
+        }
+    }
+}
+
+enum Action {
+    case speech(type: SpeechType), preparation(team: Team)
+    
+    func timeLimit() -> TimeInterval {
+        switch self {
+        case .preparation(let team):
+            return team.preparationTime()
+        case .speech(type: let speechType):
+            return speechType.timeLimit()
+        }
+    }
+}
+
+class NewDebate {
+    var actions: [Action]
+    var speeches: [NewSpeech] = []
+    var stopwatch = Stopwatch()
+    
+    var affirmativeTeamTimeLeft = Team.affirmative.preparationTime()
+    var negativeTeamTimeLeft = Team.negative.preparationTime()
+    
+    var currentAction: Action?
+    
+    init() {
+        actions = [
+            .speech(type: .normal(speaking: .A1)),
+            .preparation(team: .negative),
+            .speech(type: .questions(asking: .N3, answering: .A1)),
+            .preparation(team: .negative),
+            .speech(type: .normal(speaking: .N1)),
+            .preparation(team: .affirmative),
+            .speech(type: .questions(asking: .A3, answering: .N1)),
+            .preparation(team: .affirmative),
+            .speech(type: .normal(speaking: .A2)),
+            .preparation(team: .negative),
+            .speech(type: .questions(asking: .N1, answering: .A2)),
+            .preparation(team: .negative),
+            .speech(type: .normal(speaking: .N2)),
+            .preparation(team: .affirmative),
+            .speech(type: .questions(asking: .A1, answering: .N2)),
+            .preparation(team: .affirmative),
+            .speech(type: .normal(speaking: .A3)),
+            .preparation(team: .negative),
+            .speech(type: .normal(speaking: .N3)),
+        ]
+    }
+    
+    func startAction(atIndex index: Int) {
+        guard index < actions.count else {
+            fatalError("Wrong index passed to function startAction(atIndex:).")
+        }
+        
+        currentAction = actions[index]
+        stopwatch.startNewInterval()
+    }
+    
+    func stopCurrentAction() {
+        guard let currentAction = currentAction else {
+            print("Error: No action to stop")
+            return
+        }
+        
+        let time = stopwatch.currentIntervalLength()!
+        
+        switch currentAction {
+        case .preparation(team: let team):
+            switch team {
+            case .affirmative:
+                affirmativeTeamTimeLeft -= time
+            case .negative:
+                negativeTeamTimeLeft -= time
+            }
+        case .speech(type: let type):
+            switch type {
+            case .normal(speaking: let speaker):
+                speeches.append(NewSpeech(speaker: speaker, length: time))
+            case .questions(asking: let speaker1, answering: let speaker2):
+                speeches.append(NewSpeech(speaker1: speaker1, speaker2: speaker2, length: time))
+            }
+        }
+    }
+    
+    func actionTimeLeft() -> TimeInterval {
+        guard let currentAction = currentAction else {
+            fatalError("Debate isn't running, there's no time left of anything.")
+        }
+        
+        return currentAction.timeLimit() - (stopwatch.currentIntervalLength() ?? 0)
+    }
+    
+    func timeLeft(ofTeam team: Team) -> TimeInterval {
+        switch team {
+        case .affirmative:
+            return affirmativeTeamTimeLeft
+        case .negative:
+            return negativeTeamTimeLeft
+        }
+    }
+    
+    func allActions() -> [Action] {
+        return actions
+    }
+}
+
+class NewSpeech {
+    var length: TimeInterval
+    let type: SpeechType
+    var timeLimit: TimeInterval {
+        get {
+            switch self.type {
+            case .questions(_):
+                return Constants.crossQuestionTime
+            case .normal(let speaker):
+                return speaker.timeLimit()
+            }
+        }
+    }
+    
+    init(speaker: SpeakerID, length: TimeInterval) {
+        self.type = .normal(speaking: speaker)
+        self.length = length
+    }
+    
+    init(speaker1: SpeakerID, speaker2: SpeakerID, length: TimeInterval) {
+        self.type = .questions(asking: speaker1, answering: speaker2)
+        self.length = length
+    }
+}
+
 struct Debate {
 
     // MARK: - Properties

@@ -46,4 +46,13 @@ public extension UIStackView {
             self.insertArrangedSubview(view, at: index)
         }
     }
+    
+    func insertArrangedSubviewsWithSpacing(_ subviews: [UIView]) {
+        var spacedSubviews = [UIView()]
+        for view in subviews {
+            spacedSubviews.append(view)
+            spacedSubviews.append(UIView())
+        }
+        self.insertArrangedSubviews(spacedSubviews)
+    }
 }
